@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const consumerKey = process.env.NEXT_PUBLIC_WC_CONSUMER_KEY;
-const consumerSecret = process.env.NEXT_PUBLIC_WC_CONSUMER_SECRET;
+const consumerKey = process.env.CONSUMER_KEY;
+const consumerSecret = process.env.CONSUMER_SECRET;
 
 export default async function Home() {
   // Fetch products from the WooCommerce API
