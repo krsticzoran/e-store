@@ -4,6 +4,7 @@
 
   - Next.js
   - Tailwind CSS
+    -Sass
 
 - **Backend:**
   - WordPress (Headless CMS)
