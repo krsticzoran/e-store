@@ -1,34 +1,21 @@
 "use client";
-import { useState } from "react";
+
 import { sendingEmail } from "@/lib/action";
+import FormButton from "@/components/form-button";
+import { useFormState } from "react-dom";
 
 export default function Contact() {
-  const [responseMessage, setResponseMessage] = useState("");
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-
-    const message = await sendingEmail(formData);
-
-    if (message) {
-      setResponseMessage(message);
-    } else {
-      setResponseMessage("Something went wrong. Please try again.");
-    }
-  };
+  const [state, formAction] = useFormState(sendingEmail, { message: "" });
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form action={formAction}>
         <input type="email" name="email" placeholder="email" />
         <input type="text" name="subject" placeholder="subject" />
         <input type="text" name="message" placeholder="message" />
-        <button type="submit">Submit</button>
+        <FormButton />
       </form>
-
-      {responseMessage && <p>{responseMessage}</p>}
+      {state.message}
     </>
   );
 }
