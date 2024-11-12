@@ -1,30 +1,13 @@
 import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
-
-const consumerKey = process.env.CONSUMER_KEY;
-const consumerSecret = process.env.CONSUMER_SECRET;
+import getProduct from "@/lib/get-product";
 
 export default async function Home() {
-  // Fetch products from the WooCommerce API
-  const response = await fetch(
-    `https://estore.zkrstic.com/wp-json/wc/v3/products?consumer_key=${consumerKey}&consumer_secret=${consumerSecret}`,
-    {
-      next: { revalidate: 10 },
-    }
-  );
+  const products = await getProduct();
 
-  // Check for response status
-  if (!response.ok) {
-    console.error("Failed to fetch products:", response.statusText);
-    return (
-      <div>
-        <h1>Error fetching products</h1>
-      </div>
-    );
+  if (products.message) {
+    return <p>{products.message}</p>;
   }
-
-  const products = await response.json();
-
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
