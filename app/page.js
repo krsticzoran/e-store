@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { stripHtmlTags } from "@/utils/html-utils";
 
 const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
@@ -24,13 +25,6 @@ export default async function Home() {
 
   const products = await response.json();
 
-  const res = await fetch(`https://estore.zkrstic.com/wp-json/wp/v2/pages/83`, {
-    next: { revalidate: 10 }, // Revalidate the data every 10 seconds
-  });
-
-  const homepageData = await res.json();
-  console.log(homepageData);
-
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
@@ -46,7 +40,12 @@ export default async function Home() {
                   className="rounded-lg"
                 />
               )}
-              <h2 className="mt-2 text-lg font-semibold">{product.name}</h2>
+
+              <p className="text-red-500">{product.price}</p>
+              <h2 className="text-red-500">{product.name}</h2>
+              <p className="text-red-500">
+                {stripHtmlTags(product.description)}
+              </p>
             </div>
           ))}
         </div>
