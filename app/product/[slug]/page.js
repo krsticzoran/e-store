@@ -1,6 +1,8 @@
 import getSingleProduct from "@/lib/get-single-product";
 import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
+import AddToCartButton from "@/components/add-to-cart-button";
+
 export default async function ProdcutPage({ params }) {
   const product = await getSingleProduct(params.slug);
 
@@ -17,6 +19,7 @@ export default async function ProdcutPage({ params }) {
       <p>{product.price}</p>
       <h2>{product.name}</h2>
       <p>{stripHtmlTags(product.description)}</p>
+      <AddToCartButton product={product} />
     </main>
   );
 }

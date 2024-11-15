@@ -6,6 +6,7 @@ const ContactForm = () => {
   return (
     <div>
       <Link href="/">Home</Link>
+      <Link href="/cart">Cart</Link>
       <Link href="/contact">Contact</Link>
     </div>
   );
