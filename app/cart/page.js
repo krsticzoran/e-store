@@ -29,8 +29,9 @@ export default function Cart() {
                 className="rounded-lg"
               />
               <p>Product ID: {product.id}</p>
+              <p>Product Amount: {product.amount}</p>
               <p>Product Name: {product.name}</p>
-              <p>Price: ${product.price}</p>
+              <p>Total Price: ${product.totalPrice}</p>
             </li>
           ))}
         </ul>
