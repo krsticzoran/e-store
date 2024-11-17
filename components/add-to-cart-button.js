@@ -14,14 +14,13 @@ export default function AddToCartButton({ product }) {
         return {
           ...cartProduct,
           amount: cartProduct.amount + 1,
-          totalPrice: (cartProduct.amount + 1) * cartProduct.price,
         };
       }
       return cartProduct;
     });
 
     if (!productExists) {
-      updatedCart.push({ ...product, amount: 1, totalPrice: product.price });
+      updatedCart.push({ ...product, amount: 1 });
     }
 
     localStorage.setItem("cart", JSON.stringify(updatedCart));

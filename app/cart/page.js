@@ -1,15 +1,18 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import calculateTotal from "@/utils/calculate-total";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(() => {
     const savedCart = localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
       : [];
     setCart(savedCart);
+    setTotal(calculateTotal(savedCart));
   }, []);
 
   return (
@@ -31,11 +34,12 @@ export default function Cart() {
               <p>Product ID: {product.id}</p>
               <p>Product Amount: {product.amount}</p>
               <p>Product Name: {product.name}</p>
-              <p>Total Price: ${product.totalPrice}</p>
+              <p>Price: ${product.price}</p>
             </li>
           ))}
         </ul>
       )}
+      <p>Total: ${total}</p>
     </div>
   );
 }
