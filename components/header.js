@@ -8,6 +8,7 @@ const ContactForm = () => {
       <Link href="/">Home</Link>
       <Link href="/cart">Cart</Link>
       <Link href="/contact">Contact</Link>
+      <Link href="/checkout">Checkout</Link>
     </div>
   );
 };
