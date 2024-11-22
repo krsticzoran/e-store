@@ -15,8 +15,8 @@ export default async function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {products.map((product) => (
-            <div className="border p-4 rounded-lg h-full">
-              <Link href={`/product/${product.id}`} key={product.id}>
+            <div className="border p-4 rounded-lg h-full" key={product.id}>
+              <Link href={`/product/${product.id}`}>
                 <div>
                   {product.images.length > 0 && (
                     <Image
