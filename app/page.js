@@ -2,6 +2,7 @@ import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
 import getProduct from "@/lib/get-product";
 import Link from "next/link";
+import AddToCartButton from "@/components/add-to-cart-button";
 
 export default async function Home() {
   const products = await getProduct();
@@ -12,27 +13,30 @@ export default async function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-black">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
           {products.map((product) => (
-            <Link href={`/product/${product.id}`} key={product.id}>
-              <div className="border p-4 rounded-lg h-full">
-                {product.images.length > 0 && (
-                  <Image
-                    src={product.images[0].src}
-                    alt={product.name}
-                    width={300}
-                    height={300}
-                    className="rounded-lg"
-                  />
-                )}
+            <div className="border p-4 rounded-lg h-full">
+              <Link href={`/product/${product.id}`} key={product.id}>
+                <div>
+                  {product.images.length > 0 && (
+                    <Image
+                      src={product.images[0].src}
+                      alt={product.name}
+                      width={300}
+                      height={300}
+                      className="rounded-lg"
+                    />
+                  )}
 
-                <p className="text-red-500">{product.price}</p>
-                <h2 className="text-red-500">{product.name}</h2>
-                <p className="text-red-500">
-                  {stripHtmlTags(product.description)}
-                </p>
-              </div>
-            </Link>
+                  <p>{product.price}</p>
+                  <h2>{product.name}</h2>
+                  <p>{stripHtmlTags(product.description)}</p>
+                </div>
+              </Link>
+              <AddToCartButton product={product} className="text-red-500">
+                Add to Cart
+              </AddToCartButton>
+            </div>
           ))}
         </div>
       </main>
