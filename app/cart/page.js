@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import calculateTotal from "@/utils/calculate-total";
+import getCartItems from "@/lib/get-cart-items";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
@@ -9,9 +10,7 @@ export default function Cart() {
 
   // Load the cart data from localStorage on component mount
   useEffect(() => {
-    const savedCart = localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [];
+    const savedCart = getCartItems();
     setCart(savedCart);
     setTotal(calculateTotal(savedCart));
   }, []);
