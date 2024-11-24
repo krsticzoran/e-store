@@ -1,13 +1,21 @@
 "use client";
+import { useState, useEffect } from "react";
 import { getNames } from "country-list";
 import getCartItems from "@/lib/get-cart-items";
 import Image from "next/image";
 import calculateTotal from "@/utils/calculate-total";
 
 export default function Checkout() {
-  const countries = getNames();
-  const orderedProduct = getCartItems();
-  const total = calculateTotal(orderedProduct);
+  const [countries, setCountries] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setCountries(getNames());
+    const savedCart = getCartItems();
+    setCart(savedCart);
+    setTotal(calculateTotal(savedCart));
+  }, []);
 
   return (
     <>
@@ -65,7 +73,7 @@ export default function Checkout() {
       </form>
       <div>
         <p>Order summary</p>
-        {orderedProduct.map((product) => (
+        {cart.map((product) => (
           <div key={product.id}>
             <Image
               src={product.images[0].src}
@@ -85,4 +93,3 @@ export default function Checkout() {
     </>
   );
 }
-// need to calculate total of all ordered products
