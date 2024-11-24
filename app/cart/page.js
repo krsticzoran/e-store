@@ -58,14 +58,14 @@ export default function Cart() {
               <Image
                 src={product.images[0].src}
                 alt={product.name}
-                width={300}
-                height={300}
-                className="rounded-lg"
+                width={100}
+                height={100}
               />
               <p>Product ID: {product.id}</p>
               <p>Product Name: {product.name}</p>
               <p>Price: ${product.price}</p>
               <p>Product Amount: {product.amount}</p>
+
               <div>
                 <button
                   onClick={() => handleQuantityChange(product.id, "decrement")}
