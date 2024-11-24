@@ -1,14 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import calculateTotal from "@/utils/calculate-total";
 import getCartItems from "@/lib/get-cart-items";
 
 export default function Cart() {
+  const router = useRouter();
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
-  // Load the cart data from localStorage on component mount
+  // Load the cart data from localStorage
   useEffect(() => {
     const savedCart = getCartItems();
     setCart(savedCart);
@@ -44,6 +46,14 @@ export default function Cart() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     setTotal(calculateTotal(updatedCart)); // Recalculate total
+  };
+
+  const handleCheckout = () => {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+    router.push("/checkout");
   };
 
   return (
@@ -87,6 +97,7 @@ export default function Cart() {
         </ul>
       )}
       <p>Total: ${total}</p>
+      <button onClick={handleCheckout}>Proceed to Checkout</button>
     </div>
   );
 }
