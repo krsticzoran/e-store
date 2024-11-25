@@ -4,6 +4,7 @@ import { getNames } from "country-list";
 import getCartItems from "@/lib/get-cart-items";
 import Image from "next/image";
 import calculateTotal from "@/utils/calculate-total";
+import { submitOrder } from "@/lib/action";
 
 export default function Checkout() {
   const [countries, setCountries] = useState([]);
@@ -16,10 +17,10 @@ export default function Checkout() {
     setCart(savedCart);
     setTotal(calculateTotal(savedCart));
   }, []);
-
+  console.log(cart);
   return (
     <>
-      <form>
+      <form action={submitOrder}>
         <h1>Checkout</h1>
 
         <h3>Contact Information</h3>
@@ -69,7 +70,7 @@ export default function Checkout() {
         />
         <input type="tel" name="phone" placeholder="Phone number" required />
 
-        <button type="submit">Place Order</button>
+        <button>Place Order</button>
       </form>
       <div>
         <p>Order summary</p>
