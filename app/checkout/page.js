@@ -17,10 +17,10 @@ export default function Checkout() {
     setCart(savedCart);
     setTotal(calculateTotal(savedCart));
   }, []);
-  console.log(cart);
+
   return (
     <>
-      <form action={submitOrder}>
+      <form action={submitOrder.bind(null, cart)}>
         <h1>Checkout</h1>
 
         <h3>Contact Information</h3>
