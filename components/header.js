@@ -9,6 +9,7 @@ const ContactForm = () => {
       <Link href="/cart">Cart</Link>
       <Link href="/contact">Contact</Link>
       <Link href="/checkout">Checkout</Link>
+      <Link href="/account?mode=login">My Account</Link>
     </div>
   );
 };
