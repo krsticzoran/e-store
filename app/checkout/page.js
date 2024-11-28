@@ -4,7 +4,7 @@ import { getNames } from "country-list";
 import getCartItems from "@/lib/get-cart-items";
 import Image from "next/image";
 import calculateTotal from "@/utils/calculate-total";
-import { submitOrder } from "@/lib/action";
+import { submitOrder } from "@/action/submit-order-action";
 
 export default function Checkout() {
   const [countries, setCountries] = useState([]);

@@ -1,6 +1,6 @@
 "use client";
 
-import { sendingEmail } from "@/lib/action";
+import { sendingEmail } from "@/action/sending-email-action";
 import FormButton from "@/components/form-button";
 import { useFormState } from "react-dom";
 import { useState, useEffect, useRef } from "react";

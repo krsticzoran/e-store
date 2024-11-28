@@ -2,6 +2,8 @@
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { login } from "@/action/auth-action";
+import { signUp } from "@/action/auth-action";
 
 export default function Account() {
   const router = useRouter();
@@ -19,9 +21,10 @@ export default function Account() {
       {mode === "login" && (
         <div>
           <p>login</p>
-          <form>
-            <input type="email" placeholder="email" name="email" />
+          <form action={login}>
+            <input type="textclea" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
+            <button>Login</button>
           </form>
           <Link href={"/account?mode=signup"}>sign up</Link>
         </div>
@@ -29,7 +32,7 @@ export default function Account() {
       {mode === "signup" && (
         <div>
           <p>sign up</p>
-          <form>
+          <form action={signUp}>
             <input type="text" placeholder="username" name="username" />
             <input type="email" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
@@ -38,6 +41,7 @@ export default function Account() {
               placeholder="confirm password"
               name="confirm"
             />
+            <button>Sign up</button>
           </form>
           <Link href={"/account?mode=login"}>login</Link>
         </div>
