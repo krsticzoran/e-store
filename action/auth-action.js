@@ -2,7 +2,7 @@
 
 const jwtToken = process.env.JWT_TOKEN;
 
-export async function login(formData) {
+export async function login(prevState, formData) {
   const password = formData.get("password");
   const email = formData.get("email");
 
@@ -48,7 +48,7 @@ export async function login(formData) {
   }
 }
 
-export async function signUp(formData) {
+export async function signUp(prevState, formData) {
   const name = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
@@ -95,4 +95,11 @@ export async function signUp(formData) {
       message: "An error occurred during registration",
     };
   }
+}
+
+export async function auth(mode, prevState, formData) {
+  if (mode === "login") {
+    return login(prevState, formData);
+  }
+  return signUp(prevState, formData);
 }

@@ -2,13 +2,14 @@
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { login } from "@/action/auth-action";
-import { signUp } from "@/action/auth-action";
+import { useFormState } from "react-dom";
+import { auth } from "@/action/auth-action";
 
 export default function Account() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = searchParams.get("mode");
+  const [state, formAction] = useFormState(auth.bind(null, mode), {});
 
   useEffect(() => {
     if (!mode) {
@@ -21,7 +22,7 @@ export default function Account() {
       {mode === "login" && (
         <div>
           <p>login</p>
-          <form action={login}>
+          <form action={formAction}>
             <input type="textclea" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
             <button>Login</button>
@@ -32,7 +33,7 @@ export default function Account() {
       {mode === "signup" && (
         <div>
           <p>sign up</p>
-          <form action={signUp}>
+          <form action={formAction}>
             <input type="text" placeholder="username" name="username" />
             <input type="email" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
