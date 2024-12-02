@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const ContactForm = () => {
   return (
-    <div>
+    <div className="absolute">
       <Link href="/">Home</Link>
       <Link href="/cart">Cart</Link>
       <Link href="/contact">Contact</Link>

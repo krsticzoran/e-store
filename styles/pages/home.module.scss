@@ -1,0 +1,12 @@
+@use "../utilities/variables" as *;
+
+.hero-section {
+  background-color: $body-dark;
+  h1 {
+    color: $color-secondary;
+  }
+  .tea-kettle {
+    left: 782px;
+    top: 245px;
+  }
+}
