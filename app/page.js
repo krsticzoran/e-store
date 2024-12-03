@@ -3,11 +3,7 @@ import { stripHtmlTags } from "@/utils/html-utils";
 import getProduct from "@/lib/get-product";
 import Link from "next/link";
 import AddToCartButton from "@/components/add-to-cart-button";
-import teaKettle from "@/public/images/tea-kettle-1.webp";
-import leaf from "@/public/images/leaf.webp";
-import teaLeaves from "@/public/images/tea-leaves-png-transparent-png-1.webp";
-import classes from "@/styles/pages/home.module.scss";
-
+import Hero from "@/components/layout/hero";
 export default async function Home() {
   const products = await getProduct();
 
@@ -16,24 +12,7 @@ export default async function Home() {
   }
   return (
     <>
-      <section
-        className={`${classes["hero-section"]} h-screen relative flex items-center justify-center`}
-      >
-        <div className="absolute top-0 left-0">
-          <Image src={teaLeaves} priority alt="tea leaves" />
-        </div>
-        <div>
-          <Image src={leaf} priority alt="tea laef" />
-          <p>Hand made tea set</p>
-          <h1>Organic Tea House</h1>
-          <button>shop now</button>
-        </div>
-        <div className={`${classes["tea-kettle"]} absolute`}>
-          <Image src={teaKettle} priority alt="tea kettle" />
-        </div>
-
-        <p></p>
-      </section>
+      <Hero />
       <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
