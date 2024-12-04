@@ -12,18 +12,22 @@ export default function Hero() {
             src={teaLeaves}
             priority
             alt="tea leaves"
-            className="w-[94%]"
+            className="w-[94%] hidden"
           />
         </div>
         <div>
-          <Image src={leaf} priority alt="tea laef" />
+          <div className="flex items-center justify-center">
+            <Image src={leaf} priority alt="tea laef" className=" mb-8" />
+          </div>
           <p className="text-lg uppercase text-center text-white font-bold tracking-wider leading-6">
             Hand made tea set
           </p>
-          <h1>Organic Tea House</h1>
+          <h1 className="my-12 capitalize font-medium text-5xl leading-[113px]">
+            organic tea house
+          </h1>
           <button>shop now</button>
         </div>
-        <div className="absolute top-1/5 right-0 ">
+        <div className="absolute top-1/5 right-0  hidden">
           <Image
             src={teaKettle}
             priority

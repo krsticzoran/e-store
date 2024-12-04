@@ -3,5 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Betterworks";
+  src: url("/fonts/Betterworks.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
+  h1 {
+    font-family: "Betterworks", sans-serif;
+  }
 }
