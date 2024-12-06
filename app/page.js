@@ -13,11 +13,11 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 ">
+      <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
+        <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
-              <div className="border p-4 rounded-lg h-full" key={product.id}>
+              <div className="h-full rounded-lg border p-4" key={product.id}>
                 <Link href={`/product/${product.id}`}>
                   <div>
                     {product.images.length > 0 && (

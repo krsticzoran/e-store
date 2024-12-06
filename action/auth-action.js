@@ -18,7 +18,7 @@ export async function login(prevState, formData) {
           username: email,
           password,
         }),
-      }
+      },
     );
 
     const data = await response.json();
@@ -68,7 +68,7 @@ export async function signUp(prevState, formData) {
           password,
           roles: ["customer"],
         }),
-      }
+      },
     );
 
     const data = await response.json();
