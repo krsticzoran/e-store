@@ -7,11 +7,11 @@ import circle from "@/public/images/circle_slide.webp";
 export default function Hero() {
   return (
     <section className="bg-body-dark">
-      <container className="relative mx-auto flex h-screen items-center justify-center">
+      <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40">
         <div className="absolute left-[120px] top-[30%]">
           <Image src={teaLeaves} alt="tea leaves" className="w-[75%]" />
         </div>
-        <Image src={circle} alt="tea leaves" className="absolute w-[90%]" />
+        <Image src={circle} alt="tea leaves" className="absolute w-[93%]" />
         <Image src={circle} alt="tea leaves" className="absolute w-[60%]" />
         <div>
           <div className="flex items-center justify-center">
@@ -44,7 +44,29 @@ export default function Hero() {
           />
         </div>
 
-        <p></p>
+        <div className="absolute bottom-[50px] left-[160px] flex flex-col items-center justify-center">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-facebook-f font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
+          </a>
+          <a
+            href="https://youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-youtube font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
+          </a>
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i className="fab fa-linkedin-in font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
+          </a>
+        </div>
       </container>
     </section>
   );
