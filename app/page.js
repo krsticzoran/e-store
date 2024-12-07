@@ -2,8 +2,8 @@ import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
 import getProduct from "@/lib/get-product";
 import Link from "next/link";
-import AddToCartButton from "@/components/add-to-cart-button";
-import Hero from "@/components/layout/hero";
+import AddToCartButton from "@/components/ui/add-to-cart-button";
+import Hero from "@/components/layout/home/hero";
 export default async function Home() {
   const products = await getProduct();
 
