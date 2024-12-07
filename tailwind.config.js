@@ -8,7 +8,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        urbanist: ["Urbanist", "sans-serif"],
         betterworks: ["Betterworks", "sans-serif"],
       },
       colors: {
