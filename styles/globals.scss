@@ -10,7 +10,7 @@
 }
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
 
-@import "~font-awesome/css/font-awesome.min.css";
+@import "~font-awesome/scss/font-awesome.scss";
 
 * {
   box-sizing: border-box;
@@ -20,4 +20,12 @@
 
 body {
   font-family: urbanist, sans-serif;
+  a {
+    color: inherit;
+    text-decoration: none;
+    font-family: inherit;
+  }
+  button {
+    font-family: inherit;
+  }
 }

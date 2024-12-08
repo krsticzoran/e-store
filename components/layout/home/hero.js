@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import teaKettle from "@/public/images/tea-kettle-1.webp";
 import leaf from "@/public/images/leaf.webp";
 import teaLeaves from "@/public/images/tea-leaves-png-transparent-png-1.webp";
@@ -8,14 +9,14 @@ export default function Hero() {
   return (
     <section className="bg-body-dark">
       <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40">
-        <div className="absolute left-[120px] top-[30%]">
+        <div className="absolute left-[40px] top-[30%]">
           <Image src={teaLeaves} alt="tea leaves" className="w-[75%]" />
         </div>
         <Image src={circle} alt="tea leaves" className="absolute w-[93%]" />
         <Image src={circle} alt="tea leaves" className="absolute w-[60%]" />
         <div>
-          <div className="flex items-center justify-center">
-            <Image src={leaf} priority alt="tea laef" className="mb-8" />
+          <div className="z-0 flex items-center justify-center">
+            <Image src={leaf} alt="tea laef" className="mb-8" />
           </div>
           <p
             className="text-center font-urbanist text-lg font-bold uppercase leading-6 text-white"
@@ -28,7 +29,7 @@ export default function Hero() {
           </h1>
           <div className="flex items-center justify-center">
             <button
-              className="border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
+              className="z-50 border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
               style={{ letterSpacing: "1px" }}
             >
               shop now
@@ -45,27 +46,27 @@ export default function Hero() {
         </div>
 
         <div className="absolute bottom-[50px] left-[160px] flex flex-col items-center justify-center">
-          <a
+          <Link
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-facebook-f font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
-          </a>
-          <a
+            <i className="fab fa-facebook-f font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
+          </Link>
+          <Link
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-youtube font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
-          </a>
-          <a
+            <i className="fab fa-youtube font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
+          </Link>
+          <Link
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i className="fab fa-linkedin-in font-medium leading-6 text-[rgba(255,255,255,0.5)]"></i>
-          </a>
+            <i className="fab fa-linkedin-in font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
+          </Link>
         </div>
       </container>
     </section>
