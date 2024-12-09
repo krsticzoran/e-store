@@ -8,7 +8,7 @@ import circle from "@/public/images/circle_slide.webp";
 export default function Hero() {
   return (
     <section className="bg-body-dark">
-      <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-32">
+      <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40">
         <div className="absolute left-[40px] top-[30%]">
           <Image src={teaLeaves} alt="tea leaves" className="w-[75%]" />
         </div>
@@ -45,7 +45,7 @@ export default function Hero() {
           />
         </div>
 
-        <div className="absolute bottom-[50px] left-[160px] flex flex-col items-center justify-center">
+        <div className="absolute bottom-[50px] left-[65px] flex flex-col items-center justify-center xl:left-[160px]">
           <Link
             href="https://facebook.com"
             target="_blank"

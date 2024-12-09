@@ -8,11 +8,19 @@ import logo from "@/public/logo/logo.svg";
 const ContactForm = () => {
   const pathname = usePathname();
   return (
-    <nav className="absolute left-1/2 z-50 -translate-x-1/2 transform">
+    <nav
+      className="absolute left-1/2 z-50 -translate-x-1/2 transform"
+      aria-label="Main Navigation"
+    >
       <div className="flex w-screen items-center justify-between pt-7 xl:w-[1280px]">
+        {/* Logo */}
         <div className="ml-8 xl:ml-40">
-          <Image src={logo} alt="logo" />
+          <Link href="/" aria-label="Go to Home">
+            <Image src={logo} alt="Company Logo" className="w-[70%]" />
+          </Link>
         </div>
+
+        {/* Navigation Links */}
         <div className="flex">
           <ul className="mr-32 hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex">
             <li className={pathname == "/" ? "text-secondary" : ""}>
@@ -37,20 +45,20 @@ const ContactForm = () => {
             </li>
           </ul>
 
-          <ul className="mr-8 flex items-center justify-between gap-7 text-[22px] text-xl text-white text-opacity-90 xl:mr-36">
+          <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl">
             <li>
-              <Link href="/my-account">
-                <i className="fa fa-user"></i>
+              <Link href="/my-account" aria-label="Go to My Account">
+                <i className="fa fa-user" aria-hidden="true"></i>
               </Link>
             </li>
             <li>
-              <Link href="/cart">
-                <i className="fa fa-shopping-bag"></i>
+              <Link href="/cart" aria-label="View Cart">
+                <i className="fa fa-shopping-bag" aria-hidden="true"></i>
               </Link>
             </li>
             <li>
-              <button>
-                <i className="fas fa-bars"></i>
+              <button aria-label="Toggle Menu">
+                <i className="fas fa-bars" aria-hidden="true"></i>
               </button>
             </li>
           </ul>
