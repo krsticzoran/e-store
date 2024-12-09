@@ -9,12 +9,12 @@ const ContactForm = () => {
   const pathname = usePathname();
   return (
     <nav className="absolute left-1/2 z-50 -translate-x-1/2 transform">
-      <div className="flex w-[1280px] items-center justify-between pt-7">
-        <div className="ml-40">
+      <div className="flex w-screen items-center justify-between pt-7 xl:w-[1280px]">
+        <div className="ml-8 xl:ml-40">
           <Image src={logo} alt="logo" />
         </div>
         <div className="flex">
-          <ul className="mr-32 flex gap-7 font-semibold uppercase tracking-widest text-white">
+          <ul className="mr-32 hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex">
             <li className={pathname == "/" ? "text-secondary" : ""}>
               <Link href="/" className="hover:text-secondary">
                 Home
@@ -37,7 +37,7 @@ const ContactForm = () => {
             </li>
           </ul>
 
-          <ul className="mr-36 flex items-center justify-between gap-7 text-[22px] text-white text-opacity-90">
+          <ul className="mr-8 flex items-center justify-between gap-7 text-[22px] text-xl text-white text-opacity-90 xl:mr-36">
             <li>
               <Link href="/my-account">
                 <i className="fa fa-user"></i>
