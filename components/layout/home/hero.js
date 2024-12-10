@@ -8,12 +8,24 @@ import circle from "@/public/images/circle_slide.webp";
 export default function Hero() {
   return (
     <section className="bg-body-dark">
-      <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40">
-        <div className="absolute left-[40px] top-[30%]">
-          <Image src={teaLeaves} alt="tea leaves" className="w-[75%]" />
+      <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40 2xl:max-w-[1440px] 2xl:py-64">
+        <div className="absolute left-[70px] top-[30%]">
+          <Image
+            src={teaLeaves}
+            alt="tea leaves"
+            className="w-[200px] xl:w-[70%] 2xl:w-[73%]"
+          />
         </div>
-        <Image src={circle} alt="tea leaves" className="absolute w-[93%]" />
-        <Image src={circle} alt="tea leaves" className="absolute w-[60%]" />
+        <Image
+          src={circle}
+          alt="tea leaves"
+          className="absolute w-[93%] 2xl:w-full"
+        />
+        <Image
+          src={circle}
+          alt="tea leaves"
+          className="absolute w-[60%] 2xl:w-[68%]"
+        />
         <div>
           <div className="z-0 flex items-center justify-center">
             <Image src={leaf} alt="tea laef" className="mb-8" />
@@ -36,12 +48,12 @@ export default function Hero() {
             </button>
           </div>
         </div>
-        <div className="absolute -right-[200px] top-1/3">
+        <div className="absolute right-0 xl:-right-[200px] xl:top-1/3">
           <Image
             src={teaKettle}
             priority
             alt="tea kettle"
-            className="w-[70%]"
+            className="w-[200px] xl:w-[70%] 2xl:w-[73%]"
           />
         </div>
 

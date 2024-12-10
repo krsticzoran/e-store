@@ -12,17 +12,21 @@ const ContactForm = () => {
       className="absolute left-1/2 z-50 -translate-x-1/2 transform"
       aria-label="Main Navigation"
     >
-      <div className="flex w-screen items-center justify-between pt-7 xl:w-[1280px]">
+      <div className="flex w-screen items-center justify-between pt-7 xl:w-[1280px] 2xl:w-[1440px]">
         {/* Logo */}
         <div className="ml-8 xl:ml-40">
           <Link href="/" aria-label="Go to Home">
-            <Image src={logo} alt="Company Logo" className="w-[70%]" />
+            <Image
+              src={logo}
+              alt="Company Logo"
+              className="w-[70%] lg:w-[100%]"
+            />
           </Link>
         </div>
 
         {/* Navigation Links */}
         <div className="flex">
-          <ul className="mr-32 hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex">
+          <ul className="mr-32 hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex 2xl:text-lg">
             <li className={pathname == "/" ? "text-secondary" : ""}>
               <Link href="/" className="hover:text-secondary">
                 Home
@@ -45,7 +49,7 @@ const ContactForm = () => {
             </li>
           </ul>
 
-          <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl">
+          <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl 2xl:text-2xl">
             <li>
               <Link href="/my-account" aria-label="Go to My Account">
                 <i className="fa fa-user" aria-hidden="true"></i>
