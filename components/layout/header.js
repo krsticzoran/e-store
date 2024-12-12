@@ -12,7 +12,7 @@ const ContactForm = () => {
       className="absolute left-1/2 z-50 -translate-x-1/2 transform"
       aria-label="Main Navigation"
     >
-      <div className="flex w-screen items-center justify-between pt-7 xl:w-[1280px] 2xl:w-[1440px] 2xl:pt-14">
+      <div className="flex w-screen items-center justify-between pt-5 xl:w-[1280px] xl:pt-7 2xl:w-[1440px] 2xl:pt-14">
         {/* Logo */}
         <div className="ml-8 xl:ml-40">
           <Link href="/" aria-label="Go to Home">
