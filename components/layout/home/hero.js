@@ -9,11 +9,11 @@ export default function Hero() {
   return (
     <section className="bg-body-dark">
       <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden py-40 2xl:max-w-[1440px] 2xl:py-64">
-        <div className="absolute left-[70px] top-[30%]">
+        <div className="absolute left-[70px] top-[30%] 2xl:left-[50px] 2xl:top-[38%]">
           <Image
             src={teaLeaves}
             alt="tea leaves"
-            className="w-[200px] xl:w-[70%] 2xl:w-[73%]"
+            className="w-[200px] xl:w-[70%] 2xl:w-[84%]"
           />
         </div>
         <Image
@@ -36,24 +36,26 @@ export default function Hero() {
           >
             Hand made tea set
           </p>
-          <h1 className="my-12 font-betterworks text-4xl font-medium capitalize leading-[113px] text-secondary">
+          <h1 className="my-12 font-betterworks text-4xl font-medium capitalize leading-[113px] text-secondary 2xl:text-5xl 2xl:leading-[120px]">
             organic tea house
           </h1>
           <div className="flex items-center justify-center">
-            <button
-              className="z-50 border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
-              style={{ letterSpacing: "1px" }}
-            >
-              shop now
-            </button>
+            <Link href="/shop" className="z-50">
+              <button
+                className="border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
+                style={{ letterSpacing: "1px" }}
+              >
+                shop now
+              </button>
+            </Link>
           </div>
         </div>
-        <div className="absolute right-0 xl:-right-[200px] xl:top-1/3">
+        <div className="absolute right-0 xl:-right-[200px] xl:top-1/3 2xl:-right-[150px] 2xl:top-[40%]">
           <Image
             src={teaKettle}
             priority
             alt="tea kettle"
-            className="w-[200px] xl:w-[70%] 2xl:w-[73%]"
+            className="w-[200px] xl:w-[70%] 2xl:w-[80%]"
           />
         </div>
 
