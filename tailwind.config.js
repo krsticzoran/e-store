@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       fontFamily: {
         betterworks: ["Betterworks", "sans-serif"],
+        youngSerif: ["YoungSerif", "serif"],
       },
       colors: {
         background: "var(--background)",
