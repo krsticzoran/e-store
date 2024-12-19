@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import teaKettle from "@/public/images/tea-kettle-1.webp";
-import leaf from "@/public/images/leaf.webp";
-import teaLeaves from "@/public/images/tea-leaves-png-transparent-png-1.webp";
-import circle from "@/public/images/circle_slide.webp";
+import teaKettle from "@/public/images/home/hero/tea-kettle-1.webp";
+import leaf from "@/public/images/home/hero/leaf.webp";
+import teaLeaves from "@/public/images/home/hero/tea-leaves-png-transparent-png-1.webp";
+import circle from "@/public/images/home/hero/circle_slide.webp";
 
 export default function Hero() {
   return (
