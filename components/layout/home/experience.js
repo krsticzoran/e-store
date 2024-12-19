@@ -14,7 +14,9 @@ export default function Experience() {
           natural fruit concentrates, served cold with delicious chewy tapioca
           pearls.
         </p>
-        <button>learn more</button>
+        <button className="bg-accent mt-7 px-9 py-4 font-bold uppercase tracking-[1px] text-primary">
+          learn more
+        </button>
       </div>
       <div className="w-[64%]">
         <p>some text for now</p>
