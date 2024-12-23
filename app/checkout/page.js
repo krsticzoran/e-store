@@ -25,7 +25,8 @@ export default function Checkout() {
 
         <h3>Contact Information</h3>
         <p>
-          We'll use this email to send you details and updates about your order.
+          We&apos;ll use this email to send you details and updates about your
+          order.
         </p>
         <input type="email" name="email" placeholder="Email address" required />
 

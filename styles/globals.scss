@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @font-face {
   font-family: "Betterworks";
   src: url("/fonts/Betterworks.otf") format("opentype");
@@ -16,6 +14,16 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Geist";
+  src:
+    url("/fonts/GeistVF.woff2") format("woff2"),
+    url("/fonts/GeistVF.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
 
 @import "~font-awesome/scss/font-awesome.scss";

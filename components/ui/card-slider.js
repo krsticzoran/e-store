@@ -3,11 +3,10 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export default function CardSlider({ items = [] }) {
-  const visibleCount = 3; // Number of visible images
+  const visibleCount = 3;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  // Clone items for seamless looping
   const extendedItems =
     items.length > 0
       ? [
@@ -16,8 +15,6 @@ export default function CardSlider({ items = [] }) {
           ...items.slice(0, visibleCount),
         ]
       : [];
-
-  console.log(currentIndex);
 
   const nextSlide = () => {
     if (isTransitioning) return;
@@ -31,28 +28,24 @@ export default function CardSlider({ items = [] }) {
     setCurrentIndex((prevIndex) => prevIndex - 1);
   };
 
-  // Handle infinite loop effect with smooth transition
   useEffect(() => {
     if (!isTransitioning) return;
 
     const timeout = setTimeout(() => {
-      // After the transition is complete, reset transition state
       setIsTransitioning(false);
 
-      // Wrap around without visual jump
       if (currentIndex >= items.length) {
-        setCurrentIndex(0); // Loop back to the start
+        setCurrentIndex(0);
       } else if (currentIndex < 0) {
-        setCurrentIndex(items.length - 1); // Loop back to the end
+        setCurrentIndex(3);
       }
-    }, 500); // Match the CSS transition duration
+    }, 500);
 
     return () => clearTimeout(timeout);
   }, [currentIndex, isTransitioning, items.length]);
 
   return (
     <div className="relative mx-auto w-full max-w-3xl overflow-hidden">
-      {/* Slider container */}
       <div
         className={`flex transition-transform duration-500 ${
           isTransitioning ? "" : "transition-none"
@@ -77,7 +70,6 @@ export default function CardSlider({ items = [] }) {
         ))}
       </div>
 
-      {/* Navigation Buttons */}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 -translate-y-1/2 transform rounded-full bg-black p-2 text-white hover:bg-gray-800"

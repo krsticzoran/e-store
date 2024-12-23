@@ -1,11 +1,11 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useFormState } from "react-dom";
 import { auth } from "@/action/auth-action";
 
-export default function Account() {
+function AccountContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = searchParams.get("mode");
@@ -23,7 +23,7 @@ export default function Account() {
         <div>
           <p>login</p>
           <form action={formAction}>
-            <input type="textclea" placeholder="email" name="email" />
+            <input type="text" placeholder="email" name="email" />
             <input type="password" placeholder="password" name="password" />
             <button>Login</button>
           </form>
@@ -48,5 +48,13 @@ export default function Account() {
         </div>
       )}
     </>
+  );
+}
+
+export default function Account() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AccountContent />
+    </Suspense>
   );
 }
