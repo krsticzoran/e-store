@@ -1,3 +1,14 @@
+import CardSlider from "@/components/ui/card-slider";
+
+import Link from "next/link";
+
+import blackTea from "@/public/images/home/experience/black-tea.webp";
+import chai from "@/public/images/home/experience/chai.webp";
+import greenTea from "@/public/images/home/experience/Green-tea.webp";
+import japaneseMatcha from "@/public/images/home/experience/Japanese-matcha.webp";
+
+const items = [blackTea, chai, greenTea, japaneseMatcha];
+
 export default function Experience() {
   return (
     <section className="mx-auto mt-[90px] flex xl:max-w-[1280px]">
@@ -5,7 +16,7 @@ export default function Experience() {
         <p className="mb-[14px] font-bold uppercase text-secondary">
           Experience
         </p>
-        <h2 className="font-youngSerif mb-6 text-4xl font-normal leading-[50px] text-primary">
+        <h2 className="mb-6 font-youngSerif text-4xl font-normal leading-[50px] text-primary">
           The Story Behind Our Ocha House
         </h2>
         <p className="mb-[10px] text-lg font-medium leading-7 text-primary">
@@ -14,12 +25,12 @@ export default function Experience() {
           natural fruit concentrates, served cold with delicious chewy tapioca
           pearls.
         </p>
-        <button className="bg-accent mt-7 px-9 py-4 font-bold uppercase tracking-[1px] text-primary">
+        <button className="mt-7 bg-accent px-9 py-4 font-bold uppercase tracking-[1px] text-primary">
           learn more
         </button>
       </div>
       <div className="w-[64%]">
-        <p>some text for now</p>
+        <CardSlider items={items} />
       </div>
     </section>
   );
