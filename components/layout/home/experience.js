@@ -7,7 +7,28 @@ import chai from "@/public/images/home/experience/chai.webp";
 import greenTea from "@/public/images/home/experience/Green-tea.webp";
 import japaneseMatcha from "@/public/images/home/experience/Japanese-matcha.webp";
 
-const items = [blackTea, chai, greenTea, japaneseMatcha];
+const items = [
+  {
+    src: blackTea,
+    alt: "Black Tea Experience",
+    blurDataURL: blackTea, // Optional: Use the same image for blur placeholder or generate a specific one
+  },
+  {
+    src: chai,
+    alt: "Chai Tea Experience",
+    blurDataURL: chai,
+  },
+  {
+    src: greenTea,
+    alt: "Green Tea Experience",
+    blurDataURL: greenTea,
+  },
+  {
+    src: japaneseMatcha,
+    alt: "Japanese Matcha Experience",
+    blurDataURL: japaneseMatcha,
+  },
+];
 
 export default function Experience() {
   return (
