@@ -18,6 +18,7 @@ module.exports = {
         secondary: "#fda043",
         "body-dark": "#132420",
         accent: "#BAC9AC",
+        "accent-second": "#EBDBCB",
       },
     },
   },
