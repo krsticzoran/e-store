@@ -8,20 +8,25 @@ export const items = [
     src: blackTea,
     alt: "Black Tea Experience",
     blurDataURL: blackTea, 
-  },
-  {
-    src: chai,
-    alt: "Chai Tea Experience",
-    blurDataURL: chai,
+    text:"Black Tea"
   },
   {
     src: greenTea,
     alt: "Green Tea Experience",
     blurDataURL: greenTea,
+    text: "Green Tea"
   },
+  {
+    src: chai,
+    alt: "Chai Tea Experience",
+    blurDataURL: chai,
+    text:"Oolong Tea"
+  },
+  
   {
     src: japaneseMatcha,
     alt: "Japanese Matcha Experience",
     blurDataURL: japaneseMatcha,
+    text:"Flavored Tea"
   },
 ];
