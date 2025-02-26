@@ -3,7 +3,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
 import Link from "next/link";
-import logo from "@/public/logo/logo.svg";
+import logo from "@/public/icons/logo.svg";
 
 const ContactForm = () => {
   const pathname = usePathname();

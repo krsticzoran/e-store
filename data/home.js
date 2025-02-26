@@ -3,6 +3,8 @@ import chai from "@/public/images/home/experience/chai.webp";
 import greenTea from "@/public/images/home/experience/Green-tea.webp";
 import japaneseMatcha from "@/public/images/home/experience/Japanese-matcha.webp";
 
+import benefit from "@/public/icons/experience/benefit.svg"
+
 export const items = [
   {
     src: blackTea,
@@ -28,5 +30,24 @@ export const items = [
     alt: "Japanese Matcha Experience",
     blurDataURL: japaneseMatcha,
     text:"Flavored Tea"
+  },
+];
+
+
+export const experienceArr = [
+  {
+    src: benefit,
+    title:"Benefiting you",
+    text: "From sleep support to focus, energy, confidence, calm, and more."
+  },
+  {
+    src: benefit,
+    title:"Benefiting you",
+    text: "From sleep support to focus, energy, confidence, calm, and more."
+  },
+  {
+    src: benefit,
+    title:"Benefiting you",
+    text: "From sleep support to focus, energy, confidence, calm, and more."
   },
 ];
