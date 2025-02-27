@@ -1,6 +1,6 @@
 import CardSlider from "@/components/ui/card-slider";
 import Image from "next/image";
-import { items,experienceArr } from "@/data/home";
+import { items,experienceArr,experienceArrTwo } from "@/data/home";
 
 
 export default function Experience() {
@@ -51,7 +51,7 @@ export default function Experience() {
         </div>
         <div className="w-1/2  bg-primary" >
         <ul >
-          {experienceArr.map((el,i)=>(
+          {experienceArrTwo.map((el,i)=>(
             <li  key={i} className={` py-10 mx-10 ${i!==experienceArr.length-1 ? "border-b-[0.5px]  border-accent" : ""}  `}>
               <div className="max-w-[350px] flex">
               <div className="flex justify-center items-center mr-5  ">
