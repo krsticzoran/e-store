@@ -1,6 +1,7 @@
 import CardSlider from "@/components/ui/card-slider";
 import Image from "next/image";
 import { items,experienceArr,experienceArrTwo } from "@/data/home";
+import ExperienceCard from "@/components/ui/experienceCard";
 
 
 export default function Experience() {
@@ -32,19 +33,7 @@ export default function Experience() {
         <div className="w-1/2 bg-accent" >
         <ul >
           {experienceArr.map((el,i)=>(
-            <li  key={i} className={` py-10 mx-10 ${i!==experienceArr.length-1 ? "border-b-[0.5px]  border-accent-secondary" : ""}  `}>
-              <div className="max-w-[350px] flex">
-              <div className="flex justify-center items-center mr-5  ">
-               <div className="flex justify-center items-center w-16 h-16 bg-white rounded-full"> 
- <Image src={el.src} width={25}  height={25} alt={el.title}   />
- </div> 
- </div>
- <div  className="text-primary">
-  <h5 className="mb-2 font-bold text-lg">{el.title}</h5>
-  <p>{el.text}</p>
- </div>
- </div>
- </li>
+            <ExperienceCard el={el} i={i} variant="light" data={experienceArr} />
           ))}
       
        </ul>
@@ -52,19 +41,7 @@ export default function Experience() {
         <div className="w-1/2  bg-primary" >
         <ul >
           {experienceArrTwo.map((el,i)=>(
-            <li  key={i} className={` py-10 mx-10 ${i!==experienceArr.length-1 ? "border-b-[0.5px]  border-accent" : ""}  `}>
-              <div className="max-w-[350px] flex">
-              <div className="flex justify-center items-center mr-5  ">
-               <div className="flex justify-center items-center w-16 h-16 bg-white rounded-full"> 
- <Image src={el.src} width={25}  height={25} alt={el.title}   />
- </div> 
- </div>
- <div  className="text-accent-second">
-  <h5 className="mb-2 font-bold text-lg">{el.title}</h5>
-  <p className="text-white-transparent">{el.text}</p>
- </div>
- </div>
- </li>
+             <ExperienceCard el={el} i={i} variant="dark" data={experienceArrTwo} />
           ))}
       
        </ul></div>
