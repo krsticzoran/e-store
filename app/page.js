@@ -1,12 +1,8 @@
-
-
-
 import ProductList from "@/components/layout/product-list";
-
 import Hero from "@/components/layout/home/hero";
 import Experience from "@/components/layout/home/experience";
 
-export default async function Home() {
+export default function Home() {
 
   return (
     <>
