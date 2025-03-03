@@ -2,6 +2,10 @@ import CardSlider from "@/components/ui/card-slider";
 import Image from "next/image";
 import { items,experienceArr,experienceArrTwo } from "@/data/home";
 import ExperienceCard from "@/components/ui/experienceCard";
+import oolong from "@/public/images/home/experience/oolong.webp"
+import wing from "@/public/images/home/experience/pngwing.webp"
+import leaf from "@/public/images/home/experience/leaf.webp"
+
 
 
 export default function Experience() {
@@ -29,11 +33,14 @@ export default function Experience() {
         <CardSlider items={items} />
       </div>
       </div>
-      <div className="py-20 flex">
+      <div className="py-20 flex relative">
+      <Image src={wing} width={215} height={154} alt="pngwing"  className="absolute z-30 left-1/2 translate-x-6 bottom-28" />
+      <Image src={leaf} width={152} height={221} alt="leaf"  className="absolute z-0 left-1/2 -translate-x-[170px] top-10" />
+        <Image src={oolong} width={500} height={500} alt="oolong"  className="absolute z-20 left-1/2 -translate-x-[100px] top-0" />
         <div className="w-1/2 bg-accent" >
         <ul >
           {experienceArr.map((el,i)=>(
-            <ExperienceCard el={el} i={i} variant="light" data={experienceArr} />
+            <ExperienceCard el={el} index={i} variant="light" length={experienceArr.length} />
           ))}
       
        </ul>
@@ -41,7 +48,7 @@ export default function Experience() {
         <div className="w-1/2  bg-primary" >
         <ul >
           {experienceArrTwo.map((el,i)=>(
-             <ExperienceCard el={el} i={i} variant="dark" data={experienceArrTwo} />
+             <ExperienceCard el={el} index={i} variant="dark" length={experienceArrTwo.length} />
           ))}
       
        </ul></div>
