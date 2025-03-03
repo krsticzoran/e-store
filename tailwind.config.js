@@ -20,6 +20,7 @@ module.exports = {
         accent: "#BAC9AC",
         "accent-second": "#EBDBCB",
         "white-transparent": "#FFFFFFCC",
+        "warm-beige": "#f7f1ea",
       },
     },
   },

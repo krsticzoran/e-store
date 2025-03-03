@@ -13,31 +13,34 @@ export default async function ProductList(){
      return <p>{products.message}</p>;
    }   
 
-
+console.log(products[0].categories)
 return (
     <>
     {products.map((product) => (
         <div className="h-full rounded-lg border p-4" key={product.id}>
           <Link href={`/product/${product.id}`}>
             <div>
-              {product.images.length > 0 && (
+              {product.images.length && (
+                <div className="bg-warm-beige flex justify-center intems-center">
                 <Image
                   src={product.images[0].src}
                   alt={product.name}
                   width={300}
                   height={300}
-                  className="rounded-lg"
+                 
                 />
+                </div>
               )}
+
+{product.categories?.length > 0 && <p>{product.categories[0].name}</p>}
+            
+            
 
               <p>{product.price}</p>
               <h2>{product.name}</h2>
               <p>{stripHtmlTags(product.description)}</p>
             </div>
           </Link>
-          <AddToCartButton product={product} className="text-red-500">
-            Add to Cart
-          </AddToCartButton>
         </div>
       ))}
       </>
