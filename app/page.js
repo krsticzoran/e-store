@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
-import getProduct from "@/lib/get-product";
+import getProduct from "@/lib/get-products";
 import Link from "next/link";
 import AddToCartButton from "@/components/ui/add-to-cart-button";
 import Hero from "@/components/layout/home/hero";
