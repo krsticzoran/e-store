@@ -30,28 +30,26 @@ export default function CardSlider({ items }) {
                 objectFit="cover"
                 className="rounded-lg"
               />
-              <div className="h-[90px] bg-accent-second w-[190px] rounded-t-full z-50 absolute bottom-0 -left-8 flex justify-center items-center">
-                <p className="text-primary font-bold">{item.text}</p>
+              <div className="absolute -left-8 bottom-0 z-50 flex h-[90px] w-[190px] items-center justify-center rounded-t-full bg-accent-second">
+                <p className="font-bold text-primary">{item.text}</p>
               </div>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
-      
       <div className="custom-prev-container absolute left-0 top-1/2 z-10 flex -translate-y-1/2">
-       
         <div className="-mr-8 h-14 w-16 rounded-full bg-white"></div>
-        <button className="custom-prev bg-accent-second absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full shadow-lg hover:bg-secondary">
+        <button className="custom-prev absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary">
           ❮
         </button>
       </div>
 
       <div className="custom-next-container absolute right-0 top-1/2 z-10 flex -translate-y-1/2">
-        <button className="custom-next bg-accent-second absolute -left-6 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full shadow-lg hover:bg-secondary">
+        <button className="custom-next absolute -left-6 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary">
           ❯
         </button>
-       
+
         <div className="-ml-8 h-14 w-16 rounded-full bg-white"></div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import Hero from "@/components/layout/home/hero";
 import Experience from "@/components/layout/home/experience";
 
 export default function Home() {
-
   return (
     <>
       <Hero />
