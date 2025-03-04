@@ -13,11 +13,14 @@ export default async function ProductList(){
      return <p>{products.message}</p>;
    }   
 
-console.log(products[0].categories)
+console.log(products)
 return (
     <>
-    {products.map((product) => (
-        <div className="h-full rounded-lg border p-4" key={product.id}>
+    {products.map((product) => {
+        const hasDiscount = product.regular_price !== product.price;
+        const isOutOfStock = product.stock_status === "outofstock";
+        return (
+        <div className="h-full  relative" key={product.id}>
           <Link href={`/product/${product.id}`}>
             <div>
               {product.images.length && (
@@ -31,18 +34,27 @@ return (
                 />
                 </div>
               )}
+              {/* Badges (Sale & Sold) */}
+              {isOutOfStock &&  <div className={`bg-primary text-white rounded-full absolute ${hasDiscount ? "top-24" : "top-4"} right-4 w-16 h-16 uppercase flex justify-center items-center font-bold`}><p>sold</p></div>}
+              {hasDiscount && <div className="bg-[#FDA043] text-white rounded-full absolute top-4 right-4 w-16 h-16 uppercase flex justify-center items-center font-bold"><p>sale</p></div>}
+            
+
+
+
+{/* Category */}
 
 {product.categories?.length > 0 && <p>{product.categories[0].name}</p>}
             
-            
-
+               {/* Product Info */}
               <p>{product.price}</p>
+              <p>{product.regular_price}</p>
               <h2>{product.name}</h2>
               <p>{stripHtmlTags(product.description)}</p>
             </div>
           </Link>
         </div>
-      ))}
+        )
+    })}
       </>
 )
 
