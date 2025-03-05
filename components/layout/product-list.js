@@ -1,14 +1,13 @@
 import Link from "next/link";
 import AddToCartButton from "@/components/ui/add-to-cart-button";
 
-
 import Image from "next/image";
 
 export default async function ProductList({ products }) {
   //if (products.message) {
   //return <p>{products.message}</p>;
   //}
-  
+
   return (
     <>
       {products.map((product) => {
@@ -16,9 +15,8 @@ export default async function ProductList({ products }) {
         const isOutOfStock = product.stock_status === "outofstock";
         return (
           <div className="relative h-full" key={product.id}>
-             <div>
-            <Link href={`/product/${product.id}`}>
-             
+            <div>
+              <Link href={`/product/${product.id}`}>
                 {product.images.length && (
                   <div className="intems-center flex justify-center bg-warm-beige">
                     <Image
@@ -48,37 +46,36 @@ export default async function ProductList({ products }) {
                     </p>
                   </div>
                 )}
- </Link>
-                {/* product name */}
-                <h5 className="mb-1 mt-6 text-lg font-bold leading-6 text-primary">
-                  {product.name}
-                </h5>
-               
-                {/* Product Info */}
-                <div className="flex justify-between">
-                  <div className="flex">
-                    {hasDiscount && (
-                      <p className="mr-2 text-primary text-opacity-40 line-through">
-                        ${product.regular_price}
-                      </p>
-                    )}
-                    <p className="text-primary text-opacity-80">
-                      ${product.price}
-                    </p>
-                  </div>
-                  <Link
-                    href="/cart"
-                    aria-label="View Cart"
-                    className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"
-                  >
-                    <p className="mr-3">add to cart</p>
-                    <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-                  </Link>
-                </div>
+              </Link>
+              {/* product name */}
+              <h5 className="mb-1 mt-6 text-lg font-bold leading-6 text-primary">
+                {product.name}
+              </h5>
 
-                {/*<p>{stripHtmlTags(product.description)}</p> pull out html code*/}
+              {/* Product Info */}
+              <div className="flex justify-between">
+                <div className="flex">
+                  {hasDiscount && (
+                    <p className="mr-2 text-primary text-opacity-40 line-through">
+                      ${product.regular_price}
+                    </p>
+                  )}
+                  <p className="text-primary text-opacity-80">
+                    ${product.price}
+                  </p>
+                </div>
+                <Link
+                  href="/cart"
+                  aria-label="View Cart"
+                  className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"
+                >
+                  <p className="mr-3">add to cart</p>
+                  <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+                </Link>
               </div>
-            
+
+              {/*<p>{stripHtmlTags(product.description)}</p> pull out html code*/}
+            </div>
           </div>
         );
       })}
