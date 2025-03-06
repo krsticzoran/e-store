@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AddToCartButton from "@/components/ui/add-to-cart-button";
+import AddToCartButton from "@/components/cart/add-to-cart-button";
 
 import Image from "next/image";
 
