@@ -2,8 +2,7 @@ import Image from "next/image";
 
 export default function ExperienceCard({ el, index, variant, length }) {
   return (
-    <li
-      key={index}
+    <div
       className={`mx-10 py-10 ${index !== length - 1 ? "border-b-[0.5px]" : ""} ${variant === "light" ? "border-accent-secondary" : "flex justify-end border-accent"}`}
     >
       <div
@@ -27,6 +26,6 @@ export default function ExperienceCard({ el, index, variant, length }) {
           </p>
         </div>
       </div>
-    </li>
+    </div>
   );
 }

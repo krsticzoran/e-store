@@ -56,24 +56,28 @@ export default function Experience() {
         <div className="w-1/2 bg-accent">
           <ul>
             {experienceArr.map((el, i) => (
-              <ExperienceCard
-                el={el}
-                index={i}
-                variant="light"
-                length={experienceArr.length}
-              />
+              <li key={i}>
+                <ExperienceCard
+                  el={el}
+                  index={i}
+                  variant="light"
+                  length={experienceArr.length}
+                />
+              </li>
             ))}
           </ul>
         </div>
         <div className="w-1/2 bg-primary">
           <ul>
             {experienceArrTwo.map((el, i) => (
-              <ExperienceCard
-                el={el}
-                index={i}
-                variant="dark"
-                length={experienceArrTwo.length}
-              />
+              <li key={i}>
+                <ExperienceCard
+                  el={el}
+                  index={i}
+                  variant="dark"
+                  length={experienceArrTwo.length}
+                />
+              </li>
             ))}
           </ul>
         </div>
