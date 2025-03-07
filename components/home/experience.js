@@ -1,6 +1,6 @@
 import CardSlider from "@/components/home/card-slider";
 import Image from "next/image";
-import { items, experienceArr, experienceArrTwo } from "@/data/home";
+import { items, experienceArr, experienceArrTwo } from "@/data/homeData";
 import ExperienceCard from "@/components/home/experienceCard";
 import oolong from "@/public/images/home/experience/oolong.webp";
 import wing from "@/public/images/home/experience/pngwing.webp";

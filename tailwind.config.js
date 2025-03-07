@@ -21,7 +21,7 @@ module.exports = {
         "accent-second": "#EBDBCB",
         "white-transparent": "#FFFFFFCC",
         "warm-beige": "#f7f1ea",
-        white60: '#FFFFFF99',
+        white60: "#FFFFFF99",
       },
     },
   },
