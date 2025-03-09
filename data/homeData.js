@@ -3,12 +3,12 @@ import chai from "@/public/images/home/experience/chai.webp";
 import greenTea from "@/public/images/home/experience/Green-tea.webp";
 import japaneseMatcha from "@/public/images/home/experience/Japanese-matcha.webp";
 
-import benefit from "@/public/icons/experience/benefit.svg";
-import eco from "@/public/icons/experience/eco.svg";
-import quality from "@/public/icons/experience/quality.svg";
-import rewards from "@/public/icons/experience/rewards.svg";
-import wholesale from "@/public/icons/experience/wholesale.svg";
-import ambassadors from "@/public/icons/experience/ambassadors.svg";
+import benefit from "@/public/icons/home/benefit.svg";
+import eco from "@/public/icons/home/eco.svg";
+import quality from "@/public/icons/home/quality.svg";
+import rewards from "@/public/icons/home/rewards.svg";
+import wholesale from "@/public/icons/home/wholesale.svg";
+import ambassadors from "@/public/icons/home/ambassadors.svg";
 
 export const items = [
   {
