@@ -20,7 +20,7 @@ export default function Contact() {
   };
 
   return (
-    <>
+    <div className="py-40">
       <form action={formAction} ref={ref}>
         <input
           type="email"
@@ -43,6 +43,6 @@ export default function Contact() {
         <FormButton />
       </form>
       {message && <p>{message}</p>}
-    </>
+    </div>
   );
 }
