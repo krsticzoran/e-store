@@ -3,12 +3,19 @@
 const formId = process.env.FORM_ID;
 const url = process.env.WP_CONTACT_API_BASE_URL;
 
-export async function sendingEmail(prevState, formData) {
-  const collectedData = {
-    email: formData.get("email"),
-    subject: formData.get("subject"),
-    message: formData.get("message"),
-  };
+export async function sendingEmail(prevState, formData, type) {
+  const collectedData =
+    type === "contact"
+      ? {
+          email: formData.get("email"),
+          subject: formData.get("subject"),
+          message: formData.get("message"),
+        }
+      : {
+          email: formData.get("email"),
+          subject: "subscription", // Hardcoded for subscription
+          message: "subscription", // Hardcoded for subscription
+        };
 
   const data = new FormData();
 

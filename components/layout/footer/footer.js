@@ -2,9 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@/public/icons/logo.svg";
-import email from "@/public/icons/mail.png";
+import Subscription from "../ subscription";
 
-import FooterLinks from "../ui/footerLinks";
+import FooterLinks from "./footerLinks";
 
 import { discoverData, companyData } from "@/data/footerData";
 import { footerIconsData } from "@/data/footerData";
@@ -45,20 +45,7 @@ export default function Footer() {
               once-in-a-lifetime deals.
             </p>
             {/*subscription*/}
-            <div className="relative mt-8">
-              <input
-                className="w-full border-b bg-primary pb-2 outline-none"
-                type="email"
-                value="Enter your email"
-              />
-              <Image
-                src={email}
-                width={20}
-                height={20}
-                alt="email"
-                className="absolute bottom-3 right-2"
-              />
-            </div>
+            <Subscription />
             {/*social icons*/}
             <ul className="mt-8 flex">
               {footerIconsData.map((el, i) => (

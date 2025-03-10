@@ -6,7 +6,11 @@ import { useFormState } from "react-dom";
 import { useState, useEffect, useRef } from "react";
 
 export default function Contact() {
-  const [state, formAction] = useFormState(sendingEmail, { message: "" });
+  const [state, formAction] = useFormState(
+    (prevState, formData) => sendingEmail(prevState, formData, "contact"),
+    { message: "" },
+  );
+
   const [message, setMessage] = useState("");
   const ref = useRef(null);
   useEffect(() => {
