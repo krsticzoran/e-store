@@ -13,9 +13,10 @@ import { getCurrentYear } from "@/lib/utils";
 
 export default function Footer() {
   return (
-    <div className="font-urbanist text-white60  bg-primary pt-28">
-      <div className="mx-auto  xl:max-w-[1280px]">
-        <div className="grid grid-cols-3 gap-10">
+    <div className="font-urbanist bg-primary pt-28 text-white60">
+      <div className="mx-auto xl:max-w-[1280px]">
+        <div className="grid grid-cols-3">
+          {/*first column*/}
           <div className="flex">
             <FooterLinks
               title={companyData.title}
@@ -28,6 +29,7 @@ export default function Footer() {
               addMargin={false}
             />
           </div>
+          {/*second column*/}
           <div className="flex flex-col items-center">
             <Image src={logo} width={92} height={93} alt="Company Logo" />
             <p className="mt-10 text-center">
@@ -36,7 +38,7 @@ export default function Footer() {
             </p>
           </div>
           {/*third column*/}
-          <div>
+          <div className="ml-20">
             <h3 className="font-bold uppercase text-white">SIGN UP AND SAVE</h3>
             <p className="mt-10">
               Subscribe to get special offers, free giveaways, and
@@ -72,8 +74,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-20 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium ">
-            <p className="py-5">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
+        <div className="mt-20 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium">
+          <p className="py-5">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
         </div>
       </div>
     </div>
