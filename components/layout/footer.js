@@ -1,17 +1,20 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import logo from "@/public/icons/logo.svg";
 import email from "@/public/icons/mail.png";
-import facebook from "@/public/icons/facebook.png";
+
 import FooterLinks from "../ui/footerLinks";
+
 import { discoverData, companyData } from "@/data/footerData";
-import Link from "next/link";
 import { footerIconsData } from "@/data/footerData";
+
+import { getCurrentYear } from "@/lib/utils";
 
 export default function Footer() {
   return (
-    <div className="font-urbanist h-[500px] bg-primary pt-28">
-      <div className="mx-auto text-white60 xl:max-w-[1280px]">
+    <div className="font-urbanist text-white60  bg-primary pt-28">
+      <div className="mx-auto  xl:max-w-[1280px]">
         <div className="grid grid-cols-3 gap-10">
           <div className="flex">
             <FooterLinks
@@ -69,7 +72,9 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div></div>
+        <div className="mt-20 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium ">
+            <p className="py-5">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
+        </div>
       </div>
     </div>
   );
