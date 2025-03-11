@@ -27,7 +27,11 @@ export default function Subscription() {
 
   return (
     <>
-      <form action={formAction} className="relative mt-8" ref={ref}>
+      <form
+        action={formAction}
+        className="subscription relative mt-8"
+        ref={ref}
+      >
         <input
           className="autofill:border-black-900 w-full border-b bg-primary pb-2 outline-none autofill:bg-primary"
           type="email"

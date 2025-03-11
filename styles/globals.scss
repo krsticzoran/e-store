@@ -28,13 +28,14 @@
 
 @import "~font-awesome/scss/font-awesome.scss";
 
-input:-webkit-autofill {
+ .subscription input:-webkit-autofill {
   background-color: theme("colors.primary") !important;
-  color: white !important;
+  color: theme('colors.white / 60%') !important;
   -webkit-box-shadow: 0 0 0px 1000px theme("colors.primary") inset !important;
 }
 
-input:-webkit-autofill::first-line {
+
+.subscription input:-webkit-autofill::first-line {
   color: theme('colors.white / 60%') !important;
   -webkit-text-fill-color: theme('colors.white / 60%') !important;
 }
