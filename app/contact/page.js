@@ -6,19 +6,19 @@ import { useFormState } from "react-dom";
 import { useState, useEffect, useRef } from "react";
 
 export default function Contact() {
-  const [state, formAction] = useFormState(
-    (prevState, formData) => sendingEmail(prevState, formData, "contact"),
-    { message: "" },
-  );
-
+  const [state, formAction] = useFormState(sendingEmail.bind(null, "contact"), {
+    message: "",
+  });
   const [message, setMessage] = useState("");
   const ref = useRef(null);
+
   useEffect(() => {
     setMessage(state.message);
     if (state.message == "Thank you for your message. It has been sent.") {
       ref.current.reset();
     }
   }, [state]);
+
   const handleInputFocus = () => {
     setMessage("");
   };
@@ -31,18 +31,21 @@ export default function Contact() {
           name="email"
           placeholder="email"
           onFocus={handleInputFocus}
+          required
         />
         <input
           type="text"
           name="subject"
           placeholder="subject"
           onFocus={handleInputFocus}
+          required
         />
         <input
           type="text"
           name="message"
           placeholder="message"
           onFocus={handleInputFocus}
+          required
         />
         <FormButton />
       </form>

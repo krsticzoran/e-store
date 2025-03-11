@@ -3,7 +3,7 @@
 const formId = process.env.FORM_ID;
 const url = process.env.WP_CONTACT_API_BASE_URL;
 
-export async function sendingEmail(prevState, formData, type) {
+export async function sendingEmail(type, prevState, formData) {
   const collectedData =
     type === "contact"
       ? {
