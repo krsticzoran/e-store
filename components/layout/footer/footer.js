@@ -53,16 +53,24 @@ export default function Footer() {
               {footerIconsData.map((el, i) => (
                 <li
                   key={i}
-                  className="gropup transition-scale mr-4 rounded-full bg-[#FFFFFF33] p-2 duration-500 hover:scale-110"
+                  className="mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFFFF33] p-2"
                 >
-                  <Link href={el.link}>
-                    <Image src={el.src} alt={el.alt} width={18} height={18} />
+                  <Link
+                    href={el.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i
+                      className={`fab ${el.src} text-white duration-500 hover:text-secondary`}
+                      aria-label={el.title}
+                    ></i>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
+        {/*Copyright column*/}
         <div className="mt-12 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium lg:mt-20">
           <p className="py-5 text-center">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
         </div>

@@ -1,8 +1,3 @@
-import facebook from "@/public/icons/facebook.png";
-import youtube from "@/public/icons/youtube.png";
-import instagram from "@/public/icons/instagram.png";
-import linkedin from "@/public/icons/linkedin.png";
-
 export const companyData = {
   title: "company",
   links: ["about us", "our history", "shop", "my account", "contact us"],
@@ -21,23 +16,23 @@ export const discoverData = {
 
 export const footerIconsData = [
   {
-    alt: "facebook",
+    title: "facebook",
     link: "https://www.facebook.com/",
-    src: facebook,
+    src: "fa-facebook-f",
   },
   {
-    alt: "youtube",
+    title: "youtube",
     link: "https://www.youtube.com/",
-    src: youtube,
+    src: "fa-youtube",
   },
   {
-    alt: "instagram",
+    title: "instagram",
     link: "https://www.instagram.com/",
-    src: instagram,
+    src: "fa-instagram",
   },
   {
-    alt: "linkedin",
+    title: "linkedin",
     link: "https://www.linkedin.com/",
-    src: linkedin,
+    src: "fa-linkedin-in",
   },
 ];
