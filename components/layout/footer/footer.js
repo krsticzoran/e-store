@@ -13,11 +13,11 @@ import { getCurrentYear } from "@/lib/utils";
 
 export default function Footer() {
   return (
-    <div className="font-urbanist bg-primary pt-28 text-white60">
-      <div className="mx-auto xl:max-w-[1280px]">
-        <div className="grid grid-cols-3">
+    <div className="font-urbanist bg-primary pt-20 text-white60 lg:pt-28">
+      <div className="mx-auto px-5 xl:max-w-[1280px] xl:px-0">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {/*first column*/}
-          <div className="flex">
+          <div className="flex justify-center md:justify-start">
             <FooterLinks
               title={companyData.title}
               data={companyData.links}
@@ -30,7 +30,7 @@ export default function Footer() {
             />
           </div>
           {/*second column*/}
-          <div className="flex flex-col items-center">
+          <div className="mt-14 flex flex-col items-center md:mt-0">
             <Image src={logo} width={92} height={93} alt="Company Logo" />
             <p className="mt-10 text-center">
               Tea has a complex positive effect on the body. Daily use of a cup
@@ -38,16 +38,18 @@ export default function Footer() {
             </p>
           </div>
           {/*third column*/}
-          <div className="ml-20">
-            <h3 className="font-bold uppercase text-white">SIGN UP AND SAVE</h3>
-            <p className="mt-10">
+          <div className="mt-14 lg:ml-10 lg:mt-0 xl:ml-20">
+            <h3 className="text-center font-bold uppercase text-white md:text-start">
+              SIGN UP AND SAVE
+            </h3>
+            <p className="mt-6 text-center md:text-start lg:mt-10">
               Subscribe to get special offers, free giveaways, and
               once-in-a-lifetime deals.
             </p>
             {/*subscription*/}
             <Subscription />
             {/*social icons*/}
-            <ul className="mt-8 flex">
+            <ul className="mt-4 flex justify-center md:justify-start lg:mt-8">
               {footerIconsData.map((el, i) => (
                 <li
                   key={i}
@@ -61,8 +63,8 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-20 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium">
-          <p className="py-5">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
+        <div className="mt-12 flex justify-center border-t-[0.5px] border-[#FFFFFF1A] font-medium lg:mt-20">
+          <p className="py-5 text-center">{`Copyright © ${getCurrentYear()} Ocha House. All Rights Reserved`}</p>
         </div>
       </div>
     </div>

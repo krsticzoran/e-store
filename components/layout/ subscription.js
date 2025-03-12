@@ -29,7 +29,7 @@ export default function Subscription() {
     <>
       <form
         action={formAction}
-        className="subscription relative mt-8"
+        className="subscription relative mt-4 lg:mt-8"
         ref={ref}
       >
         <input
