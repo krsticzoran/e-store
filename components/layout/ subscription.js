@@ -1,31 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useFormState } from "react-dom";
-import { useRef, useEffect, useState } from "react";
+
+import useFormHandler from "@/hook/useFormHandler";
 
 import email from "@/public/icons/mail.png";
 import { sendingEmail } from "@/action/sending-email-action";
 import FormButton from "../ui/form-button";
 
 export default function Subscription() {
-  const [state, formAction] = useFormState(
+  const { ref, formAction, handleInputFocus, message } = useFormHandler(
     sendingEmail.bind(null, "subscription"),
-    { message: "" },
   );
-
-  const [message, setMessage] = useState();
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (state.success) {
-      ref.current.reset();
-    }
-    setMessage(state.message);
-  }, [state]);
-
-  const handleInputFocus = () => {
-    setMessage("");
-  };
 
   return (
     <>

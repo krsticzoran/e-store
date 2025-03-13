@@ -2,26 +2,13 @@
 
 import { sendingEmail } from "@/action/sending-email-action";
 import FormButton from "@/components/ui/form-button";
-import { useFormState } from "react-dom";
-import { useState, useEffect, useRef } from "react";
+
+import useFormHandler from "@/hook/useFormHandler";
 
 export default function Contact() {
-  const [state, formAction] = useFormState(sendingEmail.bind(null, "contact"), {
-    message: "",
-  });
-  const [message, setMessage] = useState("");
-  const ref = useRef(null);
-
-  useEffect(() => {
-    setMessage(state.message);
-    if (state.success) {
-      ref.current.reset();
-    }
-  }, [state]);
-
-  const handleInputFocus = () => {
-    setMessage("");
-  };
+  const { ref, message, formAction, handleInputFocus } = useFormHandler(
+    sendingEmail.bind(null, "contact"),
+  );
 
   return (
     <div className="py-40">
