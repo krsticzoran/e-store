@@ -17,10 +17,10 @@ export default function Subscription() {
   const ref = useRef(null);
 
   useEffect(() => {
-    if (state.message === "Thank you for your message. It has been sent.") {
+    if (state.success) {
       ref.current.reset();
-      setMessage(state.message);
     }
+    setMessage(state.message);
   }, [state]);
 
   const handleInputFocus = () => {

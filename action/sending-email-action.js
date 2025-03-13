@@ -17,6 +17,7 @@ export async function sendingEmail(type, prevState, formData) {
           message: "subscription", // Hardcoded for subscription
         };
 
+  // Creating a new FormData object to send data in a format WordPress expects
   const data = new FormData();
 
   data.append("your-em", collectedData.email);
@@ -24,6 +25,7 @@ export async function sendingEmail(type, prevState, formData) {
   data.append("your-message", collectedData.message);
   data.append("_wpcf7_unit_tag", formId);
   try {
+    // Sending a POST request to WordPress endpoint
     const res = await fetch(`${url}/${formId}/feedback`, {
       method: "POST",
       body: data,

@@ -14,7 +14,7 @@ export default function Contact() {
 
   useEffect(() => {
     setMessage(state.message);
-    if (state.message == "Thank you for your message. It has been sent.") {
+    if (state.success) {
       ref.current.reset();
     }
   }, [state]);
