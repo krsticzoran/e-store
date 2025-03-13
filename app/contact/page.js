@@ -47,7 +47,9 @@ export default function Contact() {
           onFocus={handleInputFocus}
           required
         />
-        <FormButton />
+        <FormButton className="rounded bg-blue-500 p-2 text-white">
+          Submit
+        </FormButton>
       </form>
       {message && <p>{message}</p>}
     </div>

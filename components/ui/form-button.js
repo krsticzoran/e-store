@@ -1,11 +1,11 @@
 "use client";
 import { useFormStatus } from "react-dom";
 
-export default function FormButton() {
+export default function FormButton({ className, children }) {
   const { pending } = useFormStatus();
   return (
-    <button type="submit" disabled={pending} className="bg-gray-500 p-1">
-      {pending ? "Sending..." : "Send"}
+    <button type="submit" disabled={pending} className={className}>
+      {pending ? "Sending..." : children}
     </button>
   );
 }
