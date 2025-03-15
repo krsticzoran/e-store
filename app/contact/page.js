@@ -3,7 +3,7 @@
 import { sendingEmail } from "@/action/sending-email-action";
 import FormButton from "@/components/ui/form-button";
 
-import useFormHandler from "@/hook/useFormHandler";
+import useFormHandler from "@/hooks/useFormHandler";
 
 export default function Contact() {
   const { ref, message, formAction, handleInputFocus } = useFormHandler(

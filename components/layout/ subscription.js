@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 
-import useFormHandler from "@/hook/useFormHandler";
+import useFormHandler from "@/hooks/useFormHandler";
 
 import email from "@/public/icons/mail.png";
 import { sendingEmail } from "@/action/sending-email-action";
