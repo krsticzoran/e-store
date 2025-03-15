@@ -21,12 +21,11 @@ export default async function ProductList({ products }) {
               {/* Product Image */}
               <Link href={`/product/${product.id}`}>
                 {product.images.length && (
-                  <div className="intems-center flex justify-center bg-warm-beige">
+                  <div className="intems-center flex justify-center bg-warm-beige h-[400px] relative">
                     <Image
                       src={product.images[0].src}
                       alt={product.name}
-                      width={300}
-                      height={300}
+                      fill
                     />
                   </div>
                 )}
