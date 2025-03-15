@@ -1,12 +1,14 @@
 import Link from "next/link";
-import AddToCartButton from "@/components/cart/add-to-cart-button";
-
 import Image from "next/image";
 
 export default async function ProductList({ products }) {
-  //if (products.message) {
-  //return <p>{products.message}</p>;
-  //}
+  if (products.message) {
+    return (
+      <p>
+        {`Oops! We couldn't load the products right now. Please check back soon`}
+      </p>
+    );
+  }
 
   return (
     <>
@@ -16,6 +18,7 @@ export default async function ProductList({ products }) {
         return (
           <div className="relative h-full" key={product.id}>
             <div>
+              {/* Product Image */}
               <Link href={`/product/${product.id}`}>
                 {product.images.length && (
                   <div className="intems-center flex justify-center bg-warm-beige">
@@ -47,7 +50,7 @@ export default async function ProductList({ products }) {
                   </div>
                 )}
               </Link>
-              {/* product name */}
+              {/* Product Name */}
               <h5 className="mb-1 mt-6 text-lg font-bold leading-6 text-primary">
                 {product.name}
               </h5>
@@ -73,8 +76,6 @@ export default async function ProductList({ products }) {
                   <i className="fa fa-shopping-bag" aria-hidden="true"></i>
                 </Link>
               </div>
-
-              {/*<p>{stripHtmlTags(product.description)}</p> pull out html code*/}
             </div>
           </div>
         );
