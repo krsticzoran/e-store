@@ -2,8 +2,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import calculateTotal from "@/utils/calculate-total";
-import getCartItems from "@/lib/get-cart-items";
+import { calculateTotal, getCartItems } from "@/utils/cart";
 
 export default function Cart() {
   const router = useRouter();

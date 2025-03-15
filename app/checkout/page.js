@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getNames } from "country-list";
-import getCartItems from "@/lib/get-cart-items";
+import getCartItems from "@/utils/get-cart-items";
 import Image from "next/image";
 import calculateTotal from "@/utils/calculate-total";
 import { submitOrder } from "@/action/submit-order-action";

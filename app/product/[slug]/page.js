@@ -1,4 +1,4 @@
-import getSingleProduct from "@/lib/get-single-product";
+import getSingleProduct from "@/services/get-single-product";
 import Image from "next/image";
 import { stripHtmlTags } from "@/utils/html-utils";
 import AddToCartButton from "@/components/cart/add-to-cart-button";

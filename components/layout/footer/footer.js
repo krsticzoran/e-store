@@ -9,7 +9,7 @@ import FooterLinks from "./footerLinks";
 import { discoverData, companyData } from "@/data/footerData";
 import { footerIconsData } from "@/data/footerData";
 
-import { getCurrentYear } from "@/lib/utils";
+import { getCurrentYear } from "@/utils/utils";
 
 export default function Footer() {
   return (

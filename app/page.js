@@ -1,7 +1,7 @@
 import ProductList from "@/components/product/product-list";
 import Hero from "@/components/home/hero";
 import Experience from "@/components/home/experience";
-import getProduct from "@/lib/get-products";
+import getProduct from "@/services/get-products";
 
 export default async function Home() {
   const allProducts = await getProduct();
