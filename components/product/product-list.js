@@ -66,17 +66,7 @@ export default async function ProductList({ products }) {
                     ${product.price}
                   </p>
                 </div>
-                <AddToCartButton product={product}>
-                  {" "}
-                  <Link
-                    href="/cart"
-                    aria-label="View Cart"
-                    className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"
-                  >
-                    <p className="mr-3">add to cart</p>
-                    <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-                  </Link>
-                </AddToCartButton>
+                <AddToCartButton product={product} className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"/>
               </div>
             </div>
           </div>

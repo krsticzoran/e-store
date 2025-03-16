@@ -19,7 +19,7 @@ export default async function ProdcutPage({ params }) {
       <p>{product.price}</p>
       <h2>{product.name}</h2>
       <p>{stripHtmlTags(product.description)}</p>
-      <AddToCartButton product={product}>add to cart </AddToCartButton>
+      <AddToCartButton product={product} className="flex"/>
     </main>
   );
 }
