@@ -1,10 +1,14 @@
 "use client";
+import { useState } from "react";
+import { getCartItems } from "@/utils/cart";
+import Spinner from "../ui/spinner";
 
 export default function AddToCartButton({ product, className }) {
-  const handleAddToCart = () => {
-    const cart = localStorage.getItem("cart")
-      ? JSON.parse(localStorage.getItem("cart"))
-      : [];
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Function to handle cart logic separately
+  const updateCart = () => {
+    const cart = getCartItems();
 
     let productExists = false;
 
@@ -26,10 +30,26 @@ export default function AddToCartButton({ product, className }) {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
+  const handleAddToCart = () => {
+    setIsLoading(true);
+    updateCart();
+    setTimeout(() => setIsLoading(false), 1000);
+  };
+
   return (
-    <button onClick={handleAddToCart} className={className}>
+    <button
+      onClick={handleAddToCart}
+      className={className}
+      disabled={isLoading}
+    >
       <p className="mr-3">add to cart</p>
-      <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+      <div className="w-6">
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+        )}
+      </div>
     </button>
   );
 }
