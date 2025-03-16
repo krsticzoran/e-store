@@ -1,6 +1,6 @@
 "use client";
 
-export default function AddToCartButton({ product }) {
+export default function AddToCartButton({ product, children }) {
   const handleAddToCart = () => {
     const cart = localStorage.getItem("cart")
       ? JSON.parse(localStorage.getItem("cart"))
@@ -26,5 +26,5 @@ export default function AddToCartButton({ product }) {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
-  return <button onClick={handleAddToCart}>Add to Cart</button>;
+  return <button onClick={handleAddToCart}>{children}</button>;
 }

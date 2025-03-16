@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import AddToCartButton from "../cart/add-to-cart-button";
 
 export default async function ProductList({ products }) {
   if (products.message) {
@@ -9,7 +10,6 @@ export default async function ProductList({ products }) {
       </p>
     );
   }
-
   return (
     <>
       {products.map((product) => {
@@ -66,14 +66,17 @@ export default async function ProductList({ products }) {
                     ${product.price}
                   </p>
                 </div>
-                <Link
-                  href="/cart"
-                  aria-label="View Cart"
-                  className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"
-                >
-                  <p className="mr-3">add to cart</p>
-                  <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-                </Link>
+                <AddToCartButton product={product}>
+                  {" "}
+                  <Link
+                    href="/cart"
+                    aria-label="View Cart"
+                    className="flex items-center capitalize text-primary text-opacity-90 hover:text-secondary"
+                  >
+                    <p className="mr-3">add to cart</p>
+                    <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+                  </Link>
+                </AddToCartButton>
               </div>
             </div>
           </div>
