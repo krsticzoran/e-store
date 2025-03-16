@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { calculateTotal, getCartItems } from "@/utils/cart";
+import {
+  calculateTotal,
+  getCartItems,
+  handleQuantityChange,
+} from "@/utils/cart";
 
 export default function Cart() {
   const router = useRouter();
@@ -17,24 +21,16 @@ export default function Cart() {
   }, []);
 
   // Handle quantity change (increment/decrement)
-  const handleQuantityChange = (id, action) => {
-    const updatedCart = cart.map((product) => {
-      if (product.id === id) {
-        const updatedProduct = { ...product };
-        if (action === "increment") {
-          updatedProduct.amount = updatedProduct.amount + 1;
-        } else if (action === "decrement" && updatedProduct.amount > 1) {
-          updatedProduct.amount = updatedProduct.amount - 1;
-        }
-        return updatedProduct;
-      }
-      return product;
-    });
+  const handleUpdateCart = (cart, product, action) => {
+    const updatedCart = handleQuantityChange(cart, product, action);
+
+    // remove product if amount is 0
+    const filteredCart = updatedCart.filter((product) => product.amount !== 0);
 
     // Update localStorage and state
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-    setTotal(calculateTotal(updatedCart)); // Recalculate total
+    setCart(filteredCart);
+    localStorage.setItem("cart", JSON.stringify(filteredCart));
+    setTotal(calculateTotal(filteredCart)); // Recalculate total
   };
 
   // Handle removing item from cart
@@ -64,7 +60,7 @@ export default function Cart() {
         <ul>
           {cart.map((product) => (
             <li key={product.id}>
-              <Image
+               <Image
                 src={product.images[0].src}
                 alt={product.name}
                 width={100}
@@ -77,13 +73,13 @@ export default function Cart() {
 
               <div>
                 <button
-                  onClick={() => handleQuantityChange(product.id, "decrement")}
+                  onClick={() => handleUpdateCart(cart, product, "decrement")}
                 >
                   -
                 </button>
                 <span>{product.amount}</span>
                 <button
-                  onClick={() => handleQuantityChange(product.id, "increment")}
+                  onClick={() => handleUpdateCart(cart, product, "increment")}
                 >
                   +
                 </button>

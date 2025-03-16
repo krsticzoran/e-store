@@ -1,38 +1,17 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getCartItems } from "@/utils/cart";
 import Spinner from "../ui/spinner";
+import { handleQuantityChange } from "@/utils/cart";
 
 export default function AddToCartButton({ product, className }) {
   const [isLoading, setIsLoading] = useState(false);
 
-  // Function to handle cart logic separately
-  const updateCart = () => {
-    const cart = getCartItems();
-
-    let productExists = false;
-
-    const updatedCart = cart.map((cartProduct) => {
-      if (cartProduct.id === product.id) {
-        productExists = true;
-        return {
-          ...cartProduct,
-          amount: cartProduct.amount + 1,
-        };
-      }
-      return cartProduct;
-    });
-
-    if (!productExists) {
-      updatedCart.push({ ...product, amount: 1 });
-    }
-
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
-  };
-
   const handleAddToCart = () => {
     setIsLoading(true);
-    updateCart();
+    const cart = getCartItems();
+    const updatedCart = handleQuantityChange(cart, product);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     setTimeout(() => setIsLoading(false), 1000);
   };
 
