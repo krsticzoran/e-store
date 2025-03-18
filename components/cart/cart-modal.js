@@ -1,12 +1,13 @@
-import { useRouter } from "next/navigation";
+import { useRouter,usePathname } from "next/navigation";
 import ModalWrapper from "../modal/modal-wrapper";
 
 
 export default function CartModal(){
+    const path = usePathname();
     const router=useRouter();
 
     const closeModal = () => {
-        router.push("/", { scroll: false }); 
+        router.push(path, { scroll: false }); 
       };
 
     return  <ModalWrapper className="z-50 fixed bottom-5 right-5 bg-secondary h-full w-full">
