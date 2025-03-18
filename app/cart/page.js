@@ -21,7 +21,7 @@ export default function Cart() {
   }, []);
 
   // Handle quantity change (increment/decrement)
-  const handleUpdateCart = (cart, product, action) => {
+  const handleUpdateCart = ( product, action) => {
     const updatedCart = handleQuantityChange(cart, product, action);
 
     // remove product if amount is 0
@@ -73,13 +73,13 @@ export default function Cart() {
 
               <div>
                 <button
-                  onClick={() => handleUpdateCart(cart, product, "decrement")}
+                  onClick={() => handleUpdateCart(product, "decrement")}
                 >
                   -
                 </button>
                 <span>{product.amount}</span>
                 <button
-                  onClick={() => handleUpdateCart(cart, product, "increment")}
+                  onClick={() => handleUpdateCart( product, "increment")}
                 >
                   +
                 </button>
