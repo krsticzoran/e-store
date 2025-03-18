@@ -4,11 +4,12 @@ import { getCartItems } from "@/utils/cart";
 import Spinner from "../ui/spinner";
 import { handleQuantityChange } from "@/utils/cart";
 import CartModal from "./cart-modal";
-import { useRouter } from "next/navigation";
+import { useRouter,usePathname } from "next/navigation";
 
 export default function AddToCartButton({ product, className }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const path = usePathname();
 
  
 
@@ -19,7 +20,7 @@ export default function AddToCartButton({ product, className }) {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     setTimeout(() => {
       setIsLoading(false);
-      router.push("?modal=open", { scroll: false });
+      router.push(`${path}?modal=open`, { scroll: false });
     }, 1000);
   };
 
