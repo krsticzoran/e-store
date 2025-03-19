@@ -1,5 +1,8 @@
 import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 import ModalWrapper from "../modal/modal-wrapper";
+import close from "@/public/icons/cart/close.svg";
+import trash from "@/public/icons/cart/trash.svg";
 import { getCartItems, calculateTotalNumberOfProduct } from "@/utils/cart";
 
 export default function CartModal() {
@@ -22,21 +25,7 @@ export default function CartModal() {
         {/* close button */}
         <div className="flex justify-end">
           <button onClick={closeModal}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              className="h-6 w-6 text-primary"
-              aria-label="Cancel"
-            >
-              <path
-                d="M18 6L6 18M6 6l12 12"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <Image src={close} width={24} height={24} alt="close" />
           </button>
         </div>
         {/* title section */}
@@ -47,6 +36,30 @@ export default function CartModal() {
           Free shipping on all orders over $200.00
         </p>
         {/* products in the cart */}
+        <ul>
+          {cart.map((product) => (
+            <li key={product.id} className="flex pl-2">
+              <Image
+                src={product.images[0].src}
+                alt={product.name}
+                width={100}
+                height={100}
+              />
+
+              <div className="flex w-full items-center">
+                <div className="w-full">
+                  <p className="mb-1 font-bold">{product.name}</p>
+                  <div className="flex w-full justify-between">
+                    <p className="text-sm">{`${product.amount} x $${product.price}`}</p>
+                    <button>
+                      <Image src={trash} width={16} height={16} alt="trash" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </ModalWrapper>
   );
