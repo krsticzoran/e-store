@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         betterworks: ["Betterworks", "sans-serif"],
         youngSerif: ["YoungSerif", "serif"],
+        urbanist: ["Urbanist", "sans-serif"],
       },
       colors: {
         background: "var(--background)",

@@ -10,15 +10,17 @@ export default function CartModal(){
         router.push(path, { scroll: false }); 
       };
 
-    return  <ModalWrapper className="z-50 fixed bottom-5 right-5 bg-secondary h-full w-full">
+    return  <ModalWrapper className="z-50 fixed bottom-0 right-0 flex  h-full w-full">
         
-    
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg">
-            <button onClick={closeModal} className="mt-4 px-4 py-2 bg-gray-600 text-white rounded">
-              Close
+    <div className="bg-black opacity-30 h-full w-full" onClick={closeModal}></div>
+    <div className=" bg-white h-full w-[375px] opacity-100 z-50 font-urbanist text-primary">
+         
+            <div className="">
+            <button onClick={closeModal} className="text-3xl text-center ">
+              x
             </button>
-          </div>
+            </div>
+          
         </div>
         
         </ModalWrapper>
