@@ -21,7 +21,7 @@ export default function Cart() {
   }, []);
 
   // Handle quantity change (increment/decrement)
-  const handleUpdateCart = ( product, action) => {
+  const handleUpdateCart = (product, action) => {
     const updatedCart = handleQuantityChange(cart, product, action);
 
     // remove product if amount is 0
@@ -60,7 +60,7 @@ export default function Cart() {
         <ul>
           {cart.map((product) => (
             <li key={product.id}>
-               <Image
+              <Image
                 src={product.images[0].src}
                 alt={product.name}
                 width={100}
@@ -72,15 +72,11 @@ export default function Cart() {
               <p>Product Amount: {product.amount}</p>
 
               <div>
-                <button
-                  onClick={() => handleUpdateCart(product, "decrement")}
-                >
+                <button onClick={() => handleUpdateCart(product, "decrement")}>
                   -
                 </button>
                 <span>{product.amount}</span>
-                <button
-                  onClick={() => handleUpdateCart( product, "increment")}
-                >
+                <button onClick={() => handleUpdateCart(product, "increment")}>
                   +
                 </button>
               </div>

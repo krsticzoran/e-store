@@ -1,17 +1,15 @@
 "use client";
-import { useState} from "react";
+import { useState } from "react";
 import { getCartItems } from "@/utils/cart";
 import Spinner from "../ui/spinner";
 import { handleQuantityChange } from "@/utils/cart";
 import CartModal from "./cart-modal";
-import { useRouter,usePathname } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function AddToCartButton({ product, className }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const path = usePathname();
-
- 
 
   const handleAddToCart = () => {
     setIsLoading(true);
@@ -26,21 +24,21 @@ export default function AddToCartButton({ product, className }) {
 
   return (
     <>
-   <CartModal />
-    <button
-      onClick={handleAddToCart}
-      className={className}
-      disabled={isLoading}
-    >
-      <p className="mr-3">add to cart</p>
-      <div className="w-6">
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-        )}
-      </div>
-    </button>
+      <CartModal />
+      <button
+        onClick={handleAddToCart}
+        className={className}
+        disabled={isLoading}
+      >
+        <p className="mr-3">add to cart</p>
+        <div className="w-6">
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <i className="fa fa-shopping-bag" aria-hidden="true"></i>
+          )}
+        </div>
+      </button>
     </>
   );
 }

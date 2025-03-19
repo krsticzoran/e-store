@@ -13,12 +13,12 @@ export default async function Home() {
       <Hero />
       <Experience />
       {/*Featured Items */}
-      <div className="mx-auto pb-20 xl:max-w-[1280px] px-5 xl:px-0">
+      <div className="mx-auto px-5 pb-20 xl:max-w-[1280px] xl:px-0">
         <h4 className="text-bold mb-6 font-youngSerif text-2xl text-primary">
           Featured Items
         </h4>
         <div
-          className={`${isSuccessfulFetching ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4 " : "text-bold mb-20 mt-10"} `}
+          className={`${isSuccessfulFetching ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4" : "text-bold mb-20 mt-10"} `}
         >
           <ProductList products={products} />
         </div>

@@ -3,6 +3,11 @@ export function calculateTotal(cart) {
   return cart.reduce((total, item) => total + item.price * item.amount, 0);
 }
 
+// calculate total number of products in cart
+export function calculateTotalNumberOfProduct(cart) {
+  return cart.reduce((total, item) => total + item.amount, 0);
+}
+
 // get cart items from localStorage
 export function getCartItems() {
   const savedCart = localStorage.getItem("cart")
@@ -11,6 +16,7 @@ export function getCartItems() {
   return savedCart;
 }
 
+// add product to cart or change quantity
 export const handleQuantityChange = (cart, product, action = "increment") => {
   let productExists = false;
 

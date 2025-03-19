@@ -13,7 +13,7 @@ import { getCurrentYear } from "@/utils/utils";
 
 export default function Footer() {
   return (
-    <div className="font-urbanist bg-primary pt-20 text-white60 lg:pt-28">
+    <div className="bg-primary pt-20 font-urbanist text-white60 lg:pt-28">
       <div className="mx-auto px-5 xl:max-w-[1280px] xl:px-0">
         <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {/*first column*/}

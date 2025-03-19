@@ -35,7 +35,7 @@ export default function Hero() {
             />
           </div>
           <p
-            className="font-urbanist text-center text-lg font-bold uppercase leading-6 text-white"
+            className="text-center font-urbanist text-lg font-bold uppercase leading-6 text-white"
             style={{ letterSpacing: "5px" }}
           >
             Hand made tea set
@@ -46,7 +46,7 @@ export default function Hero() {
           <div className="flex items-center justify-center">
             <Link href="/shop" className="z-50">
               <button
-                className="font-urbanist border border-solid border-white bg-transparent px-9 py-4 text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
+                className="border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
                 style={{ letterSpacing: "1px" }}
               >
                 shop now
