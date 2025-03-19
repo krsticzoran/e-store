@@ -1,22 +1,47 @@
-import { useRouter, usePathname } from "next/navigation";
+"use client";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import ModalWrapper from "../modal/modal-wrapper";
 import close from "@/public/icons/cart/close.svg";
 import trash from "@/public/icons/cart/trash.svg";
 import { getCartItems, calculateTotalNumberOfProduct } from "@/utils/cart";
 
 export default function CartModal() {
+  const searchParams = useSearchParams();
+  const isOpen = searchParams.get("modal") === "open";
   const path = usePathname();
   const router = useRouter();
-  const cart = getCartItems();
-  const numberOfProducts = calculateTotalNumberOfProduct(cart);
+  const [cart, setCart] = useState();
+  const [numberOfProducts, setNumberOfProducts] = useState(0);
+
+  useEffect(() => {
+    const currentCart = getCartItems();
+    setCart(currentCart);
+  }, [isOpen]);
+
+  useEffect(() => {
+    const number = calculateTotalNumberOfProduct(cart);
+    setNumberOfProducts(number);
+  }, [cart]);
 
   const closeModal = () => {
     router.push(path, { scroll: false });
   };
 
+  const handleRemoveItem = (id) => {
+    const updatedCart = cart.filter((product) => product.id !== id);
+
+    // Update localStorage and state
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
   return (
-    <ModalWrapper className="fixed bottom-0 right-0 z-50 flex h-full w-full">
+    <ModalWrapper
+      className="fixed bottom-0 right-0 z-50 flex h-full w-full"
+      isOpen={isOpen}
+    >
       <div
         className="h-full w-full bg-black opacity-30"
         onClick={closeModal}
@@ -37,7 +62,7 @@ export default function CartModal() {
         </p>
         {/* products in the cart */}
         <ul>
-          {cart.map((product) => (
+          {cart?.map((product) => (
             <li key={product.id} className="flex pl-2">
               <Image
                 src={product.images[0].src}
@@ -51,7 +76,7 @@ export default function CartModal() {
                   <p className="mb-1 font-bold">{product.name}</p>
                   <div className="flex w-full justify-between">
                     <p className="text-sm">{`${product.amount} x $${product.price}`}</p>
-                    <button>
+                    <button onClick={handleRemoveItem.bind(null, product.id)}>
                       <Image src={trash} width={16} height={16} alt="trash" />
                     </button>
                   </div>

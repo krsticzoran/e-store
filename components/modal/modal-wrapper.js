@@ -1,11 +1,7 @@
 "use client";
-import { useSearchParams } from "next/navigation";
 import ReactDOM from "react-dom";
 
-export default function ModalWrapper({ children, className }) {
-  const searchParams = useSearchParams();
-  const isOpen = searchParams.get("modal") === "open";
-
+export default function ModalWrapper({ children, className, isOpen }) {
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
