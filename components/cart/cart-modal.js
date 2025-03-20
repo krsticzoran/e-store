@@ -22,7 +22,6 @@ export default function CartModal() {
   const [cart, setCart] = useState();
   const [numberOfProducts, setNumberOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
-  console.log(cart);
 
   useEffect(() => {
     const currentCart = getCartItems();
@@ -52,7 +51,7 @@ export default function CartModal() {
       <div className="z-50 flex h-full w-[500px] flex-col bg-white p-5 font-urbanist text-primary opacity-100">
         {/* close button */}
         <div className="flex justify-end">
-          <button onClick={closeModal}>
+          <button onClick={closeModal} aria-label="Close modal">
             <Image src={close} width={24} height={24} alt="close" />
           </button>
         </div>
@@ -86,8 +85,14 @@ export default function CartModal() {
                         product.id,
                         setCart,
                       )}
+                      aria-label="Remove item from cart"
                     >
-                      <Image src={trash} width={16} height={16} alt="trash" />
+                      <Image
+                        src={trash}
+                        width={16}
+                        height={16}
+                        alt="trash icon"
+                      />
                     </button>
                   </div>
                 </div>
@@ -96,19 +101,23 @@ export default function CartModal() {
           ))}
         </ul>
         <div className="border-t-[0.5px] pt-4">
-          {/*  */}
+          {/* subtotal */}
           <div className="flex justify-between text-sm font-bold">
             <p className="uppercase">subtotal</p>
             <p>{`$${Number.parseFloat(total).toFixed(2)}`}</p>
           </div>
+          {/* checkout */}
           <button
             onClick={proceedToCheckout.bind(null, cart, router)}
             className="mb-5 mt-4 h-[50px] w-full border border-primary bg-primary font-bold uppercase text-white duration-500 hover:bg-secondary"
           >
             checkout
           </button>
+          {/* view cart */}
           <div className="mb-5 flex justify-center underline decoration-[0.5px] underline-offset-4">
-            <Link href="/cart">View cart</Link>
+            <Link href="/cart" aria-label="View your shopping cart">
+              View cart
+            </Link>
           </div>
         </div>
       </div>
