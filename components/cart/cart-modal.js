@@ -45,10 +45,10 @@ export default function CartModal() {
       isOpen={isOpen}
     >
       <div
-        className="h-full w-full bg-black opacity-30"
+        className="h-full flex-grow  bg-black opacity-30"
         onClick={closeModal}
       ></div>
-      <div className="z-50 flex h-full w-[500px] flex-col bg-white p-5 font-urbanist text-primary opacity-100">
+      <div className="z-50 flex h-full w-full sm:w-[500px] flex-col bg-white p-5 font-urbanist text-primary opacity-100">
         {/* close button */}
         <div className="flex justify-end">
           <button onClick={closeModal} aria-label="Close modal">
