@@ -16,6 +16,16 @@ export function getCartItems() {
   return savedCart;
 }
 
+// remove item from cart
+export const handleRemoveItem = (cart, id, setCart) => {
+  const updatedCart = cart?.filter((product) => product.id !== id);
+
+  // Update localStorage and state
+  setCart(updatedCart);
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+  return updatedCart;
+};
+
 // add product to cart or change quantity
 export const handleQuantityChange = (cart, product, action = "increment") => {
   let productExists = false;

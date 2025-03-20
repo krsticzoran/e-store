@@ -1,9 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { getNames } from "country-list";
-import getCartItems from "@/utils/get-cart-items";
+import { getCartItems, calculateTotal } from "@/utils/cart";
 import Image from "next/image";
-import calculateTotal from "@/utils/calculate-total";
 import { submitOrder } from "@/action/submit-order-action";
 
 export default function Checkout() {

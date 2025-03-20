@@ -6,7 +6,9 @@ import {
   calculateTotal,
   getCartItems,
   handleQuantityChange,
+  handleRemoveItem,
 } from "@/utils/cart";
+import { proceedToCheckout } from "@/utils/checkout";
 
 export default function Cart() {
   const router = useRouter();
@@ -34,21 +36,9 @@ export default function Cart() {
   };
 
   // Handle removing item from cart
-  const handleRemoveItem = (id) => {
-    const updatedCart = cart.filter((product) => product.id !== id);
-
-    // Update localStorage and state
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  const handleRemoveProduct = (id) => {
+    const updatedCart = handleRemoveItem(cart, id, setCart);
     setTotal(calculateTotal(updatedCart)); // Recalculate total
-  };
-
-  const handleCheckout = () => {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-    router.push("/checkout");
   };
 
   return (
@@ -80,7 +70,7 @@ export default function Cart() {
                   +
                 </button>
               </div>
-              <button onClick={() => handleRemoveItem(product.id)}>
+              <button onClick={() => handleRemoveProduct(product.id)}>
                 Remove Item
               </button>
             </li>
@@ -88,7 +78,9 @@ export default function Cart() {
         </ul>
       )}
       <p>Total: ${total}</p>
-      <button onClick={handleCheckout}>Proceed to Checkout</button>
+      <button onClick={proceedToCheckout.bind(null, cart, router)}>
+        Proceed to Checkout
+      </button>
     </div>
   );
 }

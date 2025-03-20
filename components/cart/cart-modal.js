@@ -5,7 +5,14 @@ import { useState, useEffect } from "react";
 import ModalWrapper from "../modal/modal-wrapper";
 import close from "@/public/icons/cart/close.svg";
 import trash from "@/public/icons/cart/trash.svg";
-import { getCartItems, calculateTotalNumberOfProduct } from "@/utils/cart";
+import {
+  getCartItems,
+  calculateTotalNumberOfProduct,
+  handleRemoveItem,
+  calculateTotal,
+} from "@/utils/cart";
+import { proceedToCheckout } from "@/utils/checkout";
+import Link from "next/link";
 
 export default function CartModal() {
   const searchParams = useSearchParams();
@@ -14,6 +21,8 @@ export default function CartModal() {
   const router = useRouter();
   const [cart, setCart] = useState();
   const [numberOfProducts, setNumberOfProducts] = useState(0);
+  const [total, setTotal] = useState(0);
+  console.log(cart);
 
   useEffect(() => {
     const currentCart = getCartItems();
@@ -23,18 +32,12 @@ export default function CartModal() {
   useEffect(() => {
     const number = calculateTotalNumberOfProduct(cart);
     setNumberOfProducts(number);
+    const totalAmount = calculateTotal(cart);
+    setTotal(totalAmount);
   }, [cart]);
 
   const closeModal = () => {
     router.push(path, { scroll: false });
-  };
-
-  const handleRemoveItem = (id) => {
-    const updatedCart = cart.filter((product) => product.id !== id);
-
-    // Update localStorage and state
-    setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -46,7 +49,7 @@ export default function CartModal() {
         className="h-full w-full bg-black opacity-30"
         onClick={closeModal}
       ></div>
-      <div className="z-50 h-full w-[500px] bg-white p-5 font-urbanist text-primary opacity-100">
+      <div className="z-50 flex h-full w-[500px] flex-col bg-white p-5 font-urbanist text-primary opacity-100">
         {/* close button */}
         <div className="flex justify-end">
           <button onClick={closeModal}>
@@ -61,7 +64,7 @@ export default function CartModal() {
           Free shipping on all orders over $200.00
         </p>
         {/* products in the cart */}
-        <ul>
+        <ul className="flex-grow overflow-auto">
           {cart?.map((product) => (
             <li key={product.id} className="flex pl-2">
               <Image
@@ -75,8 +78,15 @@ export default function CartModal() {
                 <div className="w-full">
                   <p className="mb-1 font-bold">{product.name}</p>
                   <div className="flex w-full justify-between">
-                    <p className="text-sm">{`${product.amount} x $${product.price}`}</p>
-                    <button onClick={handleRemoveItem.bind(null, product.id)}>
+                    <p className="text-sm">{`${product.amount} x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
+                    <button
+                      onClick={handleRemoveItem.bind(
+                        null,
+                        cart,
+                        product.id,
+                        setCart,
+                      )}
+                    >
                       <Image src={trash} width={16} height={16} alt="trash" />
                     </button>
                   </div>
@@ -85,6 +95,22 @@ export default function CartModal() {
             </li>
           ))}
         </ul>
+        <div className="border-t-[0.5px] pt-4">
+          {/*  */}
+          <div className="flex justify-between text-sm font-bold">
+            <p className="uppercase">subtotal</p>
+            <p>{`$${Number.parseFloat(total).toFixed(2)}`}</p>
+          </div>
+          <button
+            onClick={proceedToCheckout.bind(null, cart, router)}
+            className="mb-5 mt-4 h-[50px] w-full border border-primary bg-primary font-bold uppercase text-white duration-500 hover:bg-secondary"
+          >
+            checkout
+          </button>
+          <div className="mb-5 flex justify-center underline decoration-[0.5px] underline-offset-4">
+            <Link href="/cart">View cart</Link>
+          </div>
+        </div>
       </div>
     </ModalWrapper>
   );
