@@ -26,6 +26,7 @@ export default async function ProductList({ products }) {
                       src={product.images[0].src}
                       alt={product.name}
                       fill
+                      className="transform-scale duration-500 hover:scale-110"
                     />
                   </div>
                 )}
