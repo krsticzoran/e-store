@@ -9,8 +9,8 @@ import useScreenSize from "@/hooks/useScreenSize";
 import Image from "next/image";
 
 export default function CardSlider({ items }) {
-  const screenSize = useScreenSize();
-  console.log(screenSize);
+  const screenSize =  useScreenSize() || 1280;
+
   return (
     <div className="relative px-10">
       <Swiper
@@ -21,9 +21,9 @@ export default function CardSlider({ items }) {
         }}
         spaceBetween={30}
         slidesPerView={
-          screenSize?.width > 768
+          screenSize > 768
             ? 3 // Show 3 slides on large screens
-            : screenSize?.width < 640
+            : screenSize < 640
               ? 1 // Show 1 slide on small screens
               : 2 // Show 2 slides on medium screens and default
         }
