@@ -1,5 +1,6 @@
 import CardSlider from "@/components/home/card-slider";
 import Image from "next/image";
+import Link from "next/link";
 import { items, experienceArr, experienceArrTwo } from "@/data/homeData";
 import ExperienceCard from "@/components/home/experienceCard";
 import oolong from "@/public/images/home/experience/oolong.webp";
@@ -8,9 +9,10 @@ import leaf from "@/public/images/home/experience/leaf.webp";
 
 export default function Experience() {
   return (
-    <section className="mx-auto mt-[90px] xl:max-w-[1280px]">
-      <div className="flex">
-        <div className="w-[36%]">
+    <section className="mx-auto mt-[90px] px-5 xl:max-w-[1280px] xl:px-0">
+      <div className="xl:flex">
+         {/* Left Column: Text Content */}
+        <div className="xl:w-[36%]">
           <p className="mb-[14px] font-bold uppercase text-secondary">
             Experience
           </p>
@@ -23,37 +25,48 @@ export default function Experience() {
             natural fruit concentrates, served cold with delicious chewy tapioca
             pearls.
           </p>
-          <button className="mt-7 bg-accent px-9 py-4 font-bold uppercase tracking-[1px] text-primary">
+          <Link
+            href="/about"
+            className="mb-14 mt-4 inline-block bg-accent px-9 py-4 font-bold uppercase tracking-[1px] text-primary duration-500 hover:bg-secondary hover:text-white focus:bg-secondary focus:text-white xl:mb-0 xl:mt-7"
+            aria-label="Learn more about us"
+          >
             learn more
-          </button>
+          </Link>
         </div>
-        <div className="w-[64%]">
+        {/* Right Column: Card Slider */}
+        <div className="xl:w-[64%]">
           <CardSlider items={items} />
         </div>
+         {/* Experience Cards Section */}
       </div>
-      <div className="relative flex py-20">
+      <div className="relative py-20 lg:flex">
+          {/* Decorative Images */}
         <Image
           src={wing}
           width={215}
           height={154}
           alt="pngwing"
-          className="absolute bottom-28 left-1/2 z-30 translate-x-6"
+          className="absolute bottom-28 left-1/2 z-30 hidden translate-x-6 xl:block"
+           aria-hidden="true"
         />
         <Image
           src={leaf}
           width={152}
           height={221}
           alt="leaf"
-          className="absolute left-1/2 top-10 z-0 -translate-x-[170px]"
+          className="absolute left-1/2 top-10 z-0 hidden -translate-x-[170px] xl:block"
+           aria-hidden="true"
         />
         <Image
           src={oolong}
           width={500}
           height={500}
           alt="oolong"
-          className="absolute left-1/2 top-0 z-20 -translate-x-[100px]"
+          className="absolute left-1/2 top-0 z-20 hidden -translate-x-[100px] xl:block"
+           aria-hidden="true"
         />
-        <div className="w-1/2 bg-accent">
+         {/* Left Column: Light Background Experience Cards */}
+        <div className="bg-accent lg:w-1/2">
           <ul>
             {experienceArr.map((el, i) => (
               <li key={i}>
@@ -67,7 +80,8 @@ export default function Experience() {
             ))}
           </ul>
         </div>
-        <div className="w-1/2 bg-primary">
+        {/* Right Column: Dark Background Experience Cards */}
+        <div className="bg-primary lg:w-1/2">
           <ul>
             {experienceArrTwo.map((el, i) => (
               <li key={i}>

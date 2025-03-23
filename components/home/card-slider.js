@@ -4,10 +4,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import useScreenSize from "@/hooks/useScreenSize";
 
 import Image from "next/image";
 
 export default function CardSlider({ items }) {
+  const screenSize = useScreenSize();
+  console.log(screenSize);
   return (
     <div className="relative px-10">
       <Swiper
@@ -17,7 +20,14 @@ export default function CardSlider({ items }) {
           nextEl: ".custom-next",
         }}
         spaceBetween={30}
-        slidesPerView={3}
+        slidesPerView={
+          screenSize?.width > 768
+            ? 3 // Show 3 slides on large screens
+            : screenSize?.width < 640
+              ? 1 // Show 1 slide on small screens
+              : 2  // Show 2 slides on medium screens and default
+                
+        }
         loop
       >
         {items.map((item, index) => (
@@ -37,16 +47,22 @@ export default function CardSlider({ items }) {
           </SwiperSlide>
         ))}
       </Swiper>
-
+      {/* Custom Previous Button */}
       <div className="custom-prev-container absolute left-0 top-1/2 z-10 flex -translate-y-1/2">
         <div className="-mr-8 h-14 w-16 rounded-full bg-white"></div>
-        <button className="custom-prev absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary">
+        <button
+          className="custom-prev absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary"
+          aria-label="Previous Slide"
+        >
           ❮
         </button>
       </div>
-
+      {/* Custom Next Button */}
       <div className="custom-next-container absolute right-0 top-1/2 z-10 flex -translate-y-1/2">
-        <button className="custom-next absolute -left-6 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary">
+        <button
+          className="custom-next absolute -left-6 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-accent-second shadow-lg hover:bg-secondary"
+          aria-label="Next Slide"
+        >
           ❯
         </button>
 

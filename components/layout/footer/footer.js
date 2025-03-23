@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@/public/icons/logo.svg";
-import Subscription from "../ subscription";
+import Subscription from "./ subscription";
 
 import FooterLinks from "./footerLinks";
 

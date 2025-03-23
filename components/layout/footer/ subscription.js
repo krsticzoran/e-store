@@ -5,7 +5,7 @@ import useFormHandler from "@/hooks/useFormHandler";
 
 import email from "@/public/icons/mail.png";
 import { sendingEmail } from "@/action/sending-email-action";
-import FormButton from "../ui/form-button";
+import FormButton from "../../ui/form-button";
 
 export default function Subscription() {
   const { ref, formAction, handleInputFocus, message } = useFormHandler(
