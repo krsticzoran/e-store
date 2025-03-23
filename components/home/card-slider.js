@@ -25,8 +25,7 @@ export default function CardSlider({ items }) {
             ? 3 // Show 3 slides on large screens
             : screenSize?.width < 640
               ? 1 // Show 1 slide on small screens
-              : 2  // Show 2 slides on medium screens and default
-                
+              : 2 // Show 2 slides on medium screens and default
         }
         loop
       >

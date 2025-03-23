@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import SocialIcons from "@/components/ui/social-icons";
 
 import logo from "@/public/icons/logo.svg";
 import Subscription from "./ subscription";
@@ -7,7 +7,7 @@ import Subscription from "./ subscription";
 import FooterLinks from "./footerLinks";
 
 import { discoverData, companyData } from "@/data/footerData";
-import { footerIconsData } from "@/data/footerData";
+import { socialIconsData } from "@/data/socialIconsData";
 
 import { getCurrentYear } from "@/utils/utils";
 
@@ -50,21 +50,12 @@ export default function Footer() {
             <Subscription />
             {/*social icons*/}
             <ul className="mt-4 flex justify-center md:justify-start lg:mt-8">
-              {footerIconsData.map((el, i) => (
+              {socialIconsData.map((el, i) => (
                 <li
                   key={i}
                   className="mr-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#FFFFFF33] p-2"
                 >
-                  <Link
-                    href={el.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i
-                      className={`fab ${el.src} text-white duration-500 hover:text-secondary`}
-                      aria-label={el.title}
-                    ></i>
-                  </Link>
+                  <SocialIcons el={el} i={i} iconStyle="text-white" />
                 </li>
               ))}
             </ul>

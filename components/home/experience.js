@@ -11,7 +11,7 @@ export default function Experience() {
   return (
     <section className="mx-auto mt-[90px] px-5 xl:max-w-[1280px] xl:px-0">
       <div className="xl:flex">
-         {/* Left Column: Text Content */}
+        {/* Left Column: Text Content */}
         <div className="xl:w-[36%]">
           <p className="mb-[14px] font-bold uppercase text-secondary">
             Experience
@@ -37,17 +37,17 @@ export default function Experience() {
         <div className="xl:w-[64%]">
           <CardSlider items={items} />
         </div>
-         {/* Experience Cards Section */}
+        {/* Experience Cards Section */}
       </div>
       <div className="relative py-20 lg:flex">
-          {/* Decorative Images */}
+        {/* Decorative Images */}
         <Image
           src={wing}
           width={215}
           height={154}
           alt="pngwing"
           className="absolute bottom-28 left-1/2 z-30 hidden translate-x-6 xl:block"
-           aria-hidden="true"
+          aria-hidden="true"
         />
         <Image
           src={leaf}
@@ -55,7 +55,7 @@ export default function Experience() {
           height={221}
           alt="leaf"
           className="absolute left-1/2 top-10 z-0 hidden -translate-x-[170px] xl:block"
-           aria-hidden="true"
+          aria-hidden="true"
         />
         <Image
           src={oolong}
@@ -63,9 +63,9 @@ export default function Experience() {
           height={500}
           alt="oolong"
           className="absolute left-1/2 top-0 z-20 hidden -translate-x-[100px] xl:block"
-           aria-hidden="true"
+          aria-hidden="true"
         />
-         {/* Left Column: Light Background Experience Cards */}
+        {/* Left Column: Light Background Experience Cards */}
         <div className="bg-accent lg:w-1/2">
           <ul>
             {experienceArr.map((el, i) => (

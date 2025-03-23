@@ -4,6 +4,8 @@ import teaKettle from "@/public/images/home/hero/tea-kettle-1.webp";
 import leaf from "@/public/images/home/hero/leaf.webp";
 import teaLeaves from "@/public/images/home/hero/tea-leaves-png-transparent-png-1.webp";
 import circle from "@/public/images/home/hero/circle_slide.webp";
+import { socialIconsData } from "@/data/socialIconsData";
+import SocialIcons from "../ui/social-icons";
 
 export default function Hero() {
   return (
@@ -62,33 +64,18 @@ export default function Hero() {
             className="w-[200px] sm:w-[300px] lg:w-[360px] xl:w-[70%] 2xl:w-[80%]"
           />
         </div>
-
-        <div className="absolute bottom-[20px] left-[32px] flex flex-col items-center justify-center xl:bottom-[50px] xl:left-[160px]">
-          <Link
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="z-50"
-          >
-            <i className="fab fa-facebook-f font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
-          </Link>
-          <Link
-            href="https://youtube.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="z-50"
-          >
-            <i className="fab fa-youtube font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
-          </Link>
-          <Link
-            href="https://linkedin.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="z-50"
-          >
-            <i className="fab fa-linkedin-in font-medium leading-6 text-[rgba(255,255,255,0.5)] hover:text-secondary"></i>
-          </Link>
-        </div>
+        {/*social icons*/}
+        <ul className="absolute bottom-[20px] left-[32px] flex flex-col items-center justify-center xl:bottom-[50px] xl:left-[160px]">
+          {socialIconsData.slice(0, 3).map((el, i) => (
+            <li key={i}>
+              <SocialIcons
+                el={el}
+                iconStyle="font-medium leading-6 text-[rgba(255,255,255,0.5)]"
+                className=""
+              />
+            </li>
+          ))}
+        </ul>
       </container>
     </section>
   );
