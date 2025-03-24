@@ -1,11 +1,9 @@
 import CardSlider from "@/components/home/card-slider";
-import Image from "next/image";
+
 import Link from "next/link";
 import { items, experienceArr, experienceArrTwo } from "@/data/homeData";
 import ExperienceCard from "@/components/home/experienceCard";
-import oolong from "@/public/images/home/experience/oolong.webp";
-import wing from "@/public/images/home/experience/pngwing.webp";
-import leaf from "@/public/images/home/experience/leaf.webp";
+import AnimatedDecorations from "./animated-decorations";
 
 export default function Experience() {
   return (
@@ -41,30 +39,7 @@ export default function Experience() {
       </div>
       <div className="relative py-20 lg:flex">
         {/* Decorative Images */}
-        <Image
-          src={wing}
-          width={215}
-          height={154}
-          alt="pngwing"
-          className="absolute bottom-28 left-1/2 z-30 hidden translate-x-6 xl:block"
-          aria-hidden="true"
-        />
-        <Image
-          src={leaf}
-          width={152}
-          height={221}
-          alt="leaf"
-          className="absolute left-1/2 top-10 z-0 hidden -translate-x-[170px] xl:block"
-          aria-hidden="true"
-        />
-        <Image
-          src={oolong}
-          width={500}
-          height={500}
-          alt="oolong"
-          className="absolute left-1/2 top-0 z-20 hidden -translate-x-[100px] xl:block"
-          aria-hidden="true"
-        />
+        <AnimatedDecorations />
         {/* Left Column: Light Background Experience Cards */}
         <div className="bg-accent lg:w-1/2">
           <ul>

@@ -5,14 +5,14 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import useScreenSize from "@/hooks/useScreenSize";
-
+import FadeInWrapper from "../ui/fade-in-wrapper";
 import Image from "next/image";
 
 export default function CardSlider({ items }) {
-  const screenSize =  useScreenSize() || 1280;
+  const screenSize = useScreenSize();
 
   return (
-    <div className="relative px-10">
+    <FadeInWrapper className="relative px-10" delay={1}>
       <Swiper
         modules={[Navigation]}
         navigation={{
@@ -67,6 +67,6 @@ export default function CardSlider({ items }) {
 
         <div className="-ml-8 h-14 w-16 rounded-full bg-white"></div>
       </div>
-    </div>
+    </FadeInWrapper>
   );
 }

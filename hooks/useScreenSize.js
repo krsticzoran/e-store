@@ -3,7 +3,7 @@ import { debounce } from "@/utils/utils";
 
 // Custom hook to get screen size
 export default function useScreenSize() {
-  const [screenSize, setScreenSize] = useState(1280)
+  const [screenSize, setScreenSize] = useState(1280);
 
   useEffect(() => {
     // Handler to call on window resize
@@ -11,8 +11,8 @@ export default function useScreenSize() {
       setScreenSize(window.innerWidth);
     };
 
-     // Call handler right away so state gets updated with initial window size
-     handleResize();
+    // Call handler right away so state gets updated with initial window size
+    handleResize();
 
     const debouncedResize = debounce(handleResize, 100); // Debounce for 100ms
     // Add event listener
