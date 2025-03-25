@@ -14,7 +14,7 @@ const ContactForm = () => {
     >
       <div className="flex w-screen items-center justify-between pt-5 xl:w-[1280px] xl:pt-7 2xl:w-[1440px] 2xl:pt-14">
         {/* Logo */}
-        <div className="ml-8 xl:ml-40">
+        <div className="ml-5 xl:ml-40">
           <Link href="/" aria-label="Go to Home">
             <Image
               src={logo}

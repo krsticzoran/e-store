@@ -11,31 +11,18 @@ export default function Hero() {
   return (
     <section className="bg-body-dark">
       <container className="relative mx-auto flex max-w-[1280px] items-center justify-center overflow-hidden p-5 py-40 xl:p-0 xl:py-40 2xl:max-w-[1440px] 2xl:py-64">
-        <div className="absolute bottom-[100px] left-0 sm:bottom-[20px] sm:left-[5%] lg:left-[10%] xl:left-[70px] xl:top-[30%] 2xl:left-[50px] 2xl:top-[38%]">
-          <Image
-            src={teaLeaves}
-            alt="tea leaves"
-            className="w-[200px] sm:w-[320px] lg:w-[360px] xl:w-[70%] 2xl:w-[84%]"
-          />
-        </div>
-        <Image
-          src={circle}
-          alt="tea leaves"
-          className="absolute hidden w-[93%] xl:block 2xl:w-full"
-        />
-        <Image
-          src={circle}
-          alt="tea leaves"
-          className="absolute w-[90%] sm:w-[60%] xl:w-[60%] 2xl:w-[68%]"
-        />
         <div>
+          {/* Central content container with text and CTA */}
           <div className="z-0 flex items-center justify-center">
+            {/* Decorative leaf image  */}
             <Image
               src={leaf}
               alt="tea laef"
               className="mb-8 w-[93px] xl:w-[119px] 2xl:w-[149px]"
+              aria-label="Decorative element"
             />
           </div>
+          {/* Primary heading and subheading */}
           <p
             className="text-center font-urbanist text-lg font-bold uppercase leading-6 text-white"
             style={{ letterSpacing: "5px" }}
@@ -46,26 +33,20 @@ export default function Hero() {
             organic tea house
           </h1>
           <div className="flex items-center justify-center">
-            <Link href="/shop" className="z-50">
-              <button
-                className="border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
-                style={{ letterSpacing: "1px" }}
-              >
-                shop now
-              </button>
+            {/* CTA - shop now */}
+            <Link
+              href="/shop"
+              style={{ letterSpacing: "1px" }}
+              className="z-50 border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
+              aria-label="see products in our shop"
+            >
+              shop now
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-[20px] right-0 sm:right-[5%] lg:right-[10%] xl:-right-[200px] xl:top-1/3 2xl:-right-[150px] 2xl:top-[40%]">
-          <Image
-            src={teaKettle}
-            priority
-            alt="tea kettle"
-            className="w-[200px] sm:w-[300px] lg:w-[360px] xl:w-[70%] 2xl:w-[80%]"
-          />
-        </div>
+
         {/*social icons*/}
-        <ul className="absolute bottom-[20px] left-[32px] flex flex-col items-center justify-center xl:bottom-[50px] xl:left-[160px]">
+        <ul className="absolute bottom-[20px] left-[20px] flex flex-col items-center justify-center xl:bottom-[50px] xl:left-[160px]">
           {socialIconsData.slice(0, 3).map((el, i) => (
             <li key={i}>
               <SocialIcons
@@ -76,6 +57,36 @@ export default function Hero() {
             </li>
           ))}
         </ul>
+        <div className="absolute bottom-[100px] left-0 sm:bottom-[20px] sm:left-[5%] lg:left-[10%] xl:left-[70px] xl:top-[30%] 2xl:left-[50px] 2xl:top-[38%]">
+          <Image
+            src={teaLeaves}
+            alt="tea leaves"
+            className="w-[200px] sm:w-[320px] lg:w-[360px] xl:w-[70%] 2xl:w-[84%]"
+            aria-label="decorative element"
+          />
+        </div>
+        {/* Decorative images */}
+        <div className="absolute bottom-[20px] right-0 z-20 sm:right-[5%] lg:right-[10%] xl:right-[130px] xl:top-[45%] 2xl:-right-[150px] 2xl:top-[40%]">
+          <Image
+            src={teaKettle}
+            priority
+            alt="tea kettle"
+            className="w-[200px] sm:w-[300px] lg:w-[360px] xl:w-[400px] 2xl:w-[80%]"
+            aria-label="decorative element"
+          />
+        </div>
+        <Image
+          src={circle}
+          alt="tea leaves"
+          className="absolute hidden w-[93%] xl:block 2xl:w-full"
+          aria-label="decorative element"
+        />
+        <Image
+          src={circle}
+          alt="tea leaves"
+          className="absolute w-[90%] sm:w-[60%] xl:w-[60%] 2xl:w-[68%]"
+          aria-label="decorative element"
+        />
       </container>
     </section>
   );
