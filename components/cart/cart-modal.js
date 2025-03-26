@@ -2,7 +2,7 @@
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import ModalWrapper from "../modal/modal-wrapper";
+import ModalWrapper from "../ui/modal-wrapper";
 import close from "@/public/icons/cart/close.svg";
 import trash from "@/public/icons/cart/trash.svg";
 import {
