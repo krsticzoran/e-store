@@ -5,6 +5,7 @@ import close from "@/public/icons/cart/close.svg";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/icons/logo.svg";
+
 export default function InfoOrMenuModal() {
   const [isOpen, setIsOpen] = useState(false);
 

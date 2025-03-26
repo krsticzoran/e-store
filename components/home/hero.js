@@ -48,7 +48,7 @@ export default function Hero() {
         {/*social icons*/}
         <ul className="absolute bottom-[20px] left-[20px] flex flex-col items-center justify-center xl:bottom-[50px] xl:left-[160px]">
           {socialIconsData.slice(0, 3).map((el, i) => (
-            <li key={i}>
+            <li key={i} className="z-50">
               <SocialIcons
                 el={el}
                 iconStyle="font-medium leading-6 text-[rgba(255,255,255,0.5)]"
