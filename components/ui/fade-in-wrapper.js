@@ -19,7 +19,6 @@ export default function FadeInWrapper({
         y: animatey,
         x: animatex,
         transition: { duration: delay },
-        ease: "easeOut",
       }}
       viewport={{ once: true }}
     >
