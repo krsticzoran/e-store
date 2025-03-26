@@ -15,7 +15,7 @@ export default function ExperienceCard({ el, index, variant, length }) {
         >
           <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white">
             {/* Experience Icon */}
-            <Image src={el.src} width={25} height={25} alt={el.title} />
+            <Image src={el.src} width={25} height={25} alt={el.title}  />
           </div>
         </div>
 
