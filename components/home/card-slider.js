@@ -35,9 +35,9 @@ export default function CardSlider({ items }) {
               <Image
                 src={item.src}
                 alt={item.alt}
-                layout="fill"
-                objectFit="cover"
-                className="rounded-lg"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="rounded-lg object-cover object-center"
               />
               <div className="absolute -left-8 bottom-0 z-50 flex h-[90px] w-[190px] items-center justify-center rounded-t-full bg-accent-second">
                 <p className="font-bold text-primary">{item.text}</p>
