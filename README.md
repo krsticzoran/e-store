@@ -11,4 +11,9 @@
 
 ## Current Status
 
+Here is a screenshot of the homepage:
+
+![Homepage Screenshot](./images/public/screenshot-home.png)
+
+
 The project is in the beginning phase of development. Features and functionalities are being implemented gradually, focusing on delivering a user-friendly and responsive design.
