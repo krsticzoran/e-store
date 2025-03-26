@@ -35,7 +35,7 @@ export default function CardSlider({ items }) {
               <Image
                 src={item.src}
                 alt={item.alt}
-                priority={screenSize>768}
+                priority={screenSize > 768}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="rounded-lg object-cover object-center"

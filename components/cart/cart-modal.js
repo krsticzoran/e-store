@@ -65,15 +65,15 @@ export default function CartModal() {
         {/* products in the cart */}
         <ul className="flex-grow overflow-auto">
           {cart?.map((product) => (
-            <li key={product.id} className=" flex pl-2 " >
-              <div className="relative w-[100px] h-[100px]">
-              <Image
-                src={product.images[0].src}
-                alt={product.name}
-               fill
-               sizes="(max-width: 768px) 25vw, (max-width: 1200px) 25vw, 25vw"
-              />
-</div>
+            <li key={product.id} className="flex pl-2">
+              <div className="relative h-[100px] w-[100px]">
+                <Image
+                  src={product.images[0].src}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 768px) 25vw, (max-width: 1200px) 25vw, 25vw"
+                />
+              </div>
               <div className="flex w-full items-center">
                 <div className="w-full">
                   <p className="mb-1 font-bold">{product.name}</p>

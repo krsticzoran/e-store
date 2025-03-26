@@ -28,14 +28,14 @@ export default function InfoOrMenuModal() {
         ></div>
 
         {/* Panel */}
-        <div className="z-50 flex h-full w-full flex-col bg-white xl:bg-[#132420] p-5 font-urbanist text-primary text-white opacity-100 sm:w-[500px]">
+        <div className="z-50 flex h-full w-full flex-col bg-white p-5 font-urbanist text-primary text-white opacity-100 sm:w-[500px] xl:bg-[#132420]">
           <div className="flex justify-end">
             <button onClick={toggleModal} aria-label="Close modal">
               <Image src={close} width={24} height={24} alt="close" />
             </button>
           </div>
           {/* Company Info */}
-          <div className="py-20 hidden xl:block">
+          <div className="hidden py-20 xl:block">
             <div className="flex justify-center">
               <Link href="/" aria-label="Go to Home">
                 <Image src={logo} alt="Company Logo" width={100} height={20} />
@@ -43,10 +43,10 @@ export default function InfoOrMenuModal() {
             </div>
             <p className="">fdsfdsafdsaf</p>
           </div>
-           {/* Mobile Menu */}
-           <div className="flex xl:hidden text-primary">
+          {/* Mobile Menu */}
+          <div className="flex text-primary xl:hidden">
             <p className="">some content</p>
-           </div>
+          </div>
         </div>
       </ModalWrapper>
     </>
