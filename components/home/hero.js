@@ -57,21 +57,21 @@ export default function Hero() {
             </li>
           ))}
         </ul>
+        {/* Decorative images */}
         <div className="absolute bottom-[100px] left-0 sm:bottom-[20px] sm:left-[5%] lg:left-[10%] xl:left-[70px] xl:top-[30%] 2xl:left-[50px] 2xl:top-[38%]">
           <Image
             src={teaLeaves}
             alt="tea leaves"
-            className="w-[200px] sm:w-[320px] lg:w-[360px] xl:w-[70%] 2xl:w-[84%]"
+            className="w-[200px] sm:w-[320px] lg:w-[360px] xl:w-[450px] 2xl:w-[500px]"
             aria-label="decorative element"
           />
         </div>
-        {/* Decorative images */}
-        <div className="absolute bottom-[20px] right-0 z-20 sm:right-[5%] lg:right-[10%] xl:right-[130px] xl:top-[45%] 2xl:-right-[150px] 2xl:top-[40%]">
+        <div className="absolute bottom-[20px] right-0 z-20 sm:right-[5%] lg:right-[10%] xl:right-[80px] xl:top-[45%] 2xl:right-[100px] 2xl:top-[50%]">
           <Image
             src={teaKettle}
             priority
             alt="tea kettle"
-            className="w-[200px] sm:w-[300px] lg:w-[360px] xl:w-[400px] 2xl:w-[80%]"
+            className="w-[200px] sm:w-[300px] lg:w-[360px] xl:w-[400px] 2xl:w-[450px]"
             aria-label="decorative element"
           />
         </div>
