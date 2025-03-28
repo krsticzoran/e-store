@@ -42,7 +42,7 @@ export default function Cart() {
   };
 
   return (
-    <div>
+    <div className="bg-secondary py-40">
       <h1>Your Cart</h1>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>

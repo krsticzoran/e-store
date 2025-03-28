@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import ModalWrapper from "../ui/modal-wrapper";
 import close from "@/public/icons/cart/close.svg";
-import trash from "@/public/icons/cart/trash.svg";
+import CartItem from "./cart-item";
 import {
   getCartItems,
   calculateTotalNumberOfProduct,
@@ -76,38 +76,7 @@ export default function CartModal() {
         <ul className="flex-grow overflow-auto">
           {cart?.map((product) => (
             <li key={product.id} className="flex pl-2">
-              <div className="relative h-[100px] w-[100px]">
-                <Image
-                  src={product.images[0].src}
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 768px) 25vw, (max-width: 1200px) 25vw, 25vw"
-                />
-              </div>
-              <div className="flex w-full items-center">
-                <div className="w-full">
-                  <p className="mb-1 font-bold">{product.name}</p>
-                  <div className="flex w-full justify-between">
-                    <p className="text-sm">{`${product.amount} x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
-                    <button
-                      onClick={handleRemoveItem.bind(
-                        null,
-                        cart,
-                        product.id,
-                        setCart,
-                      )}
-                      aria-label="Remove item from cart"
-                    >
-                      <Image
-                        src={trash}
-                        width={16}
-                        height={16}
-                        alt="trash icon"
-                      />
-                    </button>
-                  </div>
-                </div>
-              </div>
+              <CartItem product={product} callback={handleRemoveItem.bind(null, cart, product.id, setCart)} />
             </li>
           ))}
         </ul>
