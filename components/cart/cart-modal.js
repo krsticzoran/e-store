@@ -13,21 +13,27 @@ import {
 } from "@/utils/cart";
 import { proceedToCheckout } from "@/utils/checkout";
 import Link from "next/link";
+import useEscapeKey from "@/hooks/useEscapeKey";
 
 export default function CartModal() {
+  // Router and state management
   const searchParams = useSearchParams();
   const isOpen = searchParams.get("modal") === "open";
   const path = usePathname();
   const router = useRouter();
+
+  // Cart state
   const [cart, setCart] = useState();
   const [numberOfProducts, setNumberOfProducts] = useState(0);
   const [total, setTotal] = useState(0);
 
+  // Fetch cart items when modal opens/closes
   useEffect(() => {
     const currentCart = getCartItems();
     setCart(currentCart);
   }, [isOpen]);
 
+  // Calculate cart totals when cart updates
   useEffect(() => {
     const number = calculateTotalNumberOfProduct(cart);
     setNumberOfProducts(number);
@@ -35,9 +41,13 @@ export default function CartModal() {
     setTotal(totalAmount);
   }, [cart]);
 
+  // Close modal handler (resets URL without scroll)
   const closeModal = () => {
     router.push(path, { scroll: false });
   };
+
+  // Use the hook to close modal on Escape key
+  useEscapeKey(() => router.push(path, { scroll: false }));
 
   return (
     <ModalWrapper
