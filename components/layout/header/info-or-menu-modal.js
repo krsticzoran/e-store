@@ -7,12 +7,16 @@ import logo from "@/public/icons/logo.svg";
 import { socialIconsData } from "@/data/socialIconsData";
 import SocialIcons from "@/components/ui/social-icons";
 import TeaBig from "@/public/images/header/tea-big.svg";
-import { companyInfo } from "@/data/headerData";
+import { companyInfo, pages } from "@/data/headerData";
 import useEscapeKey from "@/hooks/useEscapeKey";
+import { usePathname } from "next/navigation";
+import logoMobile from "@/public/icons/logo_mobile.svg";
 
 export default function InfoOrMenuModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
+  // open and close modal
   const toggleModal = () => setIsOpen(!isOpen);
 
   // Use the hook to close modal on Escape key
@@ -27,7 +31,7 @@ export default function InfoOrMenuModal() {
 
       <ModalWrapper
         isOpen={isOpen}
-        className="fixed bottom-0 right-0 z-50 flex h-full w-full"
+        className="fixed bottom-0 right-0 z-50 flex h-full w-full flex-row-reverse xl:flex-row"
       >
         {/* Backdrop */}
         <div
@@ -36,8 +40,15 @@ export default function InfoOrMenuModal() {
         ></div>
 
         {/* Panel */}
-        <div className="z-50 flex h-full w-full flex-col overflow-auto bg-white p-5 font-urbanist text-primary text-white opacity-100 sm:w-[500px] xl:bg-[#132420]">
-          <div className="flex justify-end">
+        <div className="z-50 flex h-full w-full flex-col overflow-auto bg-white p-5 font-urbanist text-primary text-white opacity-100 sm:w-[330px] xl:w-[500px] xl:bg-[#132420]">
+          <div className="flex justify-between xl:justify-end">
+            <Image
+              src={logoMobile}
+              alt="logo mobile"
+              width={70}
+              height={70}
+              className="xl:hidden"
+            />
             <button onClick={toggleModal} aria-label="Close modal">
               <i
                 className="fa-solid fa-xmark text-xl text-primary opacity-75 xl:text-white"
@@ -75,6 +86,7 @@ export default function InfoOrMenuModal() {
                     el={el}
                     iconStyle="font-medium leading-6 text-[#818a91] text-lg hover:text-secondary focus:text-secondary"
                     className=""
+                    aria-label={`Follow us on ${el.title}`}
                   />
                 </li>
               ))}
@@ -89,8 +101,24 @@ export default function InfoOrMenuModal() {
             </div>
           </div>
           {/* Mobile Menu */}
-          <div className="flex text-primary xl:hidden">
-            <p className="">some content</p>
+          <div className="text-primary xl:hidden">
+            <ul className="mt-10 w-full">
+              {pages.map((el, i) => (
+                <li
+                  key={i}
+                  className={pathname == `/${el}` ? "text-secondary" : ""}
+                >
+                  <Link
+                    href={`/${el}`}
+                    onClick={toggleModal}
+                    aria-label={`Navigate to ${el || "home"}`}
+                    className="block w-full border-b-[0.5px] border-[#E8E8EB] py-4 uppercase"
+                  >
+                    {el === "" ? "home" : el}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </ModalWrapper>
