@@ -12,7 +12,7 @@ import useEscapeKey from "@/hooks/useEscapeKey";
 import { usePathname } from "next/navigation";
 import logoMobile from "@/public/icons/logo_mobile.svg";
 
-export default function InfoOrMenuModal() {
+export default function InfoOrMenuModal({ className }) {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
@@ -26,7 +26,7 @@ export default function InfoOrMenuModal() {
     <>
       {/* Menu Button */}
       <button aria-label="Toggle Menu" onClick={toggleModal}>
-        <i className="fas fa-bars" aria-hidden="true"></i>
+        <i className={`${className} fas fa-bars`} aria-hidden="true"></i>
       </button>
 
       <ModalWrapper

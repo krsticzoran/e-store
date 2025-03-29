@@ -1,9 +1,7 @@
 "use client";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import Image from "next/image";
 import { useState, useEffect } from "react";
 import ModalWrapper from "../ui/modal-wrapper";
-import close from "@/public/icons/cart/close.svg";
 import CartItem from "./cart-item";
 import {
   getCartItems,
@@ -62,7 +60,10 @@ export default function CartModal() {
         {/* close button */}
         <div className="flex justify-end">
           <button onClick={closeModal} aria-label="Close modal">
-            <Image src={close} width={24} height={24} alt="close" />
+            <i
+              className="fa-solid fa-xmark text-xl text-primary opacity-75"
+              aria-hidden="true"
+            ></i>
           </button>
         </div>
         {/* title section */}
@@ -76,7 +77,16 @@ export default function CartModal() {
         <ul className="flex-grow overflow-auto">
           {cart?.map((product) => (
             <li key={product.id} className="flex pl-2">
-              <CartItem product={product} callback={handleRemoveItem.bind(null, cart, product.id, setCart)} />
+              <CartItem
+                product={product}
+                callback={handleRemoveItem.bind(
+                  null,
+                  cart,
+                  product.id,
+                  setCart,
+                )}
+                pathname={path}
+              />
             </li>
           ))}
         </ul>

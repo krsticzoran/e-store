@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import {
   calculateTotal,
   getCartItems,
@@ -9,11 +9,14 @@ import {
   handleRemoveItem,
 } from "@/utils/cart";
 import { proceedToCheckout } from "@/utils/checkout";
+import CartItem from "@/components/cart/cart-item";
+import bg from "@/public/images/bg_shop.webp";
 
 export default function Cart() {
   const router = useRouter();
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const pathname = usePathname();
 
   // Load the cart data from localStorage
   useEffect(() => {
@@ -42,45 +45,39 @@ export default function Cart() {
   };
 
   return (
-    <div className="bg-secondary py-40">
-      <h1>Your Cart</h1>
-      {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cart.map((product) => (
-            <li key={product.id}>
-              <Image
-                src={product.images[0].src}
-                alt={product.name}
-                width={100}
-                height={100}
-              />
-              <p>Product ID: {product.id}</p>
-              <p>Product Name: {product.name}</p>
-              <p>Price: ${product.price}</p>
-              <p>Product Amount: {product.amount}</p>
-
-              <div>
-                <button onClick={() => handleUpdateCart(product, "decrement")}>
-                  -
-                </button>
-                <span>{product.amount}</span>
-                <button onClick={() => handleUpdateCart(product, "increment")}>
-                  +
-                </button>
-              </div>
-              <button onClick={() => handleRemoveProduct(product.id)}>
-                Remove Item
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
-      <p>Total: ${total}</p>
-      <button onClick={proceedToCheckout.bind(null, cart, router)}>
-        Proceed to Checkout
-      </button>
-    </div>
+    <section className="relative pt-[140px]">
+      <div className="relative h-[250px] w-full">
+        <Image src={bg} alt="backgroung" fill />
+        <h1 className="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 font-youngSerif text-5xl leading-[61px] text-primary">
+          Cart
+        </h1>
+      </div>
+      <div className="bg-[#F0F0F0]">
+        <div className="mx-auto flex justify-center py-20 xl:w-[1280px]">
+          <div>
+            {cart.length === 0 ? (
+              <p>Your cart is empty.</p>
+            ) : (
+              <ul>
+                {cart.map((product) => (
+                  <li key={product.id} className="flex pl-5">
+                    <CartItem
+                      product={product}
+                      callback={() => handleRemoveProduct(product.id)}
+                      handleUpdateCart={handleUpdateCart}
+                      pathname={pathname}
+                    />
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="text-center">Total: ${total}</p>
+            <button onClick={proceedToCheckout.bind(null, cart, router)}>
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

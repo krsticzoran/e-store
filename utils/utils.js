@@ -16,3 +16,8 @@ export function debounce(func, delay) {
     timeoutId = setTimeout(() => func.apply(this, args), delay);
   };
 }
+
+// style for navigation on white background
+export function getNavLinksClass(page) {
+  return page === "/cart" ? "text-primary" : null;
+}
