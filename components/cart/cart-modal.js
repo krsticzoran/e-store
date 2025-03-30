@@ -1,5 +1,6 @@
 "use client";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import ModalWrapper from "../ui/modal-wrapper";
 import CartItem from "./cart-item";
@@ -9,8 +10,7 @@ import {
   handleRemoveItem,
   calculateTotal,
 } from "@/utils/cart";
-import { proceedToCheckout } from "@/utils/checkout";
-import Link from "next/link";
+import ProceedToCheckoutButton from "../ui/proceed-to-checkout-button";
 import useEscapeKey from "@/hooks/useEscapeKey";
 
 export default function CartModal() {
@@ -97,12 +97,9 @@ export default function CartModal() {
             <p>{`$${Number.parseFloat(total).toFixed(2)}`}</p>
           </div>
           {/* checkout */}
-          <button
-            onClick={proceedToCheckout.bind(null, cart, router)}
-            className="mb-5 mt-4 h-[50px] w-full border border-primary bg-primary font-bold uppercase text-white duration-500 hover:bg-secondary"
-          >
+          <ProceedToCheckoutButton cart={cart} router={router}>
             checkout
-          </button>
+          </ProceedToCheckoutButton>
           {/* view cart */}
           <div className="mb-5 flex justify-center underline decoration-[0.5px] underline-offset-4">
             <Link href="/cart" aria-label="View your shopping cart">
