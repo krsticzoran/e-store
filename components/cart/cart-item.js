@@ -9,6 +9,7 @@ export default function CartItem({
   const isCartPage = pathname === "/cart";
   return (
     <>
+      {/* Product Image Container - Responsive sizing based on page */}
       <div
         className={`relative ${isCartPage ? "mr-5 min-h-[150px] min-w-[150px] lg:h-[300px] lg:w-[300px]" : "h-[100px] w-[100px]"} `}
       >
@@ -19,32 +20,46 @@ export default function CartItem({
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw"
         />
       </div>
+      {/* Product Info Container */}
       <div
         className={`flex w-full ${isCartPage ? "lg:w-[350px]" : null} items-center`}
       >
         <div className="w-full">
+          {/* Product Name */}
           <p className={`mb-1 font-bold ${isCartPage ? "lg:text-xl" : null}`}>
             {product.name}
           </p>
+          {/* Quantity Controls and Price */}
           <div
             className={`flex w-full justify-between ${isCartPage ? "lg:text-xl" : null} `}
           >
-            {isCartPage ? (
-              <div className="flex">
-                <button onClick={() => handleUpdateCart(product, "decrement")}>
-                  -
-                </button>
-                <span>{product.amount}</span>
-                <button onClick={() => handleUpdateCart(product, "increment")}>
-                  +
-                </button>
-                <p className="ml-2">{`x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
-              </div>
-            ) : (
-              <p className="text-sm">{`${product.amount} x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
-            )}
-
-            <button onClick={callback} aria-label={`Remove ${product.name} from cart`}>
+            <div className="flex">
+              {/* Show +/- buttons only on Cart page */}
+              {isCartPage && (
+                <>
+                  <button
+                    onClick={() => handleUpdateCart(product, "decrement")}
+                  >
+                    -
+                  </button>
+                  <span className="px-2 font-bold">{product.amount}</span>
+                  <button
+                    onClick={() => handleUpdateCart(product, "increment")}
+                  >
+                    +
+                  </button>
+                </>
+              )}
+              {/* Display quantity and price (format differs based on page) */}
+              <p
+                className={isCartPage ? "ml-4" : "text-sm"}
+              >{`${!isCartPage ? product.amount : ""} x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
+            </div>
+            {/* Remove Item Button */}
+            <button
+              onClick={callback}
+              aria-label={`Remove ${product.name} from cart`}
+            >
               <i className="fa fa-trash text-primary" aria-hidden="true"></i>
             </button>
           </div>

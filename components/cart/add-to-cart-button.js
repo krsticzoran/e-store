@@ -13,24 +13,38 @@ export default function AddToCartButton({ product, className }) {
 
   const handleAddToCart = () => {
     setIsLoading(true);
+
+    // Get current cart and update with new product
     const cart = getCartItems();
+
+    // Persist updated cart
     const updatedCart = handleQuantityChange(cart, product);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    // Simulate async operation and open modal
     setTimeout(() => {
       setIsLoading(false);
+      // Open modal via URL param (non-refresh navigation)
       router.push(`${path}?modal=open`, { scroll: false });
-    }, 1000);
+    }, 1000); // Artificial delay for better UX perception
   };
 
   return (
     <>
+      {/* Cart Modal (controlled via URL query parameter) */}
       <CartModal />
+
+      {/* Add To Cart Button */}
       <button
         onClick={handleAddToCart}
         className={className}
         disabled={isLoading}
+        aria-label={`Add ${product.name} to cart`}
+        aria-busy={isLoading}
       >
+        {/* Button Content */}
         <p className="mr-3">add to cart</p>
+        {/* Loading State Indicator */}
         <div className="w-6">
           {isLoading ? (
             <Spinner />
