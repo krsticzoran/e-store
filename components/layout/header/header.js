@@ -37,7 +37,7 @@ export default function Header() {
           {/* Action Icons */}
           <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl 2xl:text-2xl">
             <li>
-              <Link href="/my-account" aria-label="Go to My Account">
+              <Link href="/account" aria-label="Go to My Account">
                 <i
                   className={`${getNavLinksClass(pathName)} fa fa-user`}
                   aria-hidden="true"
