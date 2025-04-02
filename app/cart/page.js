@@ -93,7 +93,7 @@ export default function Cart() {
                   ))}
                 </ul>
                 {/* Cart Summary */}
-                <p className="mb-5 text-end text-xl font-bold">
+                <p className="mb-5 text-end text-xl font-bold text-primary">
                   Total: ${total.toFixed(2)}
                 </p>
                 {/* Checkout Action */}

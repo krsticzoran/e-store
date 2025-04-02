@@ -1,4 +1,5 @@
 import Image from "next/image";
+import QuantityControl from "../ui/quantity-control";
 
 export default function CartItem({
   product,
@@ -22,7 +23,7 @@ export default function CartItem({
       </div>
       {/* Product Info Container */}
       <div
-        className={`flex w-full ${isCartPage ? "lg:w-[350px]" : null} items-center`}
+        className={`flex w-full ${isCartPage ? "lg:w-[350px]" : null} items-center text-primary`}
       >
         <div className="w-full">
           {/* Product Name */}
@@ -33,22 +34,14 @@ export default function CartItem({
           <div
             className={`flex w-full justify-between ${isCartPage ? "lg:text-xl" : null} `}
           >
-            <div className="flex">
+            <div className="flex items-center">
               {/* Show +/- buttons only on Cart page */}
               {isCartPage && (
-                <>
-                  <button
-                    onClick={() => handleUpdateCart(product, "decrement")}
-                  >
-                    -
-                  </button>
-                  <span className="px-2 font-bold">{product.amount}</span>
-                  <button
-                    onClick={() => handleUpdateCart(product, "increment")}
-                  >
-                    +
-                  </button>
-                </>
+                <QuantityControl
+                  onDecrement={() => handleUpdateCart(product, "decrement")}
+                  onIncrement={() => handleUpdateCart(product, "increment")}
+                  quantity ={product.amount}
+                />
               )}
               {/* Display quantity and price (format differs based on page) */}
               <p
