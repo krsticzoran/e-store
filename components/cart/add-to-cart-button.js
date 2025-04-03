@@ -5,6 +5,7 @@ import Spinner from "../ui/spinner";
 import { handleQuantityChange } from "@/utils/cart";
 import CartModal from "./cart-modal";
 import { useRouter, usePathname } from "next/navigation";
+import { Suspense } from "react";
 
 export default function AddToCartButton({ product, className }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,7 +33,9 @@ export default function AddToCartButton({ product, className }) {
   return (
     <>
       {/* Cart Modal (controlled via URL query parameter) */}
-      <CartModal />
+      <Suspense fallback={null}>
+        <CartModal />
+      </Suspense>
 
       {/* Add To Cart Button */}
       <button

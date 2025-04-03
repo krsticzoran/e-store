@@ -19,7 +19,7 @@ export default function CartItem({
           alt={product.name}
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw"
-           className="object-cover"
+          className="object-cover"
         />
       </div>
       {/* Product Info Container */}
