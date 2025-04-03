@@ -40,7 +40,7 @@ export default function CartItem({
                 <QuantityControl
                   onDecrement={() => handleUpdateCart(product, "decrement")}
                   onIncrement={() => handleUpdateCart(product, "increment")}
-                  quantity ={product.amount}
+                  quantity={product.amount}
                 />
               )}
               {/* Display quantity and price (format differs based on page) */}

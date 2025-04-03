@@ -1,4 +1,8 @@
-export default function QuantityControl({ onDecrement, onIncrement, quantity  }) {
+export default function QuantityControl({
+  onDecrement,
+  onIncrement,
+  quantity,
+}) {
   return (
     <div
       className="border-[0.5px] border-primary px-2 py-1 text-lg text-primary lg:text-xl"
