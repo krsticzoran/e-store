@@ -1,15 +1,13 @@
-"use client";
-import { usePathname } from "next/navigation";
 import { pages } from "@/data/headerData";
 import Link from "next/link";
 import { getNavLinksClass } from "@/utils/utils";
 
-export default function DesktopNavigation({}) {
-  const pathname = usePathname();
+export default function DesktopNavigation({pathname}) {
+ 
 
   return (
     <ul
-      className={`${pathname === "/cart" ? "mr-52" : "mr-32"} hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex 2xl:text-lg`}
+      className={`${pathname === "/cart" || pathname.startsWith("/product/") ? "mr-52" : "mr-32"} hidden items-end gap-7 text-base font-semibold uppercase tracking-widest text-white xl:flex 2xl:text-lg`}
     >
       {pages.map((page) => (
         <li

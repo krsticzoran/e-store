@@ -11,7 +11,8 @@ import { usePathname } from "next/navigation";
 import { getNavLinksClass } from "@/utils/utils";
 
 export default function Header() {
-  const pathName = usePathname();
+  const pathname = usePathname();
+  const showMobileLogo = pathname === "/cart" || pathname.startsWith("/product/");
 
   return (
     <nav
@@ -23,7 +24,7 @@ export default function Header() {
         <div className="ml-5 xl:ml-40">
           <Link href="/" aria-label="Go to Home">
             <Image
-              src={pathName === "/cart" ? logoMobile : logo}
+              src={showMobileLogo ? logoMobile : logo}
               alt="Company Logo"
               className="h-[65px] w-[65px] lg:h-[92px] lg:w-[92px]"
             />
@@ -32,14 +33,14 @@ export default function Header() {
 
         <div className="flex">
           {/* Desktop Navigation */}
-          <DesktopNavigation />
+          <DesktopNavigation pathname={pathname} />
 
           {/* Action Icons */}
           <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl 2xl:text-2xl">
             <li>
               <Link href="/account" aria-label="Go to My Account">
                 <i
-                  className={`${getNavLinksClass(pathName)} fa fa-user`}
+                  className={`${getNavLinksClass(pathname)} fa fa-user`}
                   aria-hidden="true"
                 ></i>
               </Link>
@@ -47,14 +48,14 @@ export default function Header() {
             <li>
               <Link href="/cart" aria-label="View Cart">
                 <i
-                  className={`${getNavLinksClass(pathName)} fa fa-shopping-bag`}
+                  className={`${getNavLinksClass(pathname)} fa fa-shopping-bag`}
                   aria-hidden="true"
                 ></i>
               </Link>
             </li>
             <li>
               {/* Menu Button && Open Info Modal || Mobile Menu */}
-              <InfoOrMenuModal className={getNavLinksClass(pathName)} />
+              <InfoOrMenuModal className={getNavLinksClass(pathname)} />
             </li>
           </ul>
         </div>
