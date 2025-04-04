@@ -12,7 +12,8 @@ import { getNavLinksClass } from "@/utils/utils";
 
 export default function Header() {
   const pathname = usePathname();
-  const showMobileLogo = pathname === "/cart" || pathname.startsWith("/product/");
+  const showMobileLogo =
+    pathname === "/cart" || pathname.startsWith("/product/");
 
   return (
     <nav
