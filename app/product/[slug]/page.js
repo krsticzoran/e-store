@@ -7,7 +7,7 @@ export default async function ProdcutPage({ params }) {
   const product = await getSingleProduct(params.slug);
 
   return (
-    <main>
+    <main className="bg-background-light">
       <Image
         src={product.images[0].src}
         alt={product.name}

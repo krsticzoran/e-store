@@ -59,7 +59,7 @@ export default function Cart() {
         </h1>
       </div>
       {/* ===== Main Cart Content ===== */}
-      <div className="bg-[#F0F0F0] px-5">
+      <div className="bg-background-light px-5">
         <div className="mx-auto flex justify-center py-12 lg:py-20 xl:w-[1280px]">
           <div>
             {/* ===== Empty Cart State ===== */}

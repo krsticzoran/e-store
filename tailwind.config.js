@@ -23,6 +23,7 @@ module.exports = {
         "white-transparent": "#FFFFFFCC",
         "warm-beige": "#f7f1ea",
         white60: "#FFFFFF99",
+        "background-light": "#F0F0F0"
       },
     },
   },
