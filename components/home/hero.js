@@ -37,7 +37,7 @@ export default function Hero() {
             <Link
               href="/shop"
               style={{ letterSpacing: "1px" }}
-              className="z-50 border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all hover:border-secondary hover:bg-secondary"
+              className="z-50 border border-solid border-white bg-transparent px-9 py-4 font-urbanist text-sm font-bold uppercase leading-5 text-white transition-all duration-500 hover:border-secondary hover:bg-secondary"
               aria-label="see products in our shop"
             >
               shop now

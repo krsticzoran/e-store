@@ -31,7 +31,7 @@ export default function CardSlider({ items }) {
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[300px] w-full overflow-hidden">
+            <div className="relative h-[300px] w-full overflow-hidden bg-accent">
               <Image
                 src={item.src}
                 alt={item.alt}

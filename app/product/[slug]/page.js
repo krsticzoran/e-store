@@ -1,5 +1,4 @@
 import getSingleProduct from "@/services/get-single-product";
-import Image from "next/image";
 import { stripHtmlTags } from "@/utils/utils";
 import AddToCartButton from "@/components/cart/add-to-cart-button";
 import Breadcrumb from "@/components/product/breadcrumb";
