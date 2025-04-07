@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function ProductSlider({ product }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [mainSwiper, setMainSwiper] = useState(null);
-
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <div className="space-y-4">
@@ -25,8 +25,9 @@ export default function ProductSlider({ product }) {
         slidesPerView={1}
         thumbs={{ swiper: thumbsSwiper }}
         onSwiper={setMainSwiper}
+        onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
       >
-        {product.images.slice(0,4).map((item, index) => (
+        {product.images.slice(0, 4).map((item, index) => (
           <SwiperSlide key={`main-${index}`}>
             <div className="relative h-[480px] w-full overflow-hidden">
               <Image
@@ -40,11 +41,11 @@ export default function ProductSlider({ product }) {
             </div>
           </SwiperSlide>
         ))}
-        
+
         {/* Navigation Buttons */}
         <div className="custom-prev-container absolute left-0 top-1/2 z-10 flex -translate-y-1/2">
           <button
-            className="custom-prev absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg hover:bg-secondary"
+            className="custom-prev absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white bg-white shadow-lg hover:bg-secondary"
             aria-label="Previous Slide"
           >
             ❮
@@ -52,7 +53,7 @@ export default function ProductSlider({ product }) {
         </div>
         <div className="custom-next-container absolute right-0 top-1/2 z-10 flex -translate-y-1/2">
           <button
-            className="custom-next absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg hover:bg-secondary"
+            className="custom-next absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white bg-white shadow-lg hover:bg-secondary"
             aria-label="Next Slide"
           >
             ❯
@@ -61,20 +62,27 @@ export default function ProductSlider({ product }) {
       </Swiper>
 
       {/* Thumbnail Slider */}
-      <div className="px-12"> 
+      <div>
         <Swiper
           modules={[Thumbs]}
           watchSlidesProgress
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
-          slidesPerView={4}
+          slidesPerView={5}
           freeMode={true}
         >
-          {product.images.slice(0,4).map((item, index) => (
+          {product.images.slice(0, 4).map((item, index) => (
             <SwiperSlide key={`thumb-${index}`}>
-              <button 
-                onClick={() => mainSwiper?.slideTo(index)}
-                className="relative h-[100px] w-[100px] overflow-hidden rounded-lg border-2 border-transparent transition-all hover:border-primary"
+              <button
+                onClick={() => {
+                  mainSwiper?.slideTo(index);
+                  setActiveIndex(index);
+                }}
+                className={`relative h-[100px] w-[100px] overflow-hidden rounded-lg transition-all hover:border-[0.5px] hover:border-primary ${
+                  index === activeIndex
+                    ? "border-[0.5px] border-primary " 
+                    : "border-transparent"
+                }`}
               >
                 <Image
                   src={item.src}
