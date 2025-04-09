@@ -4,12 +4,19 @@ import { stripHtmlTags } from "@/utils/utils";
 import Breadcrumb from "@/components/product/breadcrumb";
 import ProductSlider from "@/components/product/product-slider";
 import AddToCartSection from "@/components/product/add-to-cart-section";
+import { notFound } from "next/navigation";
+
 
 
 export default async function ProdcutPage({ params }) {
   const product = await getSingleProduct(params.slug);
 
+  if(!product){
+    notFound();
+  }
+
 const isInstock = product.stock_status === "instock"
+
 
   return (
     <main className="relative pt-24 lg:pt-[140px]">
