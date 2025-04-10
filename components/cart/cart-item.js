@@ -1,5 +1,6 @@
 import Image from "next/image";
 import QuantityControl from "../ui/quantity-control";
+import Link from "next/link";
 
 export default function CartItem({
   product,
@@ -10,8 +11,9 @@ export default function CartItem({
   const isCartPage = pathname === "/cart";
   return (
     <>
-      {/* Product Image Container - Responsive sizing based on page */}
-      <div
+      {/* Product Image & Link to Product Page - Responsive sizing based on page */}
+      <Link
+        href={`/product/${product.id}`}
         className={`relative ${isCartPage ? "mr-5 min-h-[150px] min-w-[150px] lg:h-[300px] lg:w-[300px]" : "h-[100px] w-[100px]"} `}
       >
         <Image
@@ -19,9 +21,9 @@ export default function CartItem({
           alt={product.name}
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 25vw"
-          className="object-cover"
+          className="object-cover hover:scale-105"
         />
-      </div>
+      </Link>
       {/* Product Info Container */}
       <div
         className={`flex w-full ${isCartPage ? "lg:w-[350px]" : null} items-center text-primary`}

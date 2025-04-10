@@ -5,7 +5,7 @@ export default function QuantityControl({
 }) {
   return (
     <div
-      className="border-[0.5px] border-primary px-2 py-1 text-lg text-primary lg:text-xl"
+      className="flex w-[90px] items-center justify-center border-[0.5px] border-primary px-2 py-1 text-lg text-primary lg:w-[120px] lg:text-xl"
       role="group"
       aria-label="Product quantity controls"
     >

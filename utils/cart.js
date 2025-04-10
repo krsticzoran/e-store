@@ -27,13 +27,17 @@ export const handleRemoveItem = (cart, id, setCart) => {
 };
 
 // add product to cart or change quantity
-export const handleQuantityChange = (cart, product,quantity, action = "increment") => {
+export const handleQuantityChange = (
+  cart,
+  product,
+  quantity,
+  action = "increment",
+) => {
   let productExists = false;
 
   const updatedCart = cart.map((cartProduct) => {
     if (cartProduct.id === product.id) {
       productExists = true;
-      console.log(quantity)
       if (action === "increment") {
         return {
           ...cartProduct,

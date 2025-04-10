@@ -30,7 +30,7 @@ export default function Cart() {
   // ===== Cart Operations =====
   // Handle quantity change (increment/decrement)
   const handleUpdateCart = (product, action) => {
-    const updatedCart = handleQuantityChange(cart, product, action);
+    const updatedCart = handleQuantityChange(cart, product, 1, action);
 
     // remove product if amount is 0
     const filteredCart = updatedCart.filter((product) => product.amount !== 0);

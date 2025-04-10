@@ -7,7 +7,7 @@ import CartModal from "./cart-modal";
 import { useRouter, usePathname } from "next/navigation";
 import { Suspense } from "react";
 
-export default function AddToCartButton({ product, className, quantity=1 }) {
+export default function AddToCartButton({ product, className, quantity = 1 }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const path = usePathname();
