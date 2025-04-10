@@ -1,22 +1,18 @@
-
-import getSingleProduct from "@/services/get-single-product";
+import { getProduct } from "@/services/fetch-product-data";
 import { stripHtmlTags } from "@/utils/utils";
 import Breadcrumb from "@/components/product/breadcrumb";
 import ProductSlider from "@/components/product/product-slider";
 import AddToCartSection from "@/components/product/add-to-cart-section";
 import { notFound } from "next/navigation";
 
-
-
 export default async function ProdcutPage({ params }) {
-  const product = await getSingleProduct(params.slug);
+  const product = await getProduct(params.slug);
 
-  if(!product){
+  if (product.message) {
     notFound();
   }
 
-const isInstock = product.stock_status === "instock"
-
+  const isInstock = product.stock_status === "instock";
 
   return (
     <main className="relative pt-24 lg:pt-[140px]">
@@ -28,18 +24,23 @@ const isInstock = product.stock_status === "instock"
               <ProductSlider product={product} />
             </div>
             <div className="ml-5 font-urbanist text-primary">
-            <h2 className="mt-4 mb-2 text-4xl leading-10 font-youngSerif">{product.name}</h2>
-              <p className="text-2xl pt-2 pb-5">{`$${Number(product.price).toFixed(2)}`}</p>
-              <span className={`${isInstock ? "bg-[#71B154]" : "bg-primary" }  text-white px-[10px] rounded inline-block mb-6`}>{isInstock ? "Instock" : "Out of Stock"}</span>
+              <h2 className="mb-2 mt-4 font-youngSerif text-4xl leading-10">
+                {product.name}
+              </h2>
+              <p className="pb-5 pt-2 text-2xl">{`$${Number(product.price).toFixed(2)}`}</p>
+              <span
+                className={`${isInstock ? "bg-[#71B154]" : "bg-primary"} mb-6 inline-block rounded px-[10px] text-white`}
+              >
+                {isInstock ? "Instock" : "Out of Stock"}
+              </span>
 
-              <div className="border-y border-[#E8E8EB] pt-6 pb-5 mb-7">
+              <div className="mb-7 border-y border-[#E8E8EB] pb-5 pt-6">
                 <p className="mb-[6px]">Steeping Time: 2-3 min </p>
                 <p className="mb-[6px]">Temperature: 190°F / 87°C</p>
-              <p>{stripHtmlTags(product.description)}</p>
+                <p>{stripHtmlTags(product.description)}</p>
               </div>
-              
-             <AddToCartSection  product={product}/>
-              
+
+              <AddToCartSection product={product} />
             </div>
           </div>
         </div>

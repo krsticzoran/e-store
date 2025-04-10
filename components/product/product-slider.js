@@ -80,7 +80,7 @@ export default function ProductSlider({ product }) {
                 }}
                 className={`relative h-[100px] w-[100px] overflow-hidden rounded-lg transition-all hover:border-[0.5px] hover:border-primary ${
                   index === activeIndex
-                    ? "border-[0.5px] border-primary " 
+                    ? "border-[0.5px] border-primary"
                     : "border-transparent"
                 }`}
               >

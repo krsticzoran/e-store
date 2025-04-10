@@ -4,11 +4,7 @@ import AddToCartButton from "../cart/add-to-cart-button";
 
 export default async function ProductList({ products }) {
   if (products.message) {
-    return (
-      <p>
-        {`Oops! We couldn't load the products right now. Please check back soon`}
-      </p>
-    );
+    return <p>{products.message}</p>;
   }
   return (
     <>
