@@ -27,16 +27,17 @@ export const handleRemoveItem = (cart, id, setCart) => {
 };
 
 // add product to cart or change quantity
-export const handleQuantityChange = (cart, product, action = "increment") => {
+export const handleQuantityChange = (cart, product,quantity, action = "increment") => {
   let productExists = false;
 
   const updatedCart = cart.map((cartProduct) => {
     if (cartProduct.id === product.id) {
       productExists = true;
+      console.log(quantity)
       if (action === "increment") {
         return {
           ...cartProduct,
-          amount: cartProduct.amount + 1,
+          amount: cartProduct.amount + quantity,
         };
       } else if (action === "decrement" && cartProduct.amount >= 0) {
         return {
@@ -49,7 +50,7 @@ export const handleQuantityChange = (cart, product, action = "increment") => {
   });
 
   if (!productExists) {
-    updatedCart.push({ ...product, amount: 1 });
+    updatedCart.push({ ...product, amount: quantity });
   }
 
   return updatedCart;

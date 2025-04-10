@@ -7,7 +7,7 @@ import CartModal from "./cart-modal";
 import { useRouter, usePathname } from "next/navigation";
 import { Suspense } from "react";
 
-export default function AddToCartButton({ product, className }) {
+export default function AddToCartButton({ product, className, quantity=1 }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const path = usePathname();
@@ -19,7 +19,7 @@ export default function AddToCartButton({ product, className }) {
     const cart = getCartItems();
 
     // Persist updated cart
-    const updatedCart = handleQuantityChange(cart, product);
+    const updatedCart = handleQuantityChange(cart, product, quantity);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
 
     // Simulate async operation and open modal
