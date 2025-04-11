@@ -35,7 +35,7 @@ export default function ProductSlider({ product }) {
                 alt={item.name}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="rounded-lg object-cover object-center"
+                className="transition-scale rounded-lg object-cover object-center duration-300 hover:scale-110"
                 priority={index === 0}
               />
             </div>
@@ -88,7 +88,7 @@ export default function ProductSlider({ product }) {
                   src={item.src}
                   alt={`Thumbnail ${index + 1}`}
                   fill
-                  className="object-cover object-center"
+                  className="transition-scale object-cover object-center duration-300 hover:scale-110"
                 />
               </button>
             </SwiperSlide>

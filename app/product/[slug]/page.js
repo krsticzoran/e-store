@@ -4,6 +4,8 @@ import Breadcrumb from "@/components/product/breadcrumb";
 import ProductSlider from "@/components/product/product-slider";
 import AddToCartSection from "@/components/product/add-to-cart-section";
 import { notFound } from "next/navigation";
+import Link from "next/link";
+import TaxonomyList from "@/components/product/taxonomy-list";
 
 export default async function ProdcutPage({ params }) {
   const product = await getProduct(params.slug);
@@ -41,6 +43,10 @@ export default async function ProdcutPage({ params }) {
               </div>
 
               <AddToCartSection product={product} />
+              <div className="pt-6">
+                <TaxonomyList label="Categories" items={product.categories} />
+                <TaxonomyList label="Tag" items={product.tags} />
+              </div>
             </div>
           </div>
         </div>
