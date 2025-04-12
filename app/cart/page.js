@@ -48,7 +48,7 @@ export default function Cart() {
   };
 
   return (
-    <section className="relative pt-24 lg:pt-[140px]">
+    <section className="relative pt-24 lg:pt-36 2xl:pt-44">
       {/* ===== Hero Banner Section ===== */}
       <div className="relative h-[150px] w-full lg:h-[250px]">
         {/* Background Image */}

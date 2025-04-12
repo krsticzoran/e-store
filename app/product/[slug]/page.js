@@ -4,7 +4,6 @@ import Breadcrumb from "@/components/product/breadcrumb";
 import ProductSlider from "@/components/product/product-slider";
 import AddToCartSection from "@/components/product/add-to-cart-section";
 import { notFound } from "next/navigation";
-import Link from "next/link";
 import TaxonomyList from "@/components/product/taxonomy-list";
 
 export default async function ProdcutPage({ params }) {
@@ -17,7 +16,7 @@ export default async function ProdcutPage({ params }) {
   const isInstock = product.stock_status === "instock";
 
   return (
-    <main className="relative pt-24 lg:pt-[140px]">
+    <main className="relative pt-24 lg:pt-36 2xl:pt-44">
       <div className="bg-gradient-to-b from-background-light via-white to-white pb-24 pt-10">
         <div className="px-5 xl:mx-auto xl:w-[1280px] xl:px-0">
           <Breadcrumb product={product} />
