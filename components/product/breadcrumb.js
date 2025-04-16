@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Breadcrumb({ product }) {
   return (
     <nav aria-label="breadcrumb ">
-      <ol className="flex text-xs capitalize text-primary">
+      <ol className="flex text-xs capitalize text-primary sm:text-base">
         {/* Home */}
         <li>
           <Link href="/" className="opacity-60 duration-500 hover:opacity-100">
