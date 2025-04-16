@@ -19,7 +19,5 @@ export function debounce(func, delay) {
 
 // style for navigation on white background
 export function getNavLinksClass(page) {
-  return page === "/cart" || page.startsWith("/product/")
-    ? "text-primary"
-    : null;
+  return page === "/" ? "text-white" : "text-primary";
 }

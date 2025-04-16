@@ -12,8 +12,7 @@ import { getNavLinksClass } from "@/utils/utils";
 
 export default function Header() {
   const pathname = usePathname();
-  const showMobileLogo =
-    pathname === "/cart" || pathname.startsWith("/product/");
+  const showLogo = pathname === "/";
 
   return (
     <nav
@@ -21,13 +20,13 @@ export default function Header() {
       aria-label="Main Navigation"
     >
       <div
-        className={`flex w-screen items-center justify-between pt-5 xl:w-[1280px] xl:pt-7 ${!showMobileLogo ? "2xl:w-[1440px]" : "2xl:w-[1280px]"} 2xl:pt-14`}
+        className={`flex w-screen items-center justify-between pt-5 xl:w-[1280px] xl:pt-7 ${!showLogo ? "2xl:w-[1280px]" : "2xl:w-[1440px]"} 2xl:pt-14`}
       >
         {/* Logo */}
-        <div className={`ml-5 ${showMobileLogo ? "xl:ml-5" : "xl:ml-40"}`}>
+        <div className={`ml-5 ${showLogo ? "xl:ml-40" : ""}`}>
           <Link href="/" aria-label="Go to Home">
             <Image
-              src={showMobileLogo ? logoMobile : logo}
+              src={showLogo ? logo : logoMobile}
               alt="Company Logo"
               className="h-[65px] w-[65px] lg:h-[92px] lg:w-[92px]"
             />
