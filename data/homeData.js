@@ -16,18 +16,21 @@ export const items = [
     alt: "Black Tea Experience",
     blurDataURL: blackTea,
     text: "Black Tea",
+    url: "black-tea",
   },
   {
     src: greenTea,
     alt: "Green Tea Experience",
     blurDataURL: greenTea,
     text: "Green Tea",
+    url: "green-tea",
   },
   {
     src: chai,
     alt: "Chai Tea Experience",
     blurDataURL: chai,
     text: "Oolong Tea",
+    url: "oolong-tea",
   },
 
   {
@@ -35,6 +38,7 @@ export const items = [
     alt: "Japanese Matcha Experience",
     blurDataURL: japaneseMatcha,
     text: "Flavored Tea",
+    url: "flavored-tea",
   },
 ];
 

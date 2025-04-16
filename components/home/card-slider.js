@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import useScreenSize from "@/hooks/useScreenSize";
 import FadeInWrapper from "../ui/fade-in-wrapper";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function CardSlider({ items }) {
   const screenSize = useScreenSize();
@@ -31,19 +32,22 @@ export default function CardSlider({ items }) {
       >
         {items.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="relative h-[300px] w-full overflow-hidden bg-accent">
-              <Image
-                src={item.src}
-                alt={item.alt}
-                priority={screenSize > 768}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                className="rounded-lg object-cover object-center"
-              />
-              <div className="absolute -left-8 bottom-0 z-50 flex h-[90px] w-[190px] items-center justify-center rounded-t-full bg-accent-second">
-                <p className="font-bold text-primary">{item.text}</p>
+            <Link href={`/shop/${item.url}`}>
+              <div className="relative h-[300px] w-full overflow-hidden bg-accent">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  priority={screenSize > 768}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="rounded-lg object-cover object-center duration-500 hover:scale-110"
+                />
+
+                <div className="absolute -left-8 bottom-0 z-50 flex h-[90px] w-[190px] items-center justify-center rounded-t-full bg-accent-second">
+                  <p className="font-bold text-primary">{item.text}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

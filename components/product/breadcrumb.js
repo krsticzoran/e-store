@@ -14,7 +14,7 @@ export default function Breadcrumb({ product }) {
         {/* Category */}
         <li>
           <Link
-            href="/shop"
+            href={`/shop/${product.categories[0].slug || product.categories[0].name}`}
             className="opacity-60 duration-500 hover:opacity-100"
           >
             {product.categories[0].name}
