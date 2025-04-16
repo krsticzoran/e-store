@@ -7,25 +7,36 @@ import { notFound } from "next/navigation";
 import TaxonomyList from "@/components/product/taxonomy-list";
 
 export default async function ProdcutPage({ params }) {
+  // Fetch product data based on the slug parameter
   const product = await getProduct(params.slug);
 
+  // If the product response contains a message (indicating error or not found), show 404 page
   if (product.message) {
     notFound();
   }
 
+  // Determine if product is in stock based on stock_status
   const isInstock = product.stock_status === "instock";
 
   return (
     <main className="relative pt-24 lg:pt-36 2xl:pt-44">
+      {/* Background gradient container */}
       <div className="bg-gradient-to-b from-background-light via-white to-white pb-24 pt-10">
+        {/* Main content container with responsive padding */}
         <div className="px-5 xl:mx-auto xl:w-[1280px] xl:px-0">
+          {/* Breadcrumb navigation showing product hierarchy */}
           <Breadcrumb product={product} />
-          <div className="grid grid-cols-2 pt-6">
+
+          {/* Product details grid  */}
+          <div className="grid grid-cols-1 pt-3 sm:pt-6 lg:grid-cols-2">
+            {/* Left column - product images */}
             <div className="relative">
               <ProductSlider product={product} />
             </div>
-            <div className="ml-5 font-urbanist text-primary">
-              <h2 className="mb-2 mt-4 font-youngSerif text-4xl leading-10">
+
+            {/* Right column - product information */}
+            <div className="pt-10 font-urbanist text-primary lg:ml-5 lg:pt-0">
+              <h2 className="mb-2 mt-4 font-youngSerif text-3xl leading-10 sm:text-4xl">
                 {product.name}
               </h2>
               <p className="pb-5 pt-2 text-2xl">{`$${Number(product.price).toFixed(2)}`}</p>
@@ -41,7 +52,10 @@ export default async function ProdcutPage({ params }) {
                 <p>{stripHtmlTags(product.description)}</p>
               </div>
 
+              {/* Add to cart section with product variants/options */}
               <AddToCartSection product={product} />
+
+              {/* Taxonomy information (categories and tags) */}
               <div className="pt-6">
                 <TaxonomyList label="Categories" items={product.categories} />
                 <TaxonomyList label="Tag" items={product.tags} />

@@ -29,7 +29,7 @@ export default function ProductSlider({ product }) {
       >
         {product.images.slice(0, 4).map((item, index) => (
           <SwiperSlide key={`main-${index}`}>
-            <div className="relative h-[480px] w-full overflow-hidden">
+            <div className="relative h-[400px] w-full overflow-hidden sm:h-[480px]">
               <Image
                 src={item.src}
                 alt={item.name}
@@ -78,7 +78,7 @@ export default function ProductSlider({ product }) {
                   mainSwiper?.slideTo(index);
                   setActiveIndex(index);
                 }}
-                className={`relative h-[100px] w-[100px] overflow-hidden rounded-lg transition-all hover:border-[0.5px] hover:border-primary ${
+                className={`relative h-16 w-16 overflow-hidden rounded-lg transition-all hover:border-[0.5px] hover:border-primary sm:h-[100px] sm:w-[100px] ${
                   index === activeIndex
                     ? "border-[0.5px] border-primary"
                     : "border-transparent"

@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Breadcrumb({ product }) {
   return (
-    <nav aria-label="breadcrumb">
-      <ol className="flex capitalize text-primary">
+    <nav aria-label="breadcrumb ">
+      <ol className="flex text-xs capitalize text-primary">
         {/* Home */}
         <li>
           <Link href="/" className="opacity-60 duration-500 hover:opacity-100">
