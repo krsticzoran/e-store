@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import {
@@ -10,7 +9,7 @@ import {
   handleRemoveItem,
 } from "@/utils/cart";
 import CartItem from "@/components/cart/cart-item";
-import bg from "@/public/images/bg_shop.webp";
+import Banner from "@/components/ui/banner";
 import ProceedToCheckoutButton from "@/components/ui/proceed-to-checkout-button";
 
 export default function Cart() {
@@ -50,14 +49,7 @@ export default function Cart() {
   return (
     <section className="relative pt-24 lg:pt-36 2xl:pt-44">
       {/* ===== Hero Banner Section ===== */}
-      <div className="relative h-[150px] w-full lg:h-[250px]">
-        {/* Background Image */}
-        <Image src={bg} alt="backgroung" fill />
-        {/* Page Title */}
-        <h1 className="absolute left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2 font-youngSerif text-5xl leading-[61px] text-primary">
-          Cart
-        </h1>
-      </div>
+      <Banner title="cart" />
       {/* ===== Main Cart Content ===== */}
       <div className="bg-background-light px-5">
         <div className="mx-auto flex justify-center py-12 lg:py-20 xl:w-[1280px]">
