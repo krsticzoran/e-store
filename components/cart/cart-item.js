@@ -35,7 +35,7 @@ export default function CartItem({
           </p>
           {/* Quantity Controls and Price */}
           <div
-            className={`flex w-full justify-between ${isCartPage ? "lg:text-xl" : null} `}
+            className={`flex w-full justify-between ${isCartPage ? "mt-1 sm:mt-2 lg:mt-4 lg:text-xl" : null} `}
           >
             <div className="flex items-center">
               {/* Show +/- buttons only on Cart page */}
@@ -44,11 +44,12 @@ export default function CartItem({
                   onDecrement={() => handleUpdateCart(product, "decrement")}
                   onIncrement={() => handleUpdateCart(product, "increment")}
                   quantity={product.amount}
+                  isCartPage
                 />
               )}
               {/* Display quantity and price (format differs based on page) */}
               <p
-                className={isCartPage ? "ml-4" : "text-sm"}
+                className={`text-sm ${isCartPage ? "ml-2 sm:ml-4 sm:text-base lg:text-lg" : null}`}
               >{`${!isCartPage ? product.amount : ""} x $${Number.parseFloat(product.price).toFixed(2)}`}</p>
             </div>
             {/* Remove Item Button */}
