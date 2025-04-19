@@ -88,6 +88,7 @@ export default function ProductSlider({ product }) {
                   src={item.src}
                   alt={`Thumbnail ${index + 1}`}
                   fill
+                   sizes="(max-width: 640px) 64px, 100px"
                   className="transition-scale object-cover object-center duration-300 hover:scale-110"
                 />
               </button>
