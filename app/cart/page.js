@@ -11,6 +11,7 @@ import {
 import CartItem from "@/components/cart/cart-item";
 import Banner from "@/components/ui/banner";
 import ProceedToCheckoutButton from "@/components/ui/proceed-to-checkout-button";
+import Container from "@/components/ui/container";
 
 export default function Cart() {
   const router = useRouter();
@@ -47,7 +48,7 @@ export default function Cart() {
   };
 
   return (
-    <section className="relative pt-24 lg:pt-36 2xl:pt-44">
+    <Container>
       {/* ===== Hero Banner Section ===== */}
       <Banner title="cart" />
       {/* ===== Main Cart Content ===== */}
@@ -97,6 +98,6 @@ export default function Cart() {
           </div>
         </div>
       </div>
-    </section>
+    </Container>
   );
 }

@@ -5,6 +5,7 @@ import ProductSlider from "@/components/product/product-slider";
 import AddToCartSection from "@/components/product/add-to-cart-section";
 import { notFound } from "next/navigation";
 import TaxonomyList from "@/components/product/taxonomy-list";
+import Container from "@/components/ui/container";
 
 export default async function ProdcutPage({ params }) {
   // Fetch product data based on the slug parameter
@@ -19,7 +20,7 @@ export default async function ProdcutPage({ params }) {
   const isInstock = product.stock_status === "instock";
 
   return (
-    <main className="relative pt-24 lg:pt-36 2xl:pt-44">
+    <Container>
       {/* Background gradient container */}
       <div className="bg-gradient-to-b from-background-light via-white to-white pb-24 pt-10">
         {/* Main content container with responsive padding */}
@@ -64,6 +65,6 @@ export default async function ProdcutPage({ params }) {
           </div>
         </div>
       </div>
-    </main>
+    </Container>
   );
 }
