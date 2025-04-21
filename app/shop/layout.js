@@ -3,6 +3,7 @@ import Banner from "@/components/ui/banner";
 
 import Image from "next/image";
 import banner from "@/public/images/shop/banner.webp";
+import Link from "next/link";
 
 export default async function ShopLayout({ products }) {
   return (
@@ -16,8 +17,21 @@ export default async function ShopLayout({ products }) {
           <div className="col-span-3">
             <div className="relative h-[150px] w-full lg:h-[250px]">
               <Image src={banner} fill alt="banner" />
-              <div className="absolute top-1/2 z-50 text-primary">
-                <h1>Get Up to 15% Off Tea</h1>
+              <div className="absolute left-[55px] top-[55px] z-50 text-primary">
+                <h3 className="mb-4 font-youngSerif text-3xl leading-8">
+                  Get Up to 15% Off Tea
+                </h3>
+                <p className="mb-9 font-medium">
+                  Limited Time Offer on Chai Spiced Oolong
+                </p>
+                <div>
+                  <Link
+                    href="/product/166"
+                    className="inline-block bg-primary px-[25px] py-[10px] font-bold uppercase tracking-[1px] text-white"
+                  >
+                    shop now
+                  </Link>
+                </div>
               </div>
             </div>
 
