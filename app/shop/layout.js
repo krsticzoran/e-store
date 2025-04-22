@@ -15,6 +15,7 @@ export default async function ShopLayout({ products }) {
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
           <div className="col-span-1"></div>
           <div className="col-span-3">
+            {/* ===== Discount Banner ===== */}
             <div className="relative h-[150px] w-full lg:h-[250px]">
               <Image src={banner} fill alt="banner" />
               <div className="absolute left-[55px] top-[55px] z-50 text-primary">

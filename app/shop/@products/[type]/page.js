@@ -11,9 +11,15 @@ export default async function ProductListByType({ params }) {
 
   return (
     <div
-      className={`${!products.message ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" : "text-bold mb-20 mt-10"} `}
+      className={`${!products.message ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" : "text-bold mb-20 mt-10"} mt-10`}
     >
-      <ProductList products={filtered} />
+      {filtered.length === 0 ? (
+        <div className="col-span-3 bg-[#fef5e5] py-5 pl-8">
+          <p>No products were found matching your selection.</p>
+        </div>
+      ) : (
+        <ProductList products={filtered} />
+      )}
     </div>
   );
 }
