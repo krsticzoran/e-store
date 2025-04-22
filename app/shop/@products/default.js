@@ -1,6 +1,6 @@
 import { getProducts } from "@/services/fetch-product-data";
 import ProductList from "@/components/product/product-list";
-import Pagination from "@/components/ui/pagination";
+import Pagination from "@/components/shop/pagination";
 
 export default async function Products({ searchParams }) {
   const products = await getProducts();
