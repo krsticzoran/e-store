@@ -2,14 +2,14 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function Pagination({ totalItems, itemsPerPage }) {
+export default function Pagination({ totalItems, itemsPerPage, sort }) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const page = Number(searchParams.get("page")) || 1;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handleClick = (num) => {
-    router.push(`/shop/?page=${page + num}`, { scroll: false });
+    router.push(`/shop/?page=${page + num}&sort=${sort}`, { scroll: false });
     router.refresh();
   };
 
