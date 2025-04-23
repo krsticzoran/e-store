@@ -8,7 +8,7 @@ export default async function Products({ searchParams }) {
 
   const sortBy = searchParams.sort || "default";
   const page = Number(searchParams.page) || 1;
-  const perPage = 2;
+  const perPage = 3;
 
   const sortedProducts = [...products].sort((a, b) => {
     switch (sortBy) {
