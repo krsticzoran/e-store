@@ -39,11 +39,7 @@ export default async function Products({ searchParams }) {
         className={`${!products.message ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" : "text-bold mb-20 mt-10"} mt-10`}
       >
         <ProductList products={entries} />
-        <Pagination
-          totalItems={products.length}
-          itemsPerPage={perPage}
-          sort={sortBy}
-        />
+        <Pagination totalItems={products.length} itemsPerPage={perPage} />
       </div>
     </>
   );

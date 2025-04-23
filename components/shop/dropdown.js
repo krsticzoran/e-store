@@ -1,9 +1,10 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Dropdown() {
   const router = useRouter();
+  const params = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("default");
 
@@ -11,14 +12,20 @@ export default function Dropdown() {
     { value: "default", label: "Default Sorting" },
     { value: "price-asc", label: "Price: Low to High" },
     { value: "price-desc", label: "Price: High to Low" },
-    { value: "date-newest", label: "Newest Arrivals" },
-    { value: "date-oldest", label: "Oldest Arrivals" },
+    { value: "date-newest", label: "Sort by Latest" },
+    { value: "date-oldest", label: "Sort by Oldest" },
   ];
 
   const handleSelect = (value) => {
+    const newParams = new URLSearchParams(params.toString());
+
+    newParams.set("sort", value);
+    newParams.set("page", "1");
+
     setSelectedValue(value);
     setIsOpen(false);
-    router.push(`/shop/?page=1&sort=${value}`, { scroll: false });
+
+    router.push(`/shop/?${newParams.toString()}`, { scroll: false });
     router.refresh();
   };
 
