@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { sortingOptions as options } from "@/data/shop";
 
 export default function Dropdown() {
   const router = useRouter();
@@ -8,13 +9,7 @@ export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState("default");
 
-  const options = [
-    { value: "default", label: "Default Sorting" },
-    { value: "price-asc", label: "Price: Low to High" },
-    { value: "price-desc", label: "Price: High to Low" },
-    { value: "date-newest", label: "Sort by Latest" },
-    { value: "date-oldest", label: "Sort by Oldest" },
-  ];
+ 
 
   const handleSelect = (value) => {
     const newParams = new URLSearchParams(params.toString());
