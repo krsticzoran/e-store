@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 
-export default function Pagination({ totalItems, itemsPerPage }) {
+export default function Pagination({ totalItems, itemsPerPage, basePath }) {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -15,7 +15,8 @@ export default function Pagination({ totalItems, itemsPerPage }) {
   const handleClick = (num) => {
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("page", num);
-    router.push(`/shop/?${newParams.toString()}`, { scroll: false });
+    console.log(newParams.toString());
+    router.push(`${basePath}?${newParams.toString()}`, { scroll: false });
     router.refresh();
   };
 

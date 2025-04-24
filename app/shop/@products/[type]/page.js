@@ -1,25 +1,22 @@
 import { getProducts } from "@/services/fetch-product-data";
-import ProductList from "@/components/product/product-list";
+import ProductGridPage from "@/components/shop/product-grid-page";
 
-export default async function ProductListByType({ params }) {
+export default async function ProductListByType({ params, searchParams }) {
+  // Fetch all products
   const products = await getProducts();
+
+  // Filter products by matching either category or tag slug
   const filtered = products.filter(
     (product) =>
       product.categories.some((category) => category.slug === params.type) ||
       product.tags.some((tag) => tag.slug === params.type),
   );
-
+  // Render product list by tag or category
   return (
-    <div
-      className={`${!products.message ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" : "text-bold mb-20 mt-10"} mt-10`}
-    >
-      {filtered.length === 0 ? (
-        <div className="col-span-3 bg-[#fef5e5] py-5 pl-8">
-          <p>No products were found matching your selection.</p>
-        </div>
-      ) : (
-        <ProductList products={filtered} />
-      )}
-    </div>
+    <ProductGridPage
+      products={filtered}
+      searchParams={searchParams}
+      basePath={`/shop/${params.type}/`}
+    />
   );
 }

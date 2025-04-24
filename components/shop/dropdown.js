@@ -5,7 +5,7 @@ import { sortingOptions as options } from "@/data/shop";
 import Image from "next/image";
 import arrowDown from "@/public/icons/shop/arrow-down.svg";
 
-export default function Dropdown() {
+export default function Dropdown({ basePath }) {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -25,7 +25,7 @@ export default function Dropdown() {
     setIsOpen(false); // Close the dropdown after selection
 
     // Navigate to the new URL with the updated search params (sort and page)
-    router.push(`/shop/?${newParams.toString()}`, { scroll: false });
+    router.push(`${basePath}?${newParams.toString()}`, { scroll: false });
     router.refresh();
   };
 
