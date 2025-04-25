@@ -32,7 +32,7 @@ export default async function Home() {
             - Rendering product cards when products array exists
             - Displaying error message when products.message exists
           */}
-          <ProductList products={products.slice(0,8)} />
+          <ProductList products={products.slice(0, 8)} />
         </div>
       </div>
     </>
