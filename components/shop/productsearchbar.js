@@ -30,6 +30,7 @@ export default function ProductSearchBar() {
 
   return (
     <div className="border border-[#CCC] py-3" role="search">
+        
       {/* Search icon - decorative only (hidden from screen readers) */}
       <i
         className="fa-solid fa-magnifying-glass mx-2 text-primary text-opacity-75"
