@@ -4,6 +4,7 @@ import Banner from "@/components/ui/banner";
 import Image from "next/image";
 import banner from "@/public/images/shop/banner.webp";
 import Link from "next/link";
+import ProductSearchBar from "@/components/shop/productsearchbar";
 
 export default async function ShopLayout({ products }) {
   return (
@@ -13,7 +14,9 @@ export default async function ShopLayout({ products }) {
       <div className="mx-5 xl:mx-0">
         {/* ===== Main Shop Content ===== */}
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
-          <div className="col-span-1"></div>
+          <div className="col-span-1 mr-7">
+            <ProductSearchBar />
+          </div>
           <div className="col-span-3">
             {/* ===== Discount Banner ===== */}
             <div className="relative h-[150px] w-full lg:h-[250px]">

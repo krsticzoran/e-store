@@ -15,7 +15,7 @@ export default function Pagination({ totalItems, itemsPerPage, basePath }) {
   const handleClick = (num) => {
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("page", num);
-    console.log(newParams.toString());
+
     router.push(`${basePath}?${newParams.toString()}`, { scroll: false });
     router.refresh();
   };
