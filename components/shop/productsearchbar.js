@@ -23,6 +23,7 @@ export default function ProductSearchBar() {
     }, 500), // Debounce delay of 500ms
   );
 
+  
   // Effect to trigger the debounced search when query changes
   useEffect(() => {
     updateSearchParam.current(searchQuery);
