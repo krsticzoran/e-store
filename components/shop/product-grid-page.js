@@ -23,7 +23,7 @@ export default function ProductGridPage({ searchParams, products, basePath }) {
   return (
     <>
       <div className="mt-10 flex items-center justify-between text-primary">
-        <p className="text-sm leading-4">{`Showing ${start + 1}–${Math.min(end, products.length)} of ${products.length} results`}</p>
+        <p className="text-sm leading-4">{`Showing ${products.length === 0 ? 0 : start + 1}–${Math.min(end, products.length)} of ${products.length} results`}</p>
         <Dropdown basePath={basePath} />
       </div>
       {/* Product grid or message if no products found */}
