@@ -15,3 +15,11 @@ export function sortProducts(products, sortBy) {
     }
   });
 }
+
+export const categories = [
+  { title: "green tea", url: "green-tea" },
+  { title: "guayusa", url: "guayusa" },
+  { title: "black tea", url: "black-tea" },
+  { title: "flavored tea", url: "flavored-tea" },
+  { title: "oolong tea", url: "oolong-tea" },
+];

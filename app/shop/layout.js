@@ -5,6 +5,7 @@ import Image from "next/image";
 import banner from "@/public/images/shop/banner.webp";
 import Link from "next/link";
 import ProductSearchBar from "@/components/shop/productsearchbar";
+import { categories } from "@/utils/shop";
 
 export default async function ShopLayout({ products }) {
   return (
@@ -14,11 +15,26 @@ export default async function ShopLayout({ products }) {
       <div className="mx-5 xl:mx-0">
         {/* ===== Main Shop Content ===== */}
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
+           {/* =====Left Layout ===== */}
           <div className="col-span-1 mr-7">
+             {/* Search Bar */}
             <ProductSearchBar />
+             {/* Categories  */}
+            <div className="mb-10 text-primary">
+              <h4 className="mb-4 font-youngSerif text-2xl leading-8">
+                Categories
+              </h4>
+              <ul>
+                {categories.map((product, index) => (
+                  <li key={index} className="mb-2 font-bold capitalize">
+                    <Link href={`/shop/${product.url}`}>{product.title}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="col-span-3">
-            {/* ===== Discount Banner ===== */}
+            {/* ===== Discount Banner - Right Layout ===== */}
             <div className="relative h-[150px] w-full lg:h-[250px]">
               <Image src={banner} fill alt="banner" />
               <div className="absolute left-[55px] top-[55px] z-50 text-primary">
@@ -38,7 +54,7 @@ export default async function ShopLayout({ products }) {
                 </div>
               </div>
             </div>
-
+            {/* ===== Product list ===== */}
             {products}
           </div>
         </div>
