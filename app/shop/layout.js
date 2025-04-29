@@ -15,11 +15,11 @@ export default async function ShopLayout({ products }) {
       <div className="mx-5 xl:mx-0">
         {/* ===== Main Shop Content ===== */}
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
-           {/* =====Left Layout ===== */}
+          {/* =====Left Layout ===== */}
           <div className="col-span-1 mr-7">
-             {/* Search Bar */}
+            {/* Search Bar */}
             <ProductSearchBar />
-             {/* Categories  */}
+            {/* Categories  */}
             <div className="mb-10 text-primary">
               <h4 className="mb-4 font-youngSerif text-2xl leading-8">
                 Categories

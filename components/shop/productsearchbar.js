@@ -8,25 +8,34 @@ export default function ProductSearchBar() {
 
   // State to track the current search query
   const [searchQuery, setSearchQuery] = useState("");
+  const lastKeyRef = useRef(); // Track last pressed key
 
   // Create a debounced version of the search function using useRef
   // This ensures the same debounced function is used across re-renders
   const updateSearchParam = useRef(
     debounce((query) => {
       let trimed = query.trim();
+
+      // Check if backspace was pressed and query is now empty
+      const wasBackspace = lastKeyRef.current === "Backspace" && query === "";
+
       if (trimed) {
         // If query exists, update URL with search parameter
         router.replace(`/shop/?page=1&search=${encodeURIComponent(trimed)}`, {
           scroll: false,
         });
         router.refresh();
-      } else {
-        // If query is empty, return to base shop page
+      } else if (wasBackspace) {
+        // Only clear if backspace resulted in empty query
         router.replace("/shop/", { scroll: false });
         router.refresh();
       }
     }, 500), // Debounce delay of 500ms
   );
+
+  const handleKeyDown = (e) => {
+    lastKeyRef.current = e.key; // Store the last key pressed
+  };
 
   // Effect to trigger the debounced search when query changes
   useEffect(() => {
@@ -52,6 +61,7 @@ export default function ProductSearchBar() {
         value={searchQuery || ""}
         className="placeholder:text-sm focus:outline-none"
         maxLength={20}
+        onKeyDown={handleKeyDown} // Track key presses
       />
     </div>
   );
