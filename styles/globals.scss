@@ -57,4 +57,9 @@ body {
   button {
     font-family: inherit;
   }
+  .noUi-handle::before,
+.noUi-handle::after {
+  display: none !important;
+  content: none !important;
+}
 }

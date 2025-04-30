@@ -6,6 +6,7 @@ import banner from "@/public/images/shop/banner.webp";
 import Link from "next/link";
 import ProductSearchBar from "@/components/shop/productsearchbar";
 import { categories } from "@/utils/shop";
+import PriceFilter from "@/components/shop/price-filter";
 
 export default async function ShopLayout({ products }) {
   return (
@@ -32,6 +33,7 @@ export default async function ShopLayout({ products }) {
                 ))}
               </ul>
             </div>
+            <PriceFilter />
           </div>
           <div className="col-span-3">
             {/* ===== Discount Banner - Right Layout ===== */}
