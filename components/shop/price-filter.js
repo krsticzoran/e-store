@@ -1,16 +1,23 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import noUiSlider from "nouislider";
 import "nouislider/dist/nouislider.css";
 
 export default function PriceFilter() {
-  const sliderRef = useRef(null);
+  const sliderRef = useRef(null); // Reference to the slider DOM element
+  const router = useRouter();
+  const pathName = usePathname();
   const [range, setRange] = useState([10, 21]);
-  const primaryColor = "#2e524a"; // Your primary color
+  const primaryColor = "#2e524a"; // primary color
 
+  // Initialize and configure the slider
   useEffect(() => {
+    // Prevent duplicate initialization
     if (!sliderRef.current || sliderRef.current.noUiSlider) return;
 
+    // Create slider instance with configuration
     noUiSlider.create(sliderRef.current, {
       start: [10, 21],
       connect: true,
@@ -48,21 +55,51 @@ export default function PriceFilter() {
       handle.style.transform = "translateY(-50%)";
     });
 
+    // Update state when slider values change
     sliderRef.current.noUiSlider.on("update", (values) => {
       const [min, max] = values.map(Number);
       setRange([min, max]);
     });
+
+    // Cleanup function to destroy slider on unmount
+    return () => {
+      if (slider.noUiSlider) {
+        slider.noUiSlider.destroy();
+      }
+    };
   }, []);
 
   const handleSearch = () => {
-    console.log("Filter products between $" + range[0] + " and $" + range[1]);
-    //logic here
+    // Create new URLSearchParams from current URL
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // Update price parameters
+    searchParams.set("pricemin", range[0].toString());
+    searchParams.set("pricemax", range[1].toString());
+
+    // Update URL without causing full page reload
+    router.replace(`${pathName}?${searchParams.toString()}`, {
+      scroll: false,
+    });
+
+    // Refresh data while maintaining client-side state
+    router.refresh();
   };
 
   return (
     <div className="mb-10 mr-[18px] text-primary">
       <h4 className="mb-4 font-youngSerif text-2xl leading-8">Price Filter</h4>
-      <div ref={sliderRef} className="my-4 w-full bg-gray-200" />
+      {/* Slider element */}
+      <div
+        ref={sliderRef}
+        role="slider"
+        aria-valuemin={10}
+        aria-valuemax={21}
+        aria-valuenow={range}
+        className="my-4 w-full bg-gray-200"
+      />
+
+      {/* Price display and filter button */}
       <div className="my-2 flex items-center justify-between font-bold text-[#49584C]">
         <p>
           Selected: <span>${range[0]}</span> – <span>${range[1]}</span>
