@@ -5,13 +5,23 @@ export default async function Products({ searchParams }) {
   // get all products
   const products = await getProducts();
   const searchTerm = searchParams?.search?.toLowerCase().trim() || "";
+  const priceMin = searchParams?.pricemin;
+  const priceMax = searchParams?.pricemax;
 
-  // Filter products (if search term exists)
-  const filteredProducts = searchTerm
-    ? products.filter((product) =>
-        product.name.toLowerCase().includes(searchTerm),
-      )
-    : products;
+  // filter products by search term && price
+  const filteredProducts = products
+    // Price filter condition
+    .filter(
+      (product) =>
+        isNaN(priceMin) ||
+        isNaN(priceMax) ||
+        (product.price >= priceMin && product.price <= priceMax),
+    )
+    // Search term filter condition
+    .filter(
+      (product) =>
+        !searchTerm || product.name.toLowerCase().includes(searchTerm),
+    );
 
   // render list of product, dropdown for sorting & pagination
   return (
