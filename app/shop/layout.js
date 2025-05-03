@@ -1,25 +1,30 @@
 import Container from "@/components/ui/container";
 import Banner from "@/components/ui/banner";
-
 import Image from "next/image";
 import banner from "@/public/images/shop/banner.webp";
 import Link from "next/link";
 import ProductSearchBar from "@/components/shop/productsearchbar";
-import { categories } from "@/utils/shop";
+import { categories, tags } from "@/data/shop";
 import PriceFilter from "@/components/shop/price-filter";
+import SocialIcons from "@/components/ui/social-icons";
+import { socialIconsData } from "@/data/socialIconsData";
 
-export default async function ShopLayout({ products }) {
+export default function ShopLayout({ products }) {
   return (
     <Container>
       {/* ===== Hero Banner Section ===== */}
       <Banner title="shop" />
       <div className="mx-5 xl:mx-0">
+
         {/* ===== Main Shop Content ===== */}
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
+
           {/* =====Left Layout ===== */}
           <div className="col-span-1 mr-7">
+
             {/* Search Bar */}
             <ProductSearchBar />
+
             {/* Categories  */}
             <div className="mb-10 text-primary">
               <h4 className="mb-4 font-youngSerif text-2xl leading-8">
@@ -33,7 +38,34 @@ export default async function ShopLayout({ products }) {
                 ))}
               </ul>
             </div>
+
+             {/* Price Rnge Filter  */}
             <PriceFilter />
+            <div className="mb-10 text-primary">
+              <h4 className="mb-4 font-youngSerif text-2xl leading-8">Tags</h4>
+
+               {/* Tags  */}
+              <ul className="flex flex-wrap">
+                {tags.map((product, index) => (
+                  <li
+                    key={index}
+                    className="mb-[10px] mr-[10px]  cursor-pointer border hover:border-primary  px-[10px] py-[5px] font-bold capitalize  hover:text-secondary"
+                  >
+                    <Link href={`/shop/${product.url}`}>{product.title}</Link>
+                  </li>
+                ))}
+              </ul>
+             
+            </div>
+              {/* Social icoms  */}
+            <div className="text-primary mb-10">
+            <h4 className="mb-4 font-youngSerif text-2xl leading-8">Follow Us</h4>
+            <ul className="flex">
+                {socialIconsData.map((el,index)=>(
+               <li key={index} className="mr-4 "><SocialIcons el={el} iconStyle={"opacity-50"} /></li>
+                ))}
+              </ul>
+            </div>
           </div>
           <div className="col-span-3">
             {/* ===== Discount Banner - Right Layout ===== */}
