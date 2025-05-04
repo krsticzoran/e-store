@@ -24,7 +24,7 @@ export default function Pagination({ totalItems, itemsPerPage, basePath }) {
     <>
       {/* Only show pagination if there is more than one page */}
       {totalPages > 1 && (
-        <div className="col-span-3 mt-5 flex justify-center gap-4 text-primary">
+        <div className="mt-10 flex w-full justify-center gap-4 text-primary">
           {/* Previous page button */}
           <button
             className="h-10 w-10 bg-[rgba(46,82,74,0.1)]"

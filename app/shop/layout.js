@@ -15,13 +15,10 @@ export default function ShopLayout({ products }) {
       {/* ===== Hero Banner Section ===== */}
       <Banner title="shop" />
       <div className="mx-5 xl:mx-0">
-
         {/* ===== Main Shop Content ===== */}
         <div className="mx-auto grid grid-cols-4 py-12 lg:py-20 xl:w-[1280px]">
-
           {/* =====Left Layout ===== */}
-          <div className="col-span-1 mr-7">
-
+          <div className="col-span-1 mr-7 hidden lg:block">
             {/* Search Bar */}
             <ProductSearchBar />
 
@@ -39,37 +36,40 @@ export default function ShopLayout({ products }) {
               </ul>
             </div>
 
-             {/* Price Rnge Filter  */}
+            {/* Price Rnge Filter  */}
             <PriceFilter />
             <div className="mb-10 text-primary">
               <h4 className="mb-4 font-youngSerif text-2xl leading-8">Tags</h4>
 
-               {/* Tags  */}
+              {/* Tags  */}
               <ul className="flex flex-wrap">
                 {tags.map((product, index) => (
                   <li
                     key={index}
-                    className="mb-[10px] mr-[10px]  cursor-pointer border hover:border-primary  px-[10px] py-[5px] font-bold capitalize  hover:text-secondary"
+                    className="mb-[10px] mr-[10px] cursor-pointer border px-[10px] py-[5px] font-bold capitalize hover:border-primary hover:text-secondary"
                   >
                     <Link href={`/shop/${product.url}`}>{product.title}</Link>
                   </li>
                 ))}
               </ul>
-             
             </div>
-              {/* Social icoms  */}
-            <div className="text-primary mb-10">
-            <h4 className="mb-4 font-youngSerif text-2xl leading-8">Follow Us</h4>
-            <ul className="flex">
-                {socialIconsData.map((el,index)=>(
-               <li key={index} className="mr-4 "><SocialIcons el={el} iconStyle={"opacity-50"} /></li>
+            {/* Social icoms  */}
+            <div className="mb-10 text-primary">
+              <h4 className="mb-4 font-youngSerif text-2xl leading-8">
+                Follow Us
+              </h4>
+              <ul className="flex">
+                {socialIconsData.map((el, index) => (
+                  <li key={index} className="mr-4">
+                    <SocialIcons el={el} iconStyle={"opacity-50"} />
+                  </li>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="col-span-3">
+          <div className="col-span-4 lg:col-span-3">
             {/* ===== Discount Banner - Right Layout ===== */}
-            <div className="relative h-[150px] w-full lg:h-[250px]">
+            <div className="relative hidden h-[250px] w-full sm:block">
               <Image src={banner} fill alt="banner" />
               <div className="absolute left-[55px] top-[55px] z-50 text-primary">
                 <h3 className="mb-4 font-youngSerif text-3xl leading-8">

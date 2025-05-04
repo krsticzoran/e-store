@@ -28,17 +28,20 @@ export default function ProductGridPage({ searchParams, products, basePath }) {
       </div>
       {/* Product grid or message if no products found */}
       <div
-        className={`${!products.message ? "grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3" : "text-bold mb-20 mt-10"} mt-10`}
+        className={`${!products.message ? "w-full" : "text-bold mb-20 mt-10"} mt-10`}
       >
         {products.length === 0 ? (
           // Display message if no products match the filter
-          <div className="col-span-3 bg-[#fef5e5] py-5 pl-8">
+          <div className="w-full bg-[#fef5e5] py-5 pl-8">
             <p>No products were found matching your selection.</p>
           </div>
         ) : (
           <>
             {/* Display paginated product list */}
-            <ProductList products={entries} />
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              <ProductList products={entries} />
+            </div>
+
             {/* Pagination component */}
             <Pagination
               totalItems={products.length}

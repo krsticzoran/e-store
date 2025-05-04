@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Banner({ title }) {
   return (
-    <div className="relative h-[150px] w-full lg:h-[250px]">
+    <div className="relative h-[200px] w-full lg:h-[250px]">
       {/* Background Image */}
       <Image src={background} alt="background" fill priority />
       {/* Page Title */}
