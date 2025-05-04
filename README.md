@@ -1,19 +1,37 @@
-## Tech Stack
+# 🫖 Tea Shop E-commerce Website
 
-- **Frontend:**
+An e-commerce tea shop built with **Next.js**, **Tailwind CSS**, and a **headless WordPress** backend.
 
-  - Next.js
-  - Tailwind CSS
-    -Sass
+---
 
-- **Backend:**
-  - WordPress (Headless CMS)
+## 🛠 Tech Stack
 
-## Current Status
+### Frontend
+- Next.js  
+- Tailwind CSS  
 
-Here is a screenshot of the homepage:
+### Backend
+- WordPress (Headless CMS)
 
-![Homepage Screenshot](./public/images/screenshot-home.png)
+---
 
+## ✅ Current Status
 
-The project is in the beginning phase of development. Features and functionalities are being implemented gradually, focusing on delivering a user-friendly and responsive design.
+The following pages are **completed**:
+- Homepage
+- Shop page
+- Product details page
+- Cart page
+
+The following pages are **in development**:
+- About page
+- Contact page
+- Account page
+- Checkout page
+
+---
+
+## 🌐 Live Demo
+
+[Visit the live site](https://e-store.zkrstic.com/)
+
