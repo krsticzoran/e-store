@@ -12,7 +12,7 @@ import { getNavLinksClass } from "@/utils/utils";
 
 export default function Header() {
   const pathname = usePathname();
-  const showLogo = pathname === "/";
+  const showLogo = pathname === "/" || pathname === "/about";
 
   return (
     <nav

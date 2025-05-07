@@ -19,5 +19,5 @@ export function debounce(func, delay) {
 
 // style for navigation on white background
 export function getNavLinksClass(page) {
-  return page === "/" ? "text-white" : "text-primary";
+  return page === "/" || page === "/about" ? "text-white" : "text-primary";
 }
