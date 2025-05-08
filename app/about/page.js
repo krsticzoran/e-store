@@ -5,15 +5,17 @@ export default function About() {
   return (
     <>
       {/*------Hero Section------*/}
-      <div className="relative flex h-[92vh] w-full justify-center">
-        {/* Background image */}
-        <Image
-          priority
-          src={banner}
-          fill
-          className="-z-10 object-cover object-center"
-          alt="background"
-        />
+      <div className="relative flex h-[92vh] w-full justify-center overflow-hidden">
+        {/* Background image with parallax effect*/}
+        <div className="fixed inset-0 -z-20">
+          <Image
+            priority
+            src={banner}
+            fill
+            className="object-cover object-center"
+            alt="background"
+          />
+        </div>
 
         {/* Dark overlay */}
         <div className="absolute inset-0 -z-10 bg-black/30"></div>
