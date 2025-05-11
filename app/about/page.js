@@ -64,7 +64,7 @@ export default function About() {
                 <div
                   className={`order-2 w-[90%] md:w-[45%] ${i % 2 === 0 ? "md:order-1" : ""}`}
                 >
-                  <p className="mb-4 text-5xl font-bold leading-[50px]">
+                  <p className="mb-4 text-3xl font-bold leading-8 md:text-4xl md:leading-[50px]">
                     {item.year}
                   </p>
                   <p>{item.text}</p>
