@@ -22,9 +22,9 @@ The following pages are **completed**:
 - Shop page
 - Product details page
 - Cart page
+- About page
 
 The following pages are **in development**:
-- About page
 - Contact page
 - Account page
 - Checkout page
