@@ -7,21 +7,30 @@ export default function useFormHandler(action) {
   // Local state for displaying form messages/errors
   const [message, setMessage] = useState();
 
+  // Tracks whether form was successfully submitted
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
   // Ref to access the form DOM element
   const ref = useRef(null);
 
   useEffect(() => {
-    // If submission was successful, reset the form
     if (state.success) {
-      ref.current?.reset(); // Safe optional chaining
+      // Reset form fields when submission succeeds
+      ref.current?.reset();
+      // Set submission flag for UI feedback
+      setIsSubmitted(true);
+    } else {
+      // Ensure submission flag is reset on errors
+      setIsSubmitted(false);
     }
-    // Update message from form submission response
+    // Update displayed message (success or error)
     setMessage(state.message);
   }, [state]);
 
   // Clears message when user focuses on an input
   const handleInputFocus = () => {
     setMessage("");
+    setIsSubmitted(false);
   };
-  return { ref, message, handleInputFocus, formAction };
+  return { ref, message, handleInputFocus, formAction, isSubmitted };
 }
