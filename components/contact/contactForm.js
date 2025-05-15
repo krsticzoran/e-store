@@ -17,7 +17,7 @@ export default function ContactForm() {
     setChecked(!checked);
   };
 
-  // Set checkbox state to false if form is submitted
+  // Set checkbox state to false if form is submit
   useEffect(() => {
     if (isSubmitted) {
       setChecked(false);

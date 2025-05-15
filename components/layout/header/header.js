@@ -9,6 +9,7 @@ import DesktopNavigation from "./desktop-navigation";
 import InfoOrMenuModal from "./info-or-menu-modal";
 import { usePathname } from "next/navigation";
 import { getNavLinksClass } from "@/utils/utils";
+import Account from "./account";
 
 export default function Header() {
   const pathname = usePathname();
@@ -40,12 +41,7 @@ export default function Header() {
           {/* Action Icons */}
           <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl 2xl:text-2xl">
             <li>
-              <Link href="/account" aria-label="Go to My Account">
-                <i
-                  className={`${getNavLinksClass(pathname)} fa fa-user`}
-                  aria-hidden="true"
-                ></i>
-              </Link>
+              <Account />
             </li>
             <li>
               <Link href="/cart" aria-label="View Cart">

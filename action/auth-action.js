@@ -30,6 +30,7 @@ export async function login(prevState, formData) {
         success: true,
         token: data.token,
         user: data.user_email,
+        message: `welcome ${data.user_nicename}`,
       };
     } else {
       // Login failed
@@ -49,6 +50,12 @@ export async function login(prevState, formData) {
 }
 
 export async function signUp(prevState, formData) {
+  const adminUser = process.env.WP_ADMIN_USERNAME;
+  const adminPassword = process.env.WP_APP_PASSWORD;
+  const basicAuth = Buffer.from(`${adminUser}:${adminPassword}`).toString(
+    "base64",
+  );
+
   const name = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
@@ -59,7 +66,7 @@ export async function signUp(prevState, formData) {
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${jwtToken}`,
+          Authorization: `Basic ${basicAuth}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -74,14 +81,13 @@ export async function signUp(prevState, formData) {
     const data = await response.json();
 
     if (response.ok) {
-      // Registration successful
       console.log("Registration successful:", data);
       return {
         success: true,
-        user: data, // User data returned after registration
+        user: data,
+        message: `welcome ${data.name || data.user_nicename || name}`,
       };
     } else {
-      // Registration failed
       console.error("Registration failed:", data);
       return {
         success: false,
