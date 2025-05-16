@@ -1,7 +1,5 @@
 "use server";
 
-const jwtToken = process.env.JWT_TOKEN;
-
 export async function login(prevState, formData) {
   const password = formData.get("password");
   const email = formData.get("email");

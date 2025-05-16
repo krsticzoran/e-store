@@ -74,103 +74,111 @@ export default function Account() {
 
         {/* Modal Content */}
         <div
-          className="relative z-50 w-full max-w-sm rounded-xl bg-white p-8 shadow-xl"
+          className="relative z-50 w-full max-w-[480px] bg-white px-7 py-9 shadow-xl"
           role="dialog"
           aria-modal="true"
         >
-          {/* Login Modal */}
-          {mode === "login" && (
-            <>
-              <form action={formAction}>
-                <input
-                  className="mb-4 w-full rounded border border-gray-300 px-4 py-2"
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  required
-                  aria-label="Email"
-                />
-                <input
-                  className="mb-6 w-full rounded border border-gray-300 px-4 py-2"
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  required
-                  aria-label="Password"
-                />
-                <button
-                  type="submit"
-                  className="w-full rounded bg-black py-2 text-white transition hover:bg-gray-800"
-                  aria-label="Login"
-                >
-                  Login
-                </button>
-              </form>
-              <p
-                onClick={() => switchMode("signup")}
-                className="mt-4 cursor-pointer text-sm text-blue-600 hover:underline"
-                aria-label="Switch to signup form"
-              >
-                Don&apos;t have an account? Sign up
-              </p>
-            </>
-          )}
+          {/* Login & Signup Modal */}
+          <>
+            <form action={formAction} className="text-primary">
+              <div className="relative mb-10 flex w-full justify-center">
+                <h4 className="font-youngSerif text-2xl leading-8">
+                  {mode === "login" ? "Login" : "Register"}
+                </h4>
+                {/* close button */}
+                <div className="absolute right-0">
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    aria-label="Close modal"
+                  >
+                    <i
+                      className="fa-solid fa-xmark text-xl text-primary opacity-75"
+                      aria-hidden="true"
+                    ></i>
+                  </button>
+                </div>
+              </div>
 
-          {/* Sign Up Modal */}
-          {mode === "signup" && (
-            <>
-              <form action={formAction}>
-                <input
-                  className="mb-4 w-full rounded border border-gray-300 px-4 py-2"
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  required
-                  aria-label="Email"
-                />
+              {/* Email */}
+              <input
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                type="email"
+                placeholder="Email"
+                name="email"
+                required
+                aria-label="Email"
+              />
+
+              {/* Username only for signup */}
+              {mode === "signup" && (
                 <input
                   type="text"
-                  placeholder="username"
+                  placeholder="Username"
                   name="username"
-                  className="mb-6 w-full rounded border border-gray-300 px-4 py-2"
+                  className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                   required
                   aria-label="Username"
                 />
+              )}
+
+              {/* Password */}
+              <input
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                type="password"
+                placeholder="Password"
+                name="password"
+                required
+                aria-label="Password"
+              />
+
+              {/* Confirm password only for signup */}
+              {mode === "signup" && (
                 <input
-                  className="mb-6 w-full rounded border border-gray-300 px-4 py-2"
+                  className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                   type="password"
-                  placeholder="Password"
-                  name="password"
-                  required
-                  aria-label="Password"
-                />
-                <input
-                  className="mb-6 w-full rounded border border-gray-300 px-4 py-2"
-                  type="password"
-                  placeholder="confirm password"
+                  placeholder="Confirm password"
                   name="confirm"
                   required
                 />
-                <button
-                  type="submit"
-                  className="w-full rounded bg-black py-2 text-white transition hover:bg-gray-800"
-                  aria-label="Sign up"
-                >
-                  Sign up
-                </button>
-              </form>
-              <p
-                onClick={() => switchMode("login")}
-                className="mt-4 cursor-pointer text-sm text-blue-600 hover:underline"
-                aria-label="Switch to login form"
+              )}
+
+              {/* Submit button - login & signup */}
+              <button
+                type="submit"
+                className="mt-6 w-full bg-primary py-4 text-sm font-bold uppercase tracking-[1px] text-white duration-500 hover:bg-secondary"
+                aria-label={mode === "login" ? "Login" : "Sign up"}
               >
-                Already have an account? Login
-              </p>
-            </>
-          )}
+                {mode === "login" ? "Login" : "Sign up"}
+              </button>
+            </form>
+
+            {/* Switch to login & signup form */}
+            <p
+              onClick={
+                mode === "login"
+                  ? () => switchMode("signup")
+                  : () => switchMode("login")
+              }
+              className="mb-7 mt-[18px] cursor-pointer text-sm"
+              aria-label={`Switch to ${mode === "login" ? "signup" : "login"} form`}
+            >
+              {mode === "login" ? (
+                <>
+                  Don&apos;t have an account?{" "}
+                  <span className="font-bold">Sign up</span>
+                </>
+              ) : (
+                <>
+                  Already have an account?{" "}
+                  <span className="font-bold">Login</span>
+                </>
+              )}
+            </p>
+          </>
+
           {/* Display server response message */}
           {state && state.message && (
-            <p className="mt-4 text-sm text-red-600" role="alert">
+            <p className="mt-4 text-sm text-secondary" role="alert">
               {state.message}
             </p>
           )}
