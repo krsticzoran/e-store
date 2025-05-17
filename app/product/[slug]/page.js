@@ -53,7 +53,7 @@ export default async function ProdcutPage({ params }) {
                 <p>{stripHtmlTags(product.description)}</p>
               </div>
 
-              {/* If product is in stock add to cart */}
+              {/* If the product is in stock add it to cart */}
               {isInstock && <AddToCartSection product={product} />}
 
               {/* Taxonomy information (categories and tags) */}
