@@ -58,10 +58,22 @@ export default function Account() {
   // Close modal on Escape key press
   useEscapeKey(() => setIsOpen(false));
 
-  // Reset form if submission was successful
+  // Effect to handle successful form submission
   useEffect(() => {
-    if (state.success) ref.current?.reset();
-  }, [state]);
+    if (state.success) {
+      // When form submission succeeds, reset the form fields
+      ref.current?.reset();
+
+      // Set a timeout to delay navigation by 1 second
+      const timeoutId = setTimeout(() => {
+        router.replace("/account");
+        setTimeout(() => setIsOpen(false), 100);
+      }, 1000);
+
+      // Clear the timeout if the component unmounts or dependencies change
+      return () => clearTimeout(timeoutId);
+    }
+  }, [state, router]);
 
   // Sync message from server state to local message
   useEffect(() => {
