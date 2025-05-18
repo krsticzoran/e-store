@@ -64,11 +64,11 @@ export default function Account() {
       // When form submission succeeds, reset the form fields
       ref.current?.reset();
 
-      // Set a timeout to delay navigation by 1 second
+      // Set a timeout to delay navigation by 1.5 second
       const timeoutId = setTimeout(() => {
         router.replace("/account");
         setTimeout(() => setIsOpen(false), 100);
-      }, 1000);
+      }, 1500);
 
       // Clear the timeout if the component unmounts or dependencies change
       return () => clearTimeout(timeoutId);
