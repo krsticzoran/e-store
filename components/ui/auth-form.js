@@ -1,5 +1,6 @@
 "use client";
 import { forwardRef } from "react";
+import FormButton from "./form-button";
 
 const AuthForm = forwardRef(function AuthForm(
   { mode, formAction, localMessage, handleInputChange, onClose, switchMode },
@@ -72,13 +73,9 @@ const AuthForm = forwardRef(function AuthForm(
         )}
 
         {/* Submit button - login & signup */}
-        <button
-          type="submit"
-          className="mt-6 w-full bg-primary py-4 text-sm font-bold uppercase tracking-[1px] text-white duration-500 hover:bg-secondary"
-          aria-label={mode === "login" ? "Login" : "Sign up"}
-        >
+        <FormButton className="mt-6 w-full bg-primary py-4 text-sm font-bold uppercase tracking-[1px] text-white duration-500 hover:bg-secondary">
           {mode === "login" ? "Login" : "Sign up"}
-        </button>
+        </FormButton>
       </form>
 
       {/* Switch to login & signup form */}
