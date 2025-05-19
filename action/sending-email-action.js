@@ -2,6 +2,7 @@
 
 const formId = process.env.FORM_ID;
 const url = process.env.WP_CONTACT_API_BASE_URL;
+import { mailSchema } from "@/schemas/mail";
 
 export async function sendingEmail(type, prevState, formData) {
   const collectedData =
@@ -16,6 +17,20 @@ export async function sendingEmail(type, prevState, formData) {
           subject: "subscription", // Hardcoded for subscription
           message: "subscription", // Hardcoded for subscription
         };
+
+  // Validate input using emailSchema
+  const result = mailSchema.safeParse({
+    type,
+    ...collectedData,
+  });
+
+  // If validation fails, return first error message
+  if (!result.success) {
+    return {
+      success: false,
+      message: result.error.issues[0].message,
+    };
+  }
 
   // Creating a new FormData object to send data in a format WordPress expects
   const data = new FormData();
