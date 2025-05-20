@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const loginSchema = z.object({
+// Schema for login form validation
+const loginSchema = z.object({
   email: z
     .string({ required_error: "Email is required" })
     .email("Please enter a valid email address"),
@@ -9,7 +10,8 @@ export const loginSchema = z.object({
     .min(6, "Password must be at least 6 characters long"),
 });
 
-export const signUpSchema = loginSchema
+// Schema for signup form, extends loginSchema and adds additional fields
+const signUpSchema = loginSchema
   .extend({
     name: z
       .string({ required_error: "Name is required" })
@@ -22,7 +24,28 @@ export const signUpSchema = loginSchema
       .regex(/[0-9]/, "Password must contain at least one number"),
     confirm: z.string({ required_error: "Please confirm your password" }),
   })
+  // Custom validation: confirm password must match password
   .refine((data) => data.password === data.confirm, {
     path: ["confirm"],
     message: "Passwords do not match",
   });
+
+export default function validationForm(mode, data) {
+  // Choose schema based on mode and validate input data
+  const result =
+    mode === "login"
+      ? loginSchema.safeParse(data)
+      : signUpSchema.safeParse(data);
+
+  // If validation fails, return the first error message
+  if (!result.success) {
+    const firstIssue = result.error.issues[0];
+    return {
+      success: false,
+      message: firstIssue.message,
+    };
+  }
+
+  // Validation passed
+  return null;
+}

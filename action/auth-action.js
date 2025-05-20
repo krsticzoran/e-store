@@ -1,9 +1,7 @@
 "use server";
 
 import { setTokenCookie } from "@/utils/auth/set-token-cookie";
-
-// Import validation schemas
-import { loginSchema, signUpSchema } from "@/schemas/auth";
+import validationForm from "@/schemas/auth";
 
 // Login function
 export async function login(prevState, formData) {
@@ -12,16 +10,9 @@ export async function login(prevState, formData) {
   const password = formData.get("password");
 
   // Validate input using loginSchema
-  const result = loginSchema.safeParse({ email, password });
-
+  const error = validationForm("login", { email, password });
   // If validation fails, return first error message
-  if (!result.success) {
-    const firstIssue = result.error.issues[0];
-    return {
-      success: false,
-      message: firstIssue.message,
-    };
-  }
+  if (error) return error;
 
   try {
     // Send login request to WordPress JWT endpoint
@@ -48,8 +39,6 @@ export async function login(prevState, formData) {
 
       return {
         success: true,
-        token: data.token,
-        user: data.user_email,
         message: `welcome ${data.user_nicename}`,
       };
     } else {
@@ -84,16 +73,9 @@ export async function signUp(prevState, formData) {
   const confirm = formData.get("confirm");
 
   // Validate input using signUpSchema
-  const result = signUpSchema.safeParse({ email, password, name, confirm });
-
+  const error = validationForm("signup", { email, password, name, confirm });
   // If validation fails, return first error message
-  if (!result.success) {
-    const firstIssue = result.error.issues[0];
-    return {
-      success: false,
-      message: firstIssue.message,
-    };
-  }
+  if (error) return error;
 
   try {
     // Send signup request to WordPress REST API
@@ -118,9 +100,22 @@ export async function signUp(prevState, formData) {
 
     if (response.ok) {
       // Registration successful
+
+      const loginResponse = await fetch(
+        `https://estore.zkrstic.com/wp-json/jwt-auth/v1/token`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username: email, password }),
+        },
+      );
+
+      const loginData = await loginResponse.json();
+
+      await setTokenCookie(loginData.token);
+
       return {
         success: true,
-        user: data,
         message: `welcome ${data.name || data.user_nicename || name}`,
       };
     } else {
