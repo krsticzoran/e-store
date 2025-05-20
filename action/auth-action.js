@@ -3,17 +3,7 @@
 import { setTokenCookie } from "@/utils/auth/set-token-cookie";
 import validationForm from "@/schemas/auth";
 
-// Login function
-export async function login(prevState, formData) {
-  // Extract form fields
-  const email = formData.get("email");
-  const password = formData.get("password");
-
-  // Validate input using loginSchema
-  const error = validationForm("login", { email, password });
-  // If validation fails, return first error message
-  if (error) return error;
-
+async function loginHelper(email, password) {
   try {
     // Send login request to WordPress JWT endpoint
     const response = await fetch(
@@ -36,10 +26,9 @@ export async function login(prevState, formData) {
       // Login successful
 
       await setTokenCookie(data.token);
-
       return {
         success: true,
-        message: `welcome ${data.user_nicename}`,
+        message: `welcome ${data.name || data.user_nicename}`,
       };
     } else {
       // Login failed on server
@@ -55,6 +44,20 @@ export async function login(prevState, formData) {
       message: "An error occurred during login",
     };
   }
+}
+
+// Login function
+export async function login(prevState, formData) {
+  // Extract form fields
+  const email = formData.get("email");
+  const password = formData.get("password");
+
+  // Validate input using loginSchema
+  const error = validationForm("login", { email, password });
+  // If validation fails, return first error message
+  if (error) return error;
+
+  return await loginHelper(email, password);
 }
 
 // Signup function
@@ -100,23 +103,12 @@ export async function signUp(prevState, formData) {
 
     if (response.ok) {
       // Registration successful
-
-      const loginResponse = await fetch(
-        `https://estore.zkrstic.com/wp-json/jwt-auth/v1/token`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username: email, password }),
-        },
-      );
-
-      const loginData = await loginResponse.json();
-
-      await setTokenCookie(loginData.token);
+      // auto login user
+      await loginHelper(email, password);
 
       return {
         success: true,
-        message: `welcome ${data.name || data.user_nicename || name}`,
+        message: `welcome ${data.name || data.user_nicename}`,
       };
     } else {
       // Registration failed on server
