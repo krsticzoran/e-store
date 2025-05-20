@@ -10,5 +10,6 @@ export async function setTokenCookie(token) {
     path: "/",
     maxAge: 60 * 60 * 24 * 7, // 7 days
     sameSite: "lax",
+    domain: process.env.NODE_ENV === "production" ? ".zkrstic.com" : undefined,
   });
 }
