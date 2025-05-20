@@ -1,13 +1,15 @@
 "use server";
 
+import { setTokenCookie } from "@/utils/auth/set-token-cookie";
+
 // Import validation schemas
 import { loginSchema, signUpSchema } from "@/schemas/auth";
 
 // Login function
 export async function login(prevState, formData) {
   // Extract form fields
-  const password = formData.get("password");
   const email = formData.get("email");
+  const password = formData.get("password");
 
   // Validate input using loginSchema
   const result = loginSchema.safeParse({ email, password });
@@ -41,7 +43,9 @@ export async function login(prevState, formData) {
 
     if (response.ok) {
       // Login successful
-      console.log("Login successful:", data);
+
+      await setTokenCookie(data.token);
+
       return {
         success: true,
         token: data.token,
@@ -50,7 +54,6 @@ export async function login(prevState, formData) {
       };
     } else {
       // Login failed on server
-      console.error("Login failed:", data);
       return {
         success: false,
         message: data.message || "Invalid email or password",
@@ -58,7 +61,6 @@ export async function login(prevState, formData) {
     }
   } catch (error) {
     // Catch unexpected errors
-    console.error("Error logging in:", error);
     return {
       success: false,
       message: "An error occurred during login",
@@ -79,9 +81,10 @@ export async function signUp(prevState, formData) {
   const name = formData.get("username");
   const email = formData.get("email");
   const password = formData.get("password");
+  const confirm = formData.get("confirm");
 
   // Validate input using signUpSchema
-  const result = signUpSchema.safeParse({ email, password, name });
+  const result = signUpSchema.safeParse({ email, password, name, confirm });
 
   // If validation fails, return first error message
   if (!result.success) {
@@ -115,7 +118,6 @@ export async function signUp(prevState, formData) {
 
     if (response.ok) {
       // Registration successful
-      console.log("Registration successful:", data);
       return {
         success: true,
         user: data,
@@ -123,7 +125,6 @@ export async function signUp(prevState, formData) {
       };
     } else {
       // Registration failed on server
-      console.error("Registration failed:", data);
       return {
         success: false,
         message: data.message || "Error occurred during registration",
@@ -131,7 +132,6 @@ export async function signUp(prevState, formData) {
     }
   } catch (error) {
     // Catch unexpected errors
-    console.error("Error registering user:", error);
     return {
       success: false,
       message: "An error occurred during registration",
