@@ -48,9 +48,9 @@ async function loginHelper(email, password) {
 
 // Login function
 export async function login(prevState, formData) {
+  
   // Extract form fields
-  const email = formData.get("email");
-  const password = formData.get("password");
+  const {email, password} = Object.fromEntries(formData);
 
   // Validate input using loginSchema
   const error = validationForm("login", { email, password });
@@ -70,10 +70,8 @@ export async function signUp(prevState, formData) {
   );
 
   // Extract form fields
-  const name = formData.get("username");
-  const email = formData.get("email");
-  const password = formData.get("password");
-  const confirm = formData.get("confirm");
+  
+  const {email, password, username:name, confirm} = Object.fromEntries(formData);
 
   // Validate input using signUpSchema
   const error = validationForm("signup", { email, password, name, confirm });
