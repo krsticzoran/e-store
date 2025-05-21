@@ -10,6 +10,7 @@ export async function isTokenValid(token) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
+        cache: 'no-store'
       },
     );
     // If the response is OK (status 200), the token is valid
