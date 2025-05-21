@@ -43,10 +43,25 @@ export default function Account() {
     router.replace(newUrl, { scroll: false });
   }, [isOpen, mode, pathname, router, searchParams]);
 
-  // Toggle modal open/close
-  const toggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // Function triggered when the user clicks the login/signup button
+  async function handleAuthFlow() {
+    try {
+      // Send request to backend to validate the token
+      const res = await fetch("/api/auth/validate");
+      const { isValid } = await res.json();
+
+      if (isValid) {
+        // If the token is valid, redirect the user to the /account page
+        router.replace("/account");
+      } else {
+        // If the token is invalid or missing, open the login/signup modal
+        setIsOpen(true);
+      }
+    } catch (err) {
+      // If an error occurs (e.g. network issue), also open the login/signup modal
+      setIsOpen(true);
+    }
+  }
 
   // Close modal on backdrop click
   const handleBackdropClick = (e) => {
@@ -67,9 +82,7 @@ export default function Account() {
       // Set a timeout to delay navigation by 1,5 second
       const timeoutId = setTimeout(() => {
         router.replace("/account");
-        setTimeout(() => setIsOpen(false), 100);
       }, 1500);
-
       // Clear the timeout if the component unmounts or dependencies change
       return () => clearTimeout(timeoutId);
     }
@@ -96,7 +109,7 @@ export default function Account() {
 
   return (
     <>
-      <button aria-label="Open account modal" onClick={toggleModal}>
+      <button aria-label="Open account modal" onClick={handleAuthFlow}>
         <i
           className={`${getNavLinksClass(pathname)} fa fa-user`}
           aria-hidden="true"
