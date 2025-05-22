@@ -23,9 +23,10 @@ The following pages are **completed**:
 - Product details page
 - Cart page
 - About page
+- Contact page
 
 The following pages are **in development**:
-- Contact page
+
 - Account page
 - Checkout page
 
