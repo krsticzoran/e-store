@@ -10,6 +10,7 @@ import InfoOrMenuModal from "./info-or-menu-modal";
 import { usePathname } from "next/navigation";
 import { getNavLinksClass } from "@/utils/utils";
 import Account from "./account";
+import { Suspense } from "react";
 
 export default function Header() {
   const pathname = usePathname();
@@ -41,7 +42,9 @@ export default function Header() {
           {/* Action Icons */}
           <ul className="mr-8 flex items-center justify-between gap-5 text-lg text-white text-opacity-90 lg:gap-7 xl:mr-36 xl:text-xl 2xl:text-2xl">
             <li>
-              <Account />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Account />
+              </Suspense>
             </li>
             <li>
               <Link href="/cart" aria-label="View Cart">

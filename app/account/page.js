@@ -1,4 +1,3 @@
-// app/account/page.tsx
 "use server";
 
 import { cookies } from "next/headers";
@@ -30,7 +29,6 @@ export default async function Account() {
     }
 
     const user = await res.json();
-    console.log(user._links[0]);
 
     return (
       <div className="flex min-h-screen items-center justify-center">
