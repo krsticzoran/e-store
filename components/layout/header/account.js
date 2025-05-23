@@ -39,6 +39,10 @@ export default function Account() {
       params.delete("mode");
     }
 
+    // Automatically close modal if user is already navigated to /account
+    // This ensures the modal doesn't stay open after successful login/signup
+    if (pathname.startsWith("/account")) setIsOpen(false);
+
     const newUrl = `${pathname}?${params.toString()}`;
     router.replace(newUrl, { scroll: false });
   }, [isOpen, mode, pathname, router, searchParams]);
