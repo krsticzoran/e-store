@@ -1,14 +1,10 @@
 import getUser from "@/services/get-user";
+import { redirect } from "next/navigation";
 
 export default async function Account() {
   const user = await getUser();
 
   if (!user.success) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-xl text-red-500">Error fetching user data.</p>
-      </div>
-    );
   }
 
   console.log(user);
