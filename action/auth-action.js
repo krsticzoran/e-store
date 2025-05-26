@@ -34,7 +34,7 @@ async function loginHelper(email, password) {
       // Login failed on server
       return {
         success: false,
-        message: data.message || "Invalid email or password",
+        message: "Invalid email or password",
       };
     }
   } catch (error) {

@@ -5,6 +5,7 @@ export default async function Account() {
   const user = await getUser();
 
   if (!user.success) {
+    redirect("/?mode=login");
   }
 
   console.log(user);
