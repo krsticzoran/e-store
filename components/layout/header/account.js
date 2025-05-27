@@ -6,7 +6,7 @@ import useEscapeKey from "@/hooks/useEscapeKey";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useFormState } from "react-dom";
 import { auth } from "@/action/auth-action";
-import AuthForm from "../../ui/auth-form";
+import AuthForm from "./auth-form";
 
 export default function Account() {
   const [isOpen, setIsOpen] = useState(false); // Modal open/close state

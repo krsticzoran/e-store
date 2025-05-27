@@ -4,7 +4,7 @@ import SocialIcons from "@/components/ui/social-icons";
 import logo from "@/public/icons/logo.svg";
 import Subscription from "./ subscription";
 
-import FooterLinks from "./footerLinks";
+import FooterLinks from "./footer-links";
 
 import { discoverData, companyData } from "@/data/footerData";
 import { socialIconsData } from "@/data/socialIconsData";

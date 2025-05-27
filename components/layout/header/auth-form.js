@@ -1,6 +1,6 @@
 "use client";
 import { forwardRef } from "react";
-import FormButton from "./form-button";
+import FormButton from "@/components/ui/form-button";
 
 const AuthForm = forwardRef(function AuthForm(
   { mode, formAction, localMessage, handleInputChange, onClose, switchMode },

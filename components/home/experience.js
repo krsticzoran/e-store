@@ -2,7 +2,7 @@ import CardSlider from "@/components/home/card-slider";
 
 import Link from "next/link";
 import { items, experienceArr, experienceArrTwo } from "@/data/homeData";
-import ExperienceCard from "@/components/home/experienceCard";
+import ExperienceCard from "@/components/home/experience-card";
 import AnimatedDecorations from "./animated-decorations";
 
 export default function Experience() {

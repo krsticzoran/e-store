@@ -3,7 +3,7 @@ import Banner from "@/components/ui/banner";
 import Image from "next/image";
 import banner from "@/public/images/shop/banner.webp";
 import Link from "next/link";
-import ProductSearchBar from "@/components/shop/productsearchbar";
+import ProductSearchBar from "@/components/shop/product-searchbar";
 import { categories, tags } from "@/data/shop";
 import PriceFilter from "@/components/shop/price-filter";
 import SocialIcons from "@/components/ui/social-icons";

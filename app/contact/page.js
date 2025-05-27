@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Container from "@/components/ui/container";
 import overLay from "@/public/images/contact/bg-header-overlay-lg-light.webp";
-import ContactForm from "@/components/contact/contactForm";
+import ContactForm from "@/components/contact/contact-form";
 
 export default function Contact() {
   return (
