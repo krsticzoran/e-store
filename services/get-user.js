@@ -29,7 +29,7 @@ export default async function getUser() {
 
     // Step 2: Fetch WooCommerce customer details using user ID
     const customerRes = await fetch(
-      `https://estore.zkrstic.com/wp-json/wc/v3/customers/${wpUser.id}`,
+      `https://estore.zkrstic.com/wp-json/wc/v3/customers/${wpUser.id}?_=${Date.now()}`,
       {
         headers: {
           Authorization: `Basic ${auth}`,
@@ -48,6 +48,7 @@ export default async function getUser() {
     return {
       success: true,
       data: customer,
+      id: wpUser.id,
     };
   } catch (error) {
     // Return error data

@@ -1,42 +1,50 @@
 "use server";
 import getToken from "@/utils/auth/get-token";
-import { redirect } from "next/dist/server/api-utils";
+import { redirect } from "next/navigation";
 const url = process.env.NEXT_PUBLIC_API_URL;
+import { isTokenValid } from "@/utils/auth/validate-token";
 
-export async function updateUserAction(prevState, formData) {
+const consumerKey = process.env.CONSUMER_KEY;
+const consumerSecret = process.env.CONSUMER_SECRET;
+
+export async function updateUserAction(id, prevState, formData) {
   // Retrieve authentication token from cookies
   const token = getToken();
+  const isValid = await isTokenValid(token);
 
   // If token is missing, redirect user to the homepage - add logged out
-  if (!token) {
+  if (!token || !isValid) {
     redirect("/");
   }
+  const { first_name, last_name, city, country, phone, address } =
+    Object.fromEntries(formData.entries());
 
   try {
     // Send PUT request to update the authenticated user's data via WooCommerce REST API
-    const response = await fetch(`${url}/wp-json/wc/v3/customers/me`, {
+    const response = await fetch(`${url}/wp-json/wc/v3/customers/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         // Token must be passed as a Bearer token in the Authorization header
-        Authorization: `Bearer ${token}`,
+        Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
       },
       body: JSON.stringify({
-        first_name: formData.first_name,
-        last_name: formData.last_name,
+        first_name,
+        last_name,
         billing: {
-          address_1: formData.address,
-          city: formData.city,
-          country: formData.country,
-          phone: formData.phone,
+          address_1: address,
+          city,
+          country,
+          phone,
         },
       }),
     });
 
     // Handle non-2xx HTTP responses as errors
-    if (!response.ok) throw new Error(data.message || "Update failed");
 
     const data = await response.json();
+
+    if (!response.ok) throw new Error(data.message || "Update failed");
 
     // Return a success object to be used in client UI
     return { success: true, message: "Profile updated" };

@@ -5,16 +5,15 @@ import AccountForm from "@/components/account/account-form";
 export default async function Account() {
   const user = await getUser();
 
+  // If the user is not authenticated or fetching user data failed, redirect to the homepage
   if (!user.success) {
-    redirect("/?mode=login");
+    redirect("/");
   }
-
-  console.log(user);
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center">
       <h1 className="text-3xl font-bold">Welcome,{user.data.username}</h1>
-      <AccountForm user={user} />
+      <AccountForm user={user.data} id={user.id} />
     </div>
   );
 }
