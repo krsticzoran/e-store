@@ -3,6 +3,7 @@ import getToken from "@/utils/auth/get-token";
 import { redirect } from "next/navigation";
 const url = process.env.NEXT_PUBLIC_API_URL;
 import { isTokenValid } from "@/utils/auth/validate-token";
+import { userSchema } from "@/schemas/user-profile";
 
 const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
@@ -16,8 +17,16 @@ export async function updateUserAction(id, prevState, formData) {
   if (!token || !isValid) {
     redirect("/");
   }
-  const { first_name, last_name, city, country, phone, address } =
-    Object.fromEntries(formData.entries());
+  const formValues = Object.fromEntries(formData.entries());
+
+  // Validate input using userSchema
+  try {
+    userSchema.parse(formValues);
+  } catch (error) {
+    return { success: false, message: "Enter full name (min. 3 characters)" };
+  }
+
+  const { first_name, last_name, city, country, phone, address } = formValues;
 
   try {
     // Send PUT request to update the authenticated user's data via WooCommerce REST API
@@ -25,7 +34,6 @@ export async function updateUserAction(id, prevState, formData) {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        // Token must be passed as a Bearer token in the Authorization header
         Authorization: `Basic ${btoa(`${consumerKey}:${consumerSecret}`)}`,
       },
       body: JSON.stringify({
@@ -40,10 +48,9 @@ export async function updateUserAction(id, prevState, formData) {
       }),
     });
 
-    // Handle non-2xx HTTP responses as errors
-
     const data = await response.json();
 
+    // Handle non-2xx HTTP responses as errors
     if (!response.ok) throw new Error(data.message || "Update failed");
 
     // Return a success object to be used in client UI

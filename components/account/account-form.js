@@ -55,6 +55,7 @@ export default function AccountForm({ user, id }) {
           className="rounded border px-2 py-1"
           onFocus={handleFocus}
           aria-label="First name"
+          required
         />
 
         <label htmlFor="last_name">Last name</label>
@@ -66,6 +67,7 @@ export default function AccountForm({ user, id }) {
           className="rounded border px-2 py-1"
           onFocus={handleFocus}
           aria-label="Last name"
+          required
         />
 
         <label htmlFor="address">Address</label>
