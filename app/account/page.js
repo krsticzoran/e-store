@@ -1,6 +1,7 @@
 import getUser from "@/services/get-user";
 import { redirect } from "next/navigation";
 import AccountForm from "@/components/account/account-form";
+import Container from "@/components/ui/container";
 
 export default async function Account() {
   const user = await getUser();
@@ -11,9 +12,13 @@ export default async function Account() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold">Welcome,{user.data.username}</h1>
-      <AccountForm user={user.data} id={user.id} />
-    </div>
+    <Container>
+      <div className="mx-5 my-16 flex flex-col items-center justify-center md:mx-0 md:my-20">
+        <h1 className="font-youngSerif text-3xl leading-10 text-primary">
+          Welcome <span>{user.data.username}</span>
+        </h1>
+        <AccountForm user={user.data} id={user.id} />
+      </div>
+    </Container>
   );
 }

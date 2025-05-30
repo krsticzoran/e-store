@@ -35,88 +35,132 @@ export default function AccountForm({ user, id }) {
 
   return (
     <>
-      <form action={formAction} className="mt-20 flex flex-col gap-4">
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          defaultValue={user.email || ""}
-          disabled
-          className="rounded border px-2 py-1"
-          aria-label="Email address"
-        />
+      <form action={formAction} className="mt-10 text-primary">
+        <div className="flex flex-col">
+          <h2 className="mb-5 font-youngSerif text-2xl leading-8">
+            Personal Information (required)
+          </h2>
 
-        <label htmlFor="first_name">First name</label>
-        <input
-          id="first_name"
-          type="text"
-          name="first_name"
-          defaultValue={user.first_name || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="First name"
-          required
-        />
+          <label className="text-primary text-opacity-50" htmlFor="email">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            defaultValue={user.email || ""}
+            disabled
+            className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+            aria-label="Email address"
+          />
+          <div className="flex gap-x-3">
+            <div className="flex flex-col">
+              <label
+                htmlFor="first_name"
+                className="text-primary text-opacity-50"
+              >
+                First name
+              </label>
+              <input
+                id="first_name"
+                type="text"
+                name="first_name"
+                defaultValue={user.first_name || ""}
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                onFocus={handleFocus}
+                aria-label="First name"
+                required
+              />
+            </div>
+            <div className="flex flex-col">
+              <label
+                htmlFor="last_name"
+                className="text-primary text-opacity-50"
+              >
+                Last name
+              </label>
+              <input
+                id="last_name"
+                type="text"
+                name="last_name"
+                defaultValue={user.last_name || ""}
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                onFocus={handleFocus}
+                aria-label="Last name"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col">
+          <h2 className="mb-5 mt-8 font-youngSerif text-2xl leading-8">
+            Billing Information
+          </h2>
+          <div className="flex gap-x-3">
+            <div className="flex flex-col">
+              <label htmlFor="address" className="text-primary text-opacity-50">
+                Address
+              </label>
+              <input
+                id="address"
+                type="text"
+                name="address"
+                defaultValue={user.billing.address_1 || ""}
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                onFocus={handleFocus}
+                aria-label="Street address"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="city" className="text-primary text-opacity-50">
+                City
+              </label>
+              <input
+                id="city"
+                type="text"
+                name="city"
+                defaultValue={user.billing.city || ""}
+                className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+                onFocus={handleFocus}
+                aria-label="City"
+              />
+            </div>
+          </div>
+          <label htmlFor="country" className="text-primary text-opacity-50">
+            Country
+          </label>
+          <input
+            id="country"
+            type="text"
+            name="country"
+            defaultValue={user.billing.country || ""}
+            className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+            onFocus={handleFocus}
+            aria-label="Country"
+          />
 
-        <label htmlFor="last_name">Last name</label>
-        <input
-          id="last_name"
-          type="text"
-          name="last_name"
-          defaultValue={user.last_name || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="Last name"
-          required
-        />
-
-        <label htmlFor="address">Address</label>
-        <input
-          id="address"
-          type="text"
-          name="address"
-          defaultValue={user.billing.address_1 || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="Street address"
-        />
-
-        <label htmlFor="city">City</label>
-        <input
-          id="city"
-          type="text"
-          name="city"
-          defaultValue={user.billing.city || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="City"
-        />
-
-        <label htmlFor="country">Country</label>
-        <input
-          id="country"
-          type="text"
-          name="country"
-          defaultValue={user.billing.country || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="Country"
-        />
-
-        <label htmlFor="phone">Phone</label>
-        <input
-          id="phone"
-          type="text"
-          name="phone"
-          defaultValue={user.billing.phone || ""}
-          className="rounded border px-2 py-1"
-          onFocus={handleFocus}
-          aria-label="Phone number"
-        />
-
-        <FormButton>Save Changes</FormButton>
+          <label htmlFor="phone" className="text-primary text-opacity-50">
+            Phone
+          </label>
+          <input
+            id="phone"
+            type="text"
+            name="phone"
+            defaultValue={user.billing.phone || ""}
+            className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
+            onFocus={handleFocus}
+            aria-label="Phone number"
+          />
+        </div>
+        <FormButton className="mt-6 w-full bg-primary py-4 text-sm font-bold uppercase tracking-[1px] text-white duration-500 hover:bg-secondary">
+          Save Changes
+        </FormButton>
       </form>
-      {clientMessage && <p role="alert">{clientMessage}</p>}
+      {/* Display server response message */}
+      {clientMessage && (
+        <p className="mt-4 text-sm text-secondary" role="alert">
+          {clientMessage}
+        </p>
+      )}
     </>
   );
 }
