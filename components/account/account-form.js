@@ -35,9 +35,9 @@ export default function AccountForm({ user, id }) {
 
   return (
     <>
-      <form action={formAction} className="mt-10 text-primary">
+      <form action={formAction} className="mt-10 max-w-[450px] text-primary">
         <div className="flex flex-col">
-          <h2 className="mb-5 font-youngSerif text-2xl leading-8">
+          <h2 className="mb-5 font-youngSerif text-xl leading-8 md:text-2xl">
             Personal Information (required)
           </h2>
 
@@ -92,7 +92,7 @@ export default function AccountForm({ user, id }) {
           </div>
         </div>
         <div className="flex flex-col">
-          <h2 className="mb-5 mt-8 font-youngSerif text-2xl leading-8">
+          <h2 className="mb-5 mt-8 font-youngSerif text-xl leading-8 md:text-2xl">
             Billing Information
           </h2>
           <div className="flex gap-x-3">

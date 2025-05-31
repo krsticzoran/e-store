@@ -2,6 +2,7 @@ import getUser from "@/services/get-user";
 import { redirect } from "next/navigation";
 import AccountForm from "@/components/account/account-form";
 import Container from "@/components/ui/container";
+import Logout from "@/components/account/logout";
 
 export default async function Account() {
   const user = await getUser();
@@ -14,9 +15,14 @@ export default async function Account() {
   return (
     <Container>
       <div className="mx-5 my-16 flex flex-col items-center justify-center md:mx-0 md:my-20">
-        <h1 className="font-youngSerif text-3xl leading-10 text-primary">
-          Welcome <span>{user.data.username}</span>
-        </h1>
+        <div className="w-full max-w-[450px]">
+          <div className="flex items-center justify-between">
+            <h1 className="font-youngSerif text-2xl leading-10 text-primary md:text-3xl">
+              Welcome <span>{user.data.username}</span>
+            </h1>
+            <Logout />
+          </div>
+        </div>
         <AccountForm user={user.data} id={user.id} />
       </div>
     </Container>
