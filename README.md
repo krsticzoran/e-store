@@ -24,10 +24,10 @@ The following pages are **completed**:
 - Cart page
 - About page
 - Contact page
+- Account page
 
 The following pages are **in development**:
 
-- Account page
 - Checkout page
 
 ---
