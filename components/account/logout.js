@@ -6,10 +6,12 @@ import { deleteTokenCookie } from "@/utils/auth/delete-token-cookie";
 export default function Logout() {
   const router = useRouter();
 
+  // Handle user logout: delete token cookie and redirect to homepage
   const handleLogout = async function () {
     await deleteTokenCookie();
     router.push("/");
   };
+
   return (
     <button
       onClick={handleLogout}
