@@ -4,6 +4,13 @@ const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
 
 export async function submitOrder(cart, prevState, formData) {
+  if (cart.length === 0) {
+    return {
+      success: false,
+      message:
+        "Your cart is empty. Please add some products before placing an order.",
+    };
+  }
   const orderItems = cart.map((product) => ({
     product_id: product.id,
     quantity: product.amount,

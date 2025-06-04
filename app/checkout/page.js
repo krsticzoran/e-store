@@ -6,6 +6,7 @@ import { submitOrder } from "@/action/submit-order-action";
 import Container from "@/components/ui/container";
 import FormButton from "@/components/ui/form-button";
 import { useFormState } from "react-dom";
+import OrderSummary from "@/components/account/order-summary";
 
 export default function Checkout() {
   const ref = useRef(null);
@@ -22,6 +23,11 @@ export default function Checkout() {
     if (state.success) {
       // Reset form fields when submission succeeds
       ref.current?.reset();
+
+      // Clear cart from localStorage and reset local state
+      localStorage.removeItem("cart");
+      setCart([]);
+      setTotal(0);
     }
     setMessage(state.message);
   }, [state]);
@@ -208,39 +214,7 @@ export default function Checkout() {
           )}
         </div>
         {/* Order summary */}
-        <div className="mt-[88px] basis-1/3">
-          <div className="h-full bg-[#F4F4F4] px-5 pt-4 text-primary">
-            <p className="mb-5 text-center font-youngSerif text-lg leading-8 md:text-xl">
-              Order summary
-            </p>
-
-            {/* List of products in cart */}
-            <div className="border-b-[0.5px] border-primary">
-              <ul>
-                {cart.map((product) => (
-                  <li className="pt-2" key={product.id}>
-                    <div className="flex justify-between">
-                      <div className="flex">
-                        <p className="pr-4">{product.name} </p>
-                      </div>
-                      <p className="text-left">
-                        {(product.amount * product.price).toFixed(2)} $
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-              <div className="flex justify-between pt-2">
-                <p>Shipping</p> <p className="text-right">100 $</p>
-              </div>
-            </div>
-            {/* Total price */}
-            <p className="py-6 font-bold uppercase tracking-[1px]">
-              total :{" "}
-              <span className="text-secondary">{total.toFixed(2)} $</span>
-            </p>
-          </div>
-        </div>
+        <OrderSummary cart={cart} total={total} />
       </div>
     </Container>
   );
