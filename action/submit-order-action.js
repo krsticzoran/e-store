@@ -3,7 +3,7 @@
 const consumerKey = process.env.CONSUMER_KEY;
 const consumerSecret = process.env.CONSUMER_SECRET;
 
-export async function submitOrder(cart, formData) {
+export async function submitOrder(cart, prevState, formData) {
   const orderItems = cart.map((product) => ({
     product_id: product.id,
     quantity: product.amount,
@@ -63,10 +63,12 @@ export async function submitOrder(cart, formData) {
     }
 
     const result = await response.json();
-    console.log("Order successfully created:", result);
-    return result;
+
+    return {
+      success: true,
+      message: "Order placed successfully! Thank you for shopping with us.",
+    };
   } catch (error) {
-    console.error("Failed to create order:", error);
-    throw error;
+    return { success: false, message: "An error occurred during ordering" };
   }
 }
