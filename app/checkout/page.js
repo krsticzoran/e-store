@@ -7,6 +7,8 @@ import Container from "@/components/ui/container";
 import FormButton from "@/components/ui/form-button";
 import { useFormState } from "react-dom";
 import OrderSummary from "@/components/account/order-summary";
+import InputField from "@/components/account/input-field";
+import CountryPicker from "@/components/account/country-picker";
 
 export default function Checkout() {
   const ref = useRef(null);
@@ -53,151 +55,75 @@ export default function Checkout() {
             {/* First and Last name inputs */}
             <div className="flex gap-x-3">
               <div className="w-full">
-                <label
-                  className="text-primary text-opacity-50"
-                  htmlFor="first_name"
-                >
-                  First name
-                </label>
-                <input
-                  id="first_name"
-                  aria-required="true"
-                  aria-label="Your first name"
-                  type="text"
+                <InputField
+                  label="Your first name"
                   name="firstName"
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  required
                   onFocus={() => setMessage("")}
+                  id="first_name"
                 />
               </div>
               <div className="w-full">
-                <label
-                  className="text-primary text-opacity-50"
-                  htmlFor="last_name"
-                >
-                  Last name
-                </label>
-                <input
-                  id="last_name"
-                  aria-required="true"
-                  aria-label="Your last name"
-                  type="text"
+                <InputField
+                  label="Your last name"
                   name="lastName"
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  required
                   onFocus={() => setMessage("")}
+                  id="last_name"
                 />
               </div>
             </div>
 
             {/* Email input */}
-            <label className="text-primary text-opacity-50" htmlFor="email">
-              Email address
-            </label>
-            <input
+            <InputField
+              label="Your email address"
+              name="email"
+              onFocus={() => setMessage("")}
               id="email"
               type="email"
-              required
-              className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-              aria-required="true"
-              aria-label="Your email address"
-              onFocus={() => setMessage("")}
             />
 
             {/* Address, City, Country dropdown */}
             <div className="gap-x-3 md:flex">
               <div className="w-full">
-                <label
-                  className="text-primary text-opacity-50"
-                  htmlFor="address"
-                >
-                  Your street address
-                </label>
-                <input
-                  id="address"
-                  type="text"
+                <InputField
+                  label="Your address"
                   name="address1"
-                  required
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  aria-required="true"
-                  aria-label="Your address"
                   onFocus={() => setMessage("")}
+                  id="address"
                 />
               </div>
               <div className="w-full">
-                <label className="text-primary text-opacity-50" htmlFor="city">
-                  Your city
-                </label>
-                <input
-                  id="city"
-                  type="text"
+                <InputField
+                  label="Your city"
                   name="city"
-                  required
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  aria-required="true"
-                  aria-label="Your city"
                   onFocus={() => setMessage("")}
+                  id="city"
                 />
               </div>
               <div className="w-full">
-                <label
-                  className="text-primary text-opacity-50"
-                  htmlFor="country"
-                >
-                  Your country
-                </label>
-                <select
-                  id="country"
-                  name="country"
-                  required
-                  className="mb-5 w-full appearance-none border bg-white px-5 py-3 outline-none"
-                  aria-required="true"
-                  aria-label="Your country"
+                <CountryPicker
+                  countries={countries}
                   onFocus={() => setMessage("")}
-                >
-                  <option value="">Choose a country</option>
-                  {countries.map((name) => (
-                    <option key={name} value={name}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
+                />
               </div>
             </div>
 
             {/* ZIP and phone */}
             <div className="flex gap-x-3">
               <div className="w-full">
-                <label
-                  className="text-primary text-opacity-50"
-                  htmlFor="postcode"
-                >
-                  Your postcode / ZIP
-                </label>
-                <input
-                  id="postcode"
-                  type="text"
+                <InputField
+                  label="Your postcode"
                   name="postcode"
-                  required
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  aria-required="true"
-                  aria-label="Your postcode"
                   onFocus={() => setMessage("")}
+                  id="postcode"
                 />
               </div>
               <div className="w-full">
-                <label className="text-primary text-opacity-50" htmlFor="phone">
-                  Your phone number
-                </label>
-                <input
+                <InputField
+                  label="Your phone"
+                  name="phone"
+                  onFocus={() => setMessage("")}
                   id="phone"
                   type="tel"
-                  name="phone"
-                  required
-                  className="mb-5 w-full border bg-white px-5 py-3 outline-none"
-                  aria-required="true"
-                  aria-label="Your phone"
-                  onFocus={() => setMessage("")}
                 />
               </div>
             </div>
@@ -213,6 +139,7 @@ export default function Checkout() {
             </p>
           )}
         </div>
+        
         {/* Order summary */}
         <OrderSummary cart={cart} total={total} />
       </div>
