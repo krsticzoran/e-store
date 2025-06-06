@@ -139,7 +139,7 @@ export default function Checkout() {
             </p>
           )}
         </div>
-        
+
         {/* Order summary */}
         <OrderSummary cart={cart} total={total} />
       </div>
