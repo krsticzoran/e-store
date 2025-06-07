@@ -1,4 +1,4 @@
-export default function CountryPicker({ countries, onFocus }) {
+export default function CountryPicker({ countries, onFocus, value, onChange }) {
   return (
     <>
       <label className="text-primary text-opacity-50" htmlFor="country">
@@ -12,6 +12,8 @@ export default function CountryPicker({ countries, onFocus }) {
         aria-required="true"
         aria-label="Your country"
         onFocus={onFocus}
+        onChange={onChange}
+        value={value}
       >
         <option value="">Choose a country</option>
         {countries.map((name) => (

@@ -4,6 +4,7 @@ export default function InputField({
   label,
   onFocus,
   type = "text",
+  value = "",
 }) {
   return (
     <>
@@ -19,6 +20,7 @@ export default function InputField({
         className="mb-5 w-full border bg-white px-5 py-3 outline-none"
         required
         onFocus={onFocus}
+        defaultValue={value}
       />
     </>
   );

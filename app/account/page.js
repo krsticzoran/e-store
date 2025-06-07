@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import AccountForm from "@/components/account/account-form";
 import Container from "@/components/ui/container";
 import Logout from "@/components/account/logout";
+import UserContextInitializer from "@/components/account/user-context-initializer";
 
 export default async function Account() {
   // Fetch the currently authenticated user from the server
@@ -30,6 +31,7 @@ export default async function Account() {
         {/* Render the account form, passing in user data and ID */}
         <AccountForm user={user.data} id={user.id} />
       </div>
+      <UserContextInitializer user={user.data} />
     </Container>
   );
 }

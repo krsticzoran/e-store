@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { getNames } from "country-list";
 import { getCartItems, calculateTotal } from "@/utils/cart";
 import { submitOrder } from "@/action/submit-order-action";
@@ -9,10 +9,14 @@ import { useFormState } from "react-dom";
 import OrderSummary from "@/components/account/order-summary";
 import InputField from "@/components/account/input-field";
 import CountryPicker from "@/components/account/country-picker";
+import { UserContext } from "@/context/user-context";
 
 export default function Checkout() {
   const ref = useRef(null);
   const [countries, setCountries] = useState([]);
+
+  const { user } = useContext(UserContext);
+  const [country, setCountry] = useState(user?.billing.country || "");
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [message, setMessage] = useState("");
@@ -20,6 +24,8 @@ export default function Checkout() {
     success: null,
     message: "",
   });
+
+  console.log("User in context:", user);
 
   useEffect(() => {
     if (state.success) {
@@ -60,6 +66,7 @@ export default function Checkout() {
                   name="firstName"
                   onFocus={() => setMessage("")}
                   id="first_name"
+                  value={user?.first_name || ""}
                 />
               </div>
               <div className="w-full">
@@ -68,6 +75,7 @@ export default function Checkout() {
                   name="lastName"
                   onFocus={() => setMessage("")}
                   id="last_name"
+                  value={user?.last_name || ""}
                 />
               </div>
             </div>
@@ -79,6 +87,7 @@ export default function Checkout() {
               onFocus={() => setMessage("")}
               id="email"
               type="email"
+              value={user?.email || ""}
             />
 
             {/* Address, City, Country dropdown */}
@@ -89,6 +98,7 @@ export default function Checkout() {
                   name="address1"
                   onFocus={() => setMessage("")}
                   id="address"
+                  value={user?.billing.address_1 || ""}
                 />
               </div>
               <div className="w-full">
@@ -97,12 +107,15 @@ export default function Checkout() {
                   name="city"
                   onFocus={() => setMessage("")}
                   id="city"
+                  value={user?.billing.city || ""}
                 />
               </div>
               <div className="w-full">
                 <CountryPicker
                   countries={countries}
                   onFocus={() => setMessage("")}
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
                 />
               </div>
             </div>
@@ -115,6 +128,7 @@ export default function Checkout() {
                   name="postcode"
                   onFocus={() => setMessage("")}
                   id="postcode"
+                  value={user?.billing.postcode || ""}
                 />
               </div>
               <div className="w-full">
@@ -124,6 +138,7 @@ export default function Checkout() {
                   onFocus={() => setMessage("")}
                   id="phone"
                   type="tel"
+                  value={user?.billing.phone || ""}
                 />
               </div>
             </div>
