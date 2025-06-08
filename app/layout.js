@@ -4,7 +4,6 @@ import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 import { UserProvider } from "@/context/user-context";
 import getUser from "@/services/get-user";
-import UserContextInitializer from "@/components/account/user-context-initializer";
 
 const geistSans = localFont({
   src: "../public/fonts/GeistVF.woff",
@@ -36,8 +35,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <UserProvider>
-          <UserContextInitializer user={user?.success ? user.data : null} />
+        <UserProvider initalUser={user?.success ? user.data : null}>
           <Header />
           {children}
           <Footer />

@@ -5,13 +5,26 @@ import { useFormState } from "react-dom";
 import { updateUserAction } from "@/action/update-user-action";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { UserContext } from "@/context/user-context";
 
-export default function AccountForm({ user, id }) {
+export default function AccountForm({ user: initialUser, id }) {
   // Use useFormState to manage server state and bind user ID to the action
   const [state, formAction] = useFormState(updateUserAction.bind(null, id), {
     success: null,
     message: "",
   });
+
+  const { setUser } = useContext(UserContext);
+
+  // Sync initial props with context
+  useEffect(() => {
+    try {
+      if (initialUser) setUser(initialUser);
+    } catch (error) {
+      console.error("Failed to update user context:", error);
+    }
+  }, [initialUser, setUser]);
 
   const router = useRouter();
 
@@ -47,7 +60,7 @@ export default function AccountForm({ user, id }) {
           <input
             id="email"
             type="email"
-            defaultValue={user.email || ""}
+            defaultValue={initialUser.email || ""}
             disabled
             className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
             aria-label="Email address"
@@ -64,7 +77,7 @@ export default function AccountForm({ user, id }) {
                 id="first_name"
                 type="text"
                 name="first_name"
-                defaultValue={user.first_name || ""}
+                defaultValue={initialUser.first_name || ""}
                 className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                 onFocus={handleFocus}
                 aria-label="First name"
@@ -82,7 +95,7 @@ export default function AccountForm({ user, id }) {
                 id="last_name"
                 type="text"
                 name="last_name"
-                defaultValue={user.last_name || ""}
+                defaultValue={initialUser.last_name || ""}
                 className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                 onFocus={handleFocus}
                 aria-label="Last name"
@@ -104,7 +117,7 @@ export default function AccountForm({ user, id }) {
                 id="address"
                 type="text"
                 name="address"
-                defaultValue={user.billing.address_1 || ""}
+                defaultValue={initialUser.billing.address_1 || ""}
                 className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                 onFocus={handleFocus}
                 aria-label="Street address"
@@ -118,7 +131,7 @@ export default function AccountForm({ user, id }) {
                 id="city"
                 type="text"
                 name="city"
-                defaultValue={user.billing.city || ""}
+                defaultValue={initialUser.billing.city || ""}
                 className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
                 onFocus={handleFocus}
                 aria-label="City"
@@ -132,7 +145,7 @@ export default function AccountForm({ user, id }) {
             id="country"
             type="text"
             name="country"
-            defaultValue={user.billing.country || ""}
+            defaultValue={initialUser.billing.country || ""}
             className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
             onFocus={handleFocus}
             aria-label="Country"
@@ -145,7 +158,7 @@ export default function AccountForm({ user, id }) {
             id="phone"
             type="text"
             name="phone"
-            defaultValue={user.billing.phone || ""}
+            defaultValue={initialUser.billing.phone || ""}
             className="mb-5 w-full bg-[#F4F4F4] px-4 py-2 text-lg focus:outline-none focus:ring-0"
             onFocus={handleFocus}
             aria-label="Phone number"
