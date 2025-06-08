@@ -25,10 +25,16 @@ The following pages are **completed**:
 - About page
 - Contact page
 - Account page
-
-The following pages are **in development**:
-
 - Checkout page
+
+## 🚀 Next Steps / Future Improvements
+
+- Stripe integration for secure and seamless payments  
+- Implement cart context to improve UI/UX and manage cart state globally  
+- Add Framer Motion animations for smooth and engaging transitions  
+- Optimize performance for faster load times and better responsiveness  
+- Write tests to ensure stability and maintainability  
+
 
 ---
 
