@@ -86,6 +86,7 @@ export default function CartModal() {
                   cart,
                   product.id,
                   setCart,
+                  context,
                 )}
                 pathname={path}
               />

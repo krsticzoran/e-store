@@ -9,12 +9,13 @@ export function calculateTotalNumberOfProduct(cart) {
 }
 
 // remove item from cart
-export const handleRemoveItem = (cart, id, setCart) => {
+export const handleRemoveItem = (cart, id, setCart, context) => {
   const updatedCart = cart?.filter((product) => product.id !== id);
 
   // Update localStorage and state
   setCart(updatedCart);
   localStorage.setItem("cart", JSON.stringify(updatedCart));
+  context.setCart(updatedCart);
   return updatedCart;
 };
 
