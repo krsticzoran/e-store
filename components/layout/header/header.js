@@ -11,10 +11,15 @@ import { usePathname } from "next/navigation";
 import { getNavLinksClass } from "@/utils/utils";
 import Account from "./account";
 import { Suspense } from "react";
+import { useContext } from "react";
+import { CartContext } from "@/context/cart-context";
+import { calculateTotalNumberOfProduct } from "@/utils/cart";
 
 export default function Header() {
   const pathname = usePathname();
   const showLogo = pathname === "/" || pathname === "/about";
+  const { cart } = useContext(CartContext);
+  const total = calculateTotalNumberOfProduct(cart);
 
   return (
     <nav
@@ -48,10 +53,17 @@ export default function Header() {
             </li>
             <li>
               <Link href="/cart" aria-label="View Cart">
-                <i
-                  className={`${getNavLinksClass(pathname)} fa fa-shopping-bag`}
-                  aria-hidden="true"
-                ></i>
+                <div className="relative">
+                  <i
+                    className={`${getNavLinksClass(pathname)} fa fa-shopping-bag`}
+                    aria-hidden="true"
+                  ></i>
+                  <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary">
+                    <span className="text-[12px] font-black text-primary">
+                      {total}
+                    </span>
+                  </span>
+                </div>
               </Link>
             </li>
             <li>
