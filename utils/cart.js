@@ -15,7 +15,7 @@ export const handleRemoveItem = (cart, id, setCart, context) => {
   // Update localStorage and state
   setCart(updatedCart);
   localStorage.setItem("cart", JSON.stringify(updatedCart));
-  context.setCart(updatedCart);
+  context?.setCart(updatedCart || null);
   return updatedCart;
 };
 
