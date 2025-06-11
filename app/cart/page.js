@@ -1,10 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import {
   calculateTotal,
-  getCartItems,
   handleQuantityChange,
   handleRemoveItem,
 } from "@/utils/cart";
@@ -13,20 +11,23 @@ import Banner from "@/components/ui/banner";
 import ProceedToCheckoutButton from "@/components/ui/proceed-to-checkout-button";
 import Container from "@/components/ui/container";
 import EmptyCard from "@/components/cart/empty-cart";
+import { useContext } from "react";
+import { CartContext } from "@/context/cart-context";
 
 export default function Cart() {
   const router = useRouter();
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const pathname = usePathname();
+  const context = useContext(CartContext);
 
   // ===== Cart Initialization =====
   // Load the cart data from localStorage
   useEffect(() => {
-    const savedCart = getCartItems();
+    const savedCart = context.cart || [];
     setCart(savedCart);
     setTotal(calculateTotal(savedCart));
-  }, []);
+  }, [context.cart]);
 
   // ===== Cart Operations =====
   // Handle quantity change (increment/decrement)
@@ -38,6 +39,7 @@ export default function Cart() {
 
     // Update localStorage and state
     setCart(filteredCart);
+    context.setCart(filteredCart);
     localStorage.setItem("cart", JSON.stringify(filteredCart));
     setTotal(calculateTotal(filteredCart)); // Recalculate total
   };
@@ -45,6 +47,8 @@ export default function Cart() {
   // Handle removing item from cart
   const handleRemoveProduct = (id) => {
     const updatedCart = handleRemoveItem(cart, id, setCart);
+    setCart(updatedCart);
+    context.setCart(updatedCart);
     setTotal(calculateTotal(updatedCart)); // Recalculate total
   };
 

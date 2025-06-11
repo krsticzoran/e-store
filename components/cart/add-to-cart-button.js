@@ -1,33 +1,36 @@
 "use client";
 import { useState } from "react";
-import { getCartItems } from "@/utils/cart";
 import Spinner from "../ui/spinner";
 import { handleQuantityChange } from "@/utils/cart";
 import CartModal from "./cart-modal";
 import { useRouter, usePathname } from "next/navigation";
 import { Suspense } from "react";
+import { useContext } from "react";
+import { CartContext } from "@/context/cart-context";
 
 export default function AddToCartButton({ product, className, quantity = 1 }) {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const path = usePathname();
+  const context = useContext(CartContext);
 
   const handleAddToCart = () => {
     setIsLoading(true);
 
     // Get current cart and update with new product
-    const cart = getCartItems();
+    const cart = context.cart || [];
 
     // Persist updated cart
     const updatedCart = handleQuantityChange(cart, product, quantity);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+    context.setCart(updatedCart);
 
     // Simulate async operation and open modal
     setTimeout(() => {
       setIsLoading(false);
       // Open modal via URL param (non-refresh navigation)
       router.push(`${path}?modal=open`, { scroll: false });
-    }, 1000); // Artificial delay for better UX perception
+    }, 500); // Artificial delay for better UX perception
   };
 
   return (

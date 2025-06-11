@@ -5,13 +5,14 @@ import { useState, useEffect } from "react";
 import ModalWrapper from "../ui/modal-wrapper";
 import CartItem from "./cart-item";
 import {
-  getCartItems,
   calculateTotalNumberOfProduct,
   handleRemoveItem,
   calculateTotal,
 } from "@/utils/cart";
 import ProceedToCheckoutButton from "../ui/proceed-to-checkout-button";
 import useEscapeKey from "@/hooks/useEscapeKey";
+import { useContext } from "react";
+import { CartContext } from "@/context/cart-context";
 
 export default function CartModal() {
   // Router and state management
@@ -19,6 +20,7 @@ export default function CartModal() {
   const isOpen = searchParams.get("modal") === "open";
   const path = usePathname();
   const router = useRouter();
+  const context = useContext(CartContext);
 
   // Cart state
   const [cart, setCart] = useState();
@@ -27,9 +29,9 @@ export default function CartModal() {
 
   // Fetch cart items when modal opens/closes
   useEffect(() => {
-    const currentCart = getCartItems();
+    const currentCart = context.cart;
     setCart(currentCart);
-  }, [isOpen]);
+  }, [isOpen, context.cart]);
 
   // Calculate cart totals when cart updates
   useEffect(() => {

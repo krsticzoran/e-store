@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useRef, useContext } from "react";
 import { getNames } from "country-list";
-import { getCartItems, calculateTotal } from "@/utils/cart";
+import { calculateTotal } from "@/utils/cart";
 import { submitOrder } from "@/action/submit-order-action";
 import Container from "@/components/ui/container";
 import FormButton from "@/components/ui/form-button";
@@ -11,11 +11,14 @@ import InputField from "@/components/account/input-field";
 import CountryPicker from "@/components/account/country-picker";
 import { UserContext } from "@/context/user-context";
 
+import { CartContext } from "@/context/cart-context";
+
 export default function Checkout() {
   const ref = useRef(null);
   const [countries, setCountries] = useState([]);
 
   const { user } = useContext(UserContext);
+  const contextCard = useContext(CartContext);
   const [country, setCountry] = useState(user?.billing.country || "");
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
@@ -25,15 +28,13 @@ export default function Checkout() {
     message: "",
   });
 
-  console.log("User in context:", user);
-
   useEffect(() => {
     if (state.success) {
       // Reset form fields when submission succeeds
       ref.current?.reset();
 
       // Clear cart from localStorage and reset local state
-      localStorage.removeItem("cart");
+      context.clearCart();
       setCart([]);
       setTotal(0);
     }
@@ -43,10 +44,11 @@ export default function Checkout() {
   // Load countries and cart items on component mount
   useEffect(() => {
     setCountries(getNames());
-    const savedCart = getCartItems();
+    const savedCart = contextCard.cart || [];
+
     setCart(savedCart);
     setTotal(calculateTotal(savedCart));
-  }, []);
+  }, [contextCard.cart]);
 
   return (
     <Container>

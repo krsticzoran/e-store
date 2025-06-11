@@ -8,14 +8,6 @@ export function calculateTotalNumberOfProduct(cart) {
   return cart?.reduce((total, item) => total + item.amount, 0);
 }
 
-// get cart items from localStorage
-export function getCartItems() {
-  const savedCart = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [];
-  return savedCart;
-}
-
 // remove item from cart
 export const handleRemoveItem = (cart, id, setCart) => {
   const updatedCart = cart?.filter((product) => product.id !== id);

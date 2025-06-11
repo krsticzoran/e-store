@@ -4,6 +4,7 @@ import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 import { UserProvider } from "@/context/user-context";
 import getUser from "@/services/get-user";
+import { CartProvider } from "@/context/cart-context";
 
 const geistSans = localFont({
   src: "../public/fonts/GeistVF.woff",
@@ -36,10 +37,12 @@ export default async function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <UserProvider initalUser={user?.success ? user.data : null}>
-          <Header />
-          {children}
-          <Footer />
-          <div id="reusablePortal" />
+          <CartProvider>
+            <Header />
+            {children}
+            <Footer />
+            <div id="reusablePortal" />
+          </CartProvider>
         </UserProvider>
       </body>
     </html>
