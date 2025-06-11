@@ -8,8 +8,8 @@ const UserContext = createContext({
   logout: () => {},
 });
 
-const UserProvider = ({ children, initalUser }) => {
-  const [user, setUser] = useState(initalUser);
+const UserProvider = ({ children, initallUser }) => {
+  const [user, setUser] = useState(initallUser);
 
   const logout = () => {
     setUser(null);

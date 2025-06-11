@@ -36,7 +36,7 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <UserProvider initalUser={user?.success ? user.data : null}>
+        <UserProvider initallUser={user?.success ? user.data : null}>
           <CartProvider>
             <Header />
             {children}
