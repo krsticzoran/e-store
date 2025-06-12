@@ -10,7 +10,7 @@ export default function FooterLinks({ title, data, addMargin }) {
             key={i}
             className="mt-4 font-medium capitalize transition-colors duration-1000 hover:text-secondary"
           >
-            <Link href="#">{el}</Link>
+            <Link href={el[1]}>{el[0]}</Link>
           </li>
         ))}
       </ul>

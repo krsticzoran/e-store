@@ -1,15 +1,21 @@
 export const companyData = {
   title: "company",
-  links: ["about us", "our history", "shop", "my account", "contact us"],
+  links: [
+    ["about us", "/about"],
+    ["our history", "/about"],
+    ["shop", "shop"],
+    ["my account", "/account"],
+    ["contact us", "contact"],
+  ],
 };
 
 export const discoverData = {
   title: "discover",
   links: [
-    "Black Tea Varieties",
-    "Premium Green Tea",
-    "Oolong Tea Blends",
-    "Flavored Tea Collection",
-    "Exclusive Sales",
+    ["Black Tea Varieties", "/shop/black-tea"],
+    ["Premium Green Tea", "/shop/green-tea"],
+    ["Oolong Tea Blends", "/shop/oolong-tea"],
+    ["Flavored Tea Collection", "/shop/flavored-tea"],
+    ["Exclusive Sales", "/shop"],
   ],
 };
