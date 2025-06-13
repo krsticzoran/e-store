@@ -1,44 +1,38 @@
-# 🫖 Tea Shop E-commerce Website
+🫖 Tea Shop – Headless E-commerce Website
+A fast, modern, and responsive e-commerce website for a tea shop, built with Next.js, Tailwind CSS, and powered by a headless WordPress CMS. Designed for scalability, smooth user experience, and SEO performance.
 
-An e-commerce tea shop built with **Next.js**, **Tailwind CSS**, and a **headless WordPress** backend.
+🔗 Live Demo: https://e-store.zkrstic.com
 
----
+Frontend:
+Next.js (App Router with Server Actions)
 
-## 🛠 Tech Stack
+Tailwind CSS
 
-### Frontend
-- Next.js  
-- Tailwind CSS  
+Framer Motion – animations
 
-### Backend
-- WordPress (Headless CMS)
+Jest + React Testing Library (planned)
 
----
+Backend:
+WordPress CMS used as a headless CMS
 
-## ✅ Current Status
+WordPress REST API (custom endpoints for products and authentication)
 
-The following pages are **completed**:
-- Homepage
-- Shop page
-- Product details page
-- Cart page
-- About page
-- Contact page
-- Account page
-- Checkout page
+📦 Features
 
-## 🚀 Next Steps / Future Improvements
+🛍 Dynamic Shop – Products loaded via WordPress REST API
 
-- Stripe integration for secure and seamless payments  
-- Implement cart context to improve UI/UX and manage cart state globally  
-- Add Framer Motion animations for smooth and engaging transitions  
-- Optimize performance for faster load times and better responsiveness  
-- Write tests to ensure stability and maintainability  
+🔐 Authentication – Login and Signup handled via WordPress JWT and REST API using Next.js server actions
 
+🧾 Product Pages – Individual product detail pages
 
----
+🛒 Shopping Cart – Local state cart logic (Context API coming soon)
 
-## 🌐 Live Demo
+💳 Checkout – Static layout, Stripe integration planned
 
-[Visit the live site](https://e-store.zkrstic.com/)
+🔍 SEO-Ready – Includes metadata and dynamic sitemap generation
 
+🎨 Responsive UI – Fully optimized for all screen sizes
+
+🎞 Smooth Animations – Subtle transitions via Framer Motion
+
+⚡️ Performance Optimized – Lazy loading, modern image formats
