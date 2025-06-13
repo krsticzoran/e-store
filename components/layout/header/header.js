@@ -36,6 +36,10 @@ export default function Header() {
               src={showLogo ? logo : logoMobile}
               alt="Company Logo"
               className="h-[65px] w-[65px] lg:h-[92px] lg:w-[92px]"
+              width={92}
+              height={92}
+              priority
+              quality={70}
             />
           </Link>
         </div>
