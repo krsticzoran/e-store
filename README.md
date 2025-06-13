@@ -1,38 +1,34 @@
-🫖 Tea Shop – Headless E-commerce Website
-A fast, modern, and responsive e-commerce website for a tea shop, built with Next.js, Tailwind CSS, and powered by a headless WordPress CMS. Designed for scalability, smooth user experience, and SEO performance.
+# 🫖 Tea Shop – Headless E-commerce Website
 
-🔗 Live Demo: https://e-store.zkrstic.com
+A **fast**, **modern**, and **responsive** e-commerce website for a tea shop, built with **Next.js**, **Tailwind CSS**, and powered by a **headless WordPress CMS**.  
+Designed with scalability, smooth user experience, and SEO in mind.
 
-Frontend:
-Next.js (App Router with Server Actions)
+🔗 **Live Demo:** [https://e-store.zkrstic.com](https://e-store.zkrstic.com)
 
-Tailwind CSS
+---
 
-Framer Motion – animations
+## ⚙️ Tech Stack
 
-Jest + React Testing Library (planned)
+### Frontend
+- **Next.js** (App Router + Server Actions)  
+- **Tailwind CSS**  
+- **Framer Motion** – animations  
+- **Jest + React Testing Library** *(planned)*  
 
-Backend:
-WordPress CMS used as a headless CMS
+### Backend
+- **WordPress** as Headless CMS  
+- **WordPress REST API** – custom endpoints for products and authentication  
 
-WordPress REST API (custom endpoints for products and authentication)
+---
 
-📦 Features
+## 📦 Features
 
-🛍 Dynamic Shop – Products loaded via WordPress REST API
-
-🔐 Authentication – Login and Signup handled via WordPress JWT and REST API using Next.js server actions
-
-🧾 Product Pages – Individual product detail pages
-
-🛒 Shopping Cart – Local state cart logic (Context API coming soon)
-
-💳 Checkout – Static layout, Stripe integration planned
-
-🔍 SEO-Ready – Includes metadata and dynamic sitemap generation
-
-🎨 Responsive UI – Fully optimized for all screen sizes
-
-🎞 Smooth Animations – Subtle transitions via Framer Motion
-
-⚡️ Performance Optimized – Lazy loading, modern image formats
+- 🛍 **Dynamic Shop:** Products loaded from WordPress REST API  
+- 🔐 **Authentication:** Login & Signup via JWT and REST API using Server Actions  
+- 🧾 **Product Pages:** Detailed individual product views  
+- 🛒 **Shopping Cart:** Local state logic (Context API coming soon)  
+- 💳 **Checkout Page:** Static layout (Stripe integration planned)  
+- 🔍 **SEO-Ready:** Metadata + dynamic sitemap generation  
+- 🎨 **Responsive UI:** Fully optimized for all devices  
+- 🎞 **Smooth Animations:** Framer Motion transitions  
+- ⚡️ **Performance Optimized:** Lazy loading, modern image formats  
