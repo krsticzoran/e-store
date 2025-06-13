@@ -14,6 +14,7 @@ import { Suspense } from "react";
 import { useContext } from "react";
 import { CartContext } from "@/context/cart-context";
 import { calculateTotalNumberOfProduct } from "@/utils/cart";
+import FadeInWrapper from "@/components/ui/fade-in-wrapper";
 
 export default function Header() {
   const pathname = usePathname();
@@ -26,7 +27,8 @@ export default function Header() {
       className="absolute left-1/2 z-50 -translate-x-1/2"
       aria-label="Main Navigation"
     >
-      <div
+      <FadeInWrapper
+        delay={1}
         className={`flex w-screen items-center justify-between pt-5 xl:w-[1280px] xl:pt-7 ${!showLogo ? "2xl:w-[1280px]" : "2xl:w-[1440px]"} 2xl:pt-14`}
       >
         {/* Logo */}
@@ -76,7 +78,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-      </div>
+      </FadeInWrapper>
     </nav>
   );
 }
