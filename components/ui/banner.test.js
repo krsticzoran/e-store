@@ -7,7 +7,8 @@ jest.mock(
   () =>
     function MockImage(props) {
       // eslint-disable-next-line @next/next/no-img-element
-      return <img {...props} alt={props.alt || "mocked image"} />;
+      const { fill, priority, ...rest } = props;
+      return <img {...rest} alt={props.alt || "mocked image"} />;
     },
 );
 
