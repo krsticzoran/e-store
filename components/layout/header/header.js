@@ -66,7 +66,7 @@ export default function Header() {
                   ></i>
                   <span className="absolute -right-2 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-secondary">
                     <span className="text-[12px] font-black text-primary">
-                      {total}
+                      {total || 0}
                     </span>
                   </span>
                 </div>
