@@ -48,6 +48,7 @@ export default function ProductSearchBar() {
       <i
         className="fa-solid fa-magnifying-glass mx-2 text-primary text-opacity-75"
         aria-hidden="true"
+        data-testid="search-icon"
       ></i>
 
       {/* Search input field */}
