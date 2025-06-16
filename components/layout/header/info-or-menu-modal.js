@@ -40,7 +40,10 @@ export default function InfoOrMenuModal({ className }) {
         ></div>
 
         {/* Panel */}
-        <div className="z-50 flex h-full w-full flex-col overflow-auto bg-white p-5 font-urbanist text-primary text-white opacity-100 sm:w-[330px] xl:w-[500px] xl:bg-[#132420]">
+        <div
+          className="z-50 flex h-full w-full flex-col overflow-auto bg-white p-5 font-urbanist text-primary text-white opacity-100 sm:w-[330px] xl:w-[500px] xl:bg-[#132420]"
+          data-testid="modal-panel"
+        >
           <div className="flex justify-between xl:justify-end">
             <Image
               src={logoMobile}
