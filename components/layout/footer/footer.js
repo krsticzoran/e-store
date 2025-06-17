@@ -2,7 +2,7 @@ import Image from "next/image";
 import SocialIcons from "@/components/ui/social-icons";
 
 import logo from "@/public/icons/logo.svg";
-import Subscription from "./ subscription";
+import Subscription from "./subscription";
 
 import FooterLinks from "./footer-links";
 
